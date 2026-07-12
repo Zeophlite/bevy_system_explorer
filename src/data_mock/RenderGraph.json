@@ -1,0 +1,323 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_render::render_resource::sparse_buffer_vec::SparseBufferUpdateJobs",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_resource::sparse_buffer_vec::SparseBufferUpdateBindGroups",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_resource::pipeline_cache::PipelineCache",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::diagnostic::internal::DiagnosticsRecorder",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::renderer::render_device::RenderDevice",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::renderer::RenderQueue",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "SystemSet": 0
+          },
+          {
+            "SystemSet": 1
+          }
+        ],
+        [
+          {
+            "SystemSet": 2
+          },
+          {
+            "SystemSet": 3
+          }
+        ],
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "SystemSet": 2
+          }
+        ],
+        [
+          {
+            "System": 2
+          },
+          {
+            "System": 3
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          4,
+          {
+            "System": 1
+          }
+        ],
+        [
+          2,
+          {
+            "System": 2
+          }
+        ],
+        [
+          0,
+          {
+            "System": 0
+          }
+        ],
+        [
+          1,
+          {
+            "System": 1
+          }
+        ],
+        [
+          5,
+          {
+            "System": 2
+          }
+        ],
+        [
+          7,
+          {
+            "System": 0
+          }
+        ],
+        [
+          2,
+          {
+            "System": 3
+          }
+        ],
+        [
+          6,
+          {
+            "System": 3
+          }
+        ]
+      ],
+      "name": "RenderGraph",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "Begin"
+        },
+        {
+          "conditions": [],
+          "name": "Render"
+        },
+        {
+          "conditions": [],
+          "name": "Submit"
+        },
+        {
+          "conditions": [],
+          "name": "Finish"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::schedule::camera_driver"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::schedule::submit_pending_command_buffers"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::schedule::handle_uncovered_swap_chains"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_resource::sparse_buffer_vec::update_sparse_buffers"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_resource::sparse_buffer_vec::update_sparse_buffers"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_core_pipeline::schedule::camera_driver"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_core_pipeline::schedule::submit_pending_command_buffers"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_core_pipeline::schedule::handle_uncovered_swap_chains"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "bevy_system_explorer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:remote": "vite --mode remote",
+    "dev:read": "vite --mode read",
+    "dev:mock": "vite --mode mock",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.1.4"
+  },
+  "dependencies": {
+    "cytoscape": "^3.34.0",
+    "cytoscape-cose-bilkent": "^4.1.0"
+  }
+}

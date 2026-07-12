@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Explorer for Bevy</title>
+  </head>
+  <body>
+    <div id="app">
+
+      <div id="header">
+        <a href="https://github.com/Zeophlite/bevy_system_explorer">Repository Link</a>
+      </div>
+
+      <div id="main">
+        <div id="content">
+          <div class="row">
+            <h1 id="title">Loading</h1>
+          </div>
+
+          <div class="row">
+            <div id="components-container" class="graph-container">
+              <div class="graph-header">
+                <h2>Components</h2>
+                <div class="note">Click a component to add it and required to list</div>
+              </div>
+              <div id="components-graph" class="graph-content"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div id="schedules-container" class="graph-container">
+              <div class="graph-header">
+                <h2>Schedules</h2>
+                <div class="note">Click a schedule to add to list</div>
+              </div>
+              <div id="schedules-graph" class="graph-content"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div id="systems-container" class="graph-container">
+              <div class="graph-header">
+                <h2>Systems</h2>
+                <div class="note">Click a system to add to list</div>
+                <button id="simplify-systems">Simplify Systems</button>
+              </div>
+              <div id="systems-graph" class="graph-content"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="sidebar">
+          <div>
+            <h2>Selected Components</h2>
+            <ul id="selected-components">
+              <li><b>Transform</b></li>
+              <li>GlobalTransform</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Selected Schedules</h2>
+            <ul id="selected-schedules">
+              <li>Update</li>
+              <li>Render</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Selected Systems</h2>
+            <ul id="selected-systems">
+              <li>bevy_ui_widgets::dialog::sync_dialog_z</li>
+              <li>bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

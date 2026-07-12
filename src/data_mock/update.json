@@ -1,0 +1,154 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "name": "Update",
+      "systems": [
+        {
+          "name": "bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components",
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    3
+                  ],
+                  "without": [
+                    4,
+                    6
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_ui_widgets::dialog::DialogStack",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_image::image::Image>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_light::probe::AtmosphereEnvironmentMapLight",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
+          "required": []
+        },
+        {
+          "name": "bevy_render::sync_world::SyncToRenderWorld",
+          "required": []
+        },
+        {
+          "name": "bevy_pbr::atmosphere::environment::AtmosphereEnvironmentMap",
+          "required": [
+            5
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+      ],
+      "hierarchy": [
+      ],
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::view::window::screenshot::trigger_screenshots"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_light::probe::automatically_add_parallax_correction_components"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::oit::check_msaa"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::menu::menu_acquire_focus"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::menu::menu_on_lose_focus"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::dialog::sync_dialog_z"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:server::remove"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:server::move_cube"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::light_probe::generate::generate_environment_map_light"
+        }
+      ]
+    }
+  }
+}
