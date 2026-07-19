@@ -12,7 +12,7 @@ interface NodeData extends NodeDataDefinition {
     id: string,
     label: string,
     title: string,
-    _node_type: "schedule" | "system" | "resource" | "plugin",
+    _node_type: "schedule" | "system" | "resource" | "plugin" | "chain" | "app",
 }
 
 interface EdgeData extends EdgeDataDefinition {
@@ -66,7 +66,7 @@ function createApp(elements: Elements, name: string, pos: {x: number, y: number}
         id: id,
         label: name,
         title: name,
-        _node_type: "schedule",
+        _node_type: "app",
     }
     if (pos != null) {
         let nd = app;
@@ -80,17 +80,21 @@ function createApp(elements: Elements, name: string, pos: {x: number, y: number}
     return id;
 }
 
-function createSchedule(elements: Elements, name: string, pos: {x: number, y: number} | null = null) : string {
+function createSchedule(elements: Elements, name: string, pos: {x: number, y: number} | null = null, parent: string | null = null) : string {
     let id = `schedule-${name}`;
 
     let node = elements.nodes[id];
     if(node != null) {
+        let nd = node.data;
         if(pos != null) {
-            let nd = node.data;
             // nd["x"] = pos.x;
             // nd["y"] = pos.y;
-            // nd["physics"] = true;
-            // nd["fixed"] = {x: true, y: true};
+        }
+        // nd["physics"] = true;
+        // nd["fixed"] = {x: true, y: true};
+        if(parent != null && nd.parent != parent) {
+            console.log("update parent for " + name);
+            nd.parent = parent;
         }
 
         return id;
@@ -102,6 +106,11 @@ function createSchedule(elements: Elements, name: string, pos: {x: number, y: nu
         title: name,
         _node_type: "schedule",
     };
+
+    if(parent != null) {
+        console.log("set parent for " + name);
+        sched.parent = parent;
+    }
 
     if (pos != null) {
         // sched["x"] =  pos.x;
@@ -170,11 +179,42 @@ function createPlugin(elements: Elements, name: string, pos: {x: number, y: numb
     return id;
 }
 
+function createChain(elements: Elements, name: string) : string {
+    let id = `chain-${name}`;
+
+    let res: NodeData = {
+        id: id,
+        label: "",
+        title: "",
+        _node_type: "chain",
+    }
+    elements_add_node(elements, res);
+
+    return id;
+}
+
+
+let allEdgesTypes: string[] = [];
 
 function makeEdge(elements: Elements, from: string, to: string, label: string) : void {
     let id = "edge-" + from + '-' + to;
     if(elements.edges[id] != null) {
         return;
+    }
+    let fromType = elements.nodes[from].data._node_type;
+    let toType = elements.nodes[to].data._node_type;
+    let edgeType = "" + fromType + " " + label + " " + toType;
+    if(!allEdgesTypes.includes(edgeType)) {
+        allEdgesTypes.push(edgeType);
+        console.log("ET: " + edgeType);
+
+        if(edgeType == "schedule adds plugin") {
+            // console.log("from " + from + " to " + to);
+        }
+
+        if(edgeType == "system runs system") {
+            // console.log("from " + from + " to " + to);
+        }
     }
 
     let edge: EdgeData = {
@@ -190,7 +230,9 @@ function makeEdge(elements: Elements, from: string, to: string, label: string) :
 
 type ScheduleToNodeId = {[key:string] : string};
 
-function createScheduleChain(elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, schedules: string[]): ScheduleToNodeId {
+function createScheduleChain(title: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, schedules: string[]): ScheduleToNodeId {
+    let chain = createChain(elements, title);
+
     let prevSchedule = null;
 
     let scheduleData : {[key:string] : string} = {};
@@ -199,13 +241,13 @@ function createScheduleChain(elements: Elements, resource: string, origin: {x: n
         let x = origin.x + 1.0 * idx * offset.x;
         let y = origin.y + 1.0 * idx * offset.y;
 
-        let id = createSchedule(elements, schedule, {x, y});
+        let id = createSchedule(elements, schedule, {x, y}, chain);
         scheduleData[schedule] = id;
 
         if(prevSchedule == null) {
             makeEdge(elements, resource, id, "triggers")
         } else {
-            makeEdge(elements, prevSchedule, id, "");
+            makeEdge(elements, prevSchedule, id, "then");
         }
 
         prevSchedule = id;
@@ -225,7 +267,6 @@ function createScheduleChain(elements: Elements, resource: string, origin: {x: n
 export function initSchedulesGraph(container: HTMLDivElement, controller: Controller) : {cy: Core, elements: Elements} {
     let elements: Elements = { nodes: {}, edges: {} };
 
-    
     let Main = createSchedule(elements, "Main");
     let run_main = createSystem(elements, "run_main");
 
@@ -234,21 +275,21 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let MainScheduleOrder = createResource(elements, "MainScheduleOrder");
     makeEdge(elements, run_main, MainScheduleOrder, "executes");
 
-    let main_startup_order = createScheduleChain(elements, MainScheduleOrder, { x: -200, y: -500}, { x: 200, y: 0}, [
-        "StateTransition (1)",
+    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: -200, y: -500}, { x: 200, y: 0}, [
+        "StateTransition (startup)", // There's 1x StateTransition schedule, and it runs in startup and in main order
         "PreStartup",
         "Startup",
         "PostStartup"
     ]);
 
     let StatesPlugin = createPlugin(elements, "StatesPlugin");
-    makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (1)"], "adds")
+    makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (startup)"], "adds")
 
     // main_startup_order runs once, then main_order
-    let main_order = createScheduleChain(elements, MainScheduleOrder, { x: -200, y: -300}, { x: 200, y: 0}, [
+    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: -200, y: -300}, { x: 200, y: 0}, [
         "First",
         "PreUpdate",
-        "StateTransition (2)",
+        "StateTransition",
         "RunFixedMainLoop",
         "Update",
         "SpawnScene",
@@ -258,18 +299,25 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
         "RemoteLast",
     ]);
 
-    makeEdge(elements, StatesPlugin, main_order["StateTransition (2)"], "adds")
+    makeEdge(elements, StatesPlugin, main_order["StateTransition"], "adds")
 
     let RemotePlugin = createPlugin(elements, "RemotePlugin");
     makeEdge(elements, RemotePlugin, main_order["RemoteLast"], "adds")
 
+
     let run_fixed_main_schedule = createSystem(elements, "run_fixed_main_schedule");
     makeEdge(elements, main_order["RunFixedMainLoop"], run_fixed_main_schedule, "runs");
 
-    let FixedMainScheduleOrder = createResource(elements, "FixedMainScheduleOrder");
-    makeEdge(elements, run_fixed_main_schedule, FixedMainScheduleOrder, "executes");
+    let FixedMain = createSchedule(elements, "FixedMain");
+    makeEdge(elements, run_fixed_main_schedule, FixedMain, "runs");
 
-    let fixed_order = createScheduleChain(elements, FixedMainScheduleOrder, { x: -200, y: -100}, { x: 200, y: 0}, [
+    let run_fixed_main = createSystem(elements, "run_fixed_main");
+    makeEdge(elements, FixedMain, run_fixed_main, "runs");
+
+    let FixedMainScheduleOrder = createResource(elements, "FixedMainScheduleOrder");
+    makeEdge(elements, run_fixed_main, FixedMainScheduleOrder, "executes");
+
+    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: -200, y: -100}, { x: 200, y: 0}, [
         "FixedFirst",
         "FixedPreUpdate",
         "FixedUpdate",
@@ -286,9 +334,9 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let RenderScheduleOrder = createResource(elements, "RenderScheduleOrder");
     makeEdge(elements, run_render_schedule, RenderScheduleOrder, "executes");
 
-    let render_order = createScheduleChain(elements, RenderScheduleOrder, { x: -200, y: 400}, { x: 200, y: 0}, [
+    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: -200, y: 400}, { x: 200, y: 0}, [
+        "First (render)", // There's 2x schedules with the First label
         "Render",
-
         "RenderLast",
     ]);
     let Render = render_order["Render"];
@@ -399,6 +447,10 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     makeEdge(elements, PipelinedRenderingPlugin, RenderApp, "extract()"); // in main thread
 
 
+    let allSchedules = controller.allSchedules;
+    for(let schedule of allSchedules) {
+        createSchedule(elements, schedule);
+    }
 
 
 
@@ -421,6 +473,49 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
                 'label': 'data(title)', // id, label, title
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
+            }
+        },
+        {
+            selector: 'node[_node_type = "system"]',
+            style: {
+                'background-color': '#a8ad1a',
+                'label': 'data(title)', // id, label, title
+                'text-wrap': 'wrap',      // Enables text wrapping
+                'text-max-width': '80px'
+            }
+        },
+        {
+            selector: 'node[_node_type = "plugin"]',
+            style: {
+                'background-color': '#611aad',
+                'label': 'data(title)', // id, label, title
+                'text-wrap': 'wrap',      // Enables text wrapping
+                'text-max-width': '80px'
+            }
+        },
+        {
+            selector: 'node[_node_type = "chain"]',
+            style: {
+                'background-color': '#f81ae9',
+                'label': 'data(title)', // id, label, title
+                'text-wrap': 'wrap',      // Enables text wrapping
+                'text-max-width': '80px'
+            }
+        },
+        {
+            selector: 'node[_node_type = "app"]',
+            style: {
+                'background-color': '#f8de1a',
+                'label': 'data(title)', // id, label, title
+                'text-wrap': 'wrap',      // Enables text wrapping
+                'text-max-width': '80px'
+            }
+        },
+
+        {
+            selector: ':unselected',
+            style: {
+                'background-opacity': 0.333
             }
         },
 
@@ -463,11 +558,17 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
         container,
         style,
         layout: {
+            animate: true,
+            gravity: 1.0,
             name: 'cose',
             avoidOverlap: true,
             nodeDimensionsIncludeLabels: true
         },
+        selectionType: "additive",
     });
+
+    cy.$("node[_node_type = \"plugin\"]").remove();
+    cy.$("node[_node_type = \"app\"]").remove();
 
     return {cy, elements};
 }

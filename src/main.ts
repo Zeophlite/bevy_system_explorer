@@ -54,11 +54,69 @@ async function init() {
     let sys = initSystemsGraph(systemsContainer, controller);
 
     comp.cy.on("select unselect boxselect", (ev) => {
-        console.log("" + ev.type + " ", ev.target);
+        console.log("comp " + ev.type + " ", ev.target);
+
+        let selectedComponents: string[] = [];
 
         ev.cy.$(":selected").forEach(function (ele) {
             console.log("" + ev.type + ": " + ele.id(), ele.data());
+            let component = ele.data().label;
+            selectedComponents.push(component);
         });
+
+        controller.selectedComponents(selectedComponents);
+    });
+
+    sched.cy.on("select unselect boxselect", (ev) => {
+        console.log("sched " + ev.type + " ", ev.target);
+
+        let selectedSchedules: string[] = [];
+
+        ev.cy.$(":selected").forEach(function (ele) {
+            console.log("" + ev.type + ": " + ele.id(), ele.data());
+            let data = ele.data();
+            let node_type = data._node_type;
+            
+            if(node_type == "schedule") {
+                let schedule = data.label;
+
+                selectedSchedules.push(schedule);
+
+                console.log("Selected schedule " + schedule);
+            }
+        });
+
+        controller.selectedSchedules(selectedSchedules);
+    });
+
+    sys.cy.on("select unselect boxselect", (ev) => {
+        console.log("sys " + ev.type + " ", ev.target);
+
+        let selectedSystems: System[] = [];
+        let selectedSystemSets: SystemSet[] = [];
+
+        ev.cy.$(":selected").forEach(function (ele) {
+            console.log("" + ev.type + ": " + ele.id(), ele.data());
+
+            let data = ele.data();
+            let node_type = data._node_type; // "system" | "system_set"
+
+            let label = data.label;
+            let title = data.title;
+
+            if(node_type == "system") {
+                let ddata = data._data as System;
+                console.log("Selected system " + label + " " + title + " " + ddata.name);
+                selectedSystems.push(ddata);
+            }
+            if(node_type == "system_set") {
+                let ddata = data._data as SystemSet;
+                console.log("Selected systemset " + label + " " + title + " " + ddata.name);
+                selectedSystemSets.push(ddata);
+            }
+        });
+
+        controller.selectedSystems(selectedSystems, selectedSystemSets);
     });
 }
 

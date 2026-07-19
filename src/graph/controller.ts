@@ -4,15 +4,35 @@ import type { ScheduleGraph, System, SystemSet } from "../bevy_types/systems_gra
 export type RenderSystemsDetail = (systems: System[], system_sets: SystemSet[]) => void;
 
 export interface ComponentDetail {
-    encountered: {
+    encountered: { // Where this component has been encountered
         appName: string,
         schedule: string,
-        idx: number,
+        idx: number, // index into schedule.components
     }[],
     required: string[],
 }
 
 export class Controller {
+    selectedComponents(selectedComponents: string[]) {
+        console.log("TODO: Selected Components: " + selectedComponents.join(", "));
+
+        let focusSchedules = new Set<string>();
+
+        for(let component of selectedComponents) {
+            console.log("Component " + component + " encountered in");
+            for(let enc of this.allComponents[component].encountered) {
+                console.log("-- " + enc.appName + " " + enc.schedule);
+
+                focusSchedules.add(enc.schedule);
+            }
+        }
+    }
+    selectedSchedules(selectedSchedules: string[]) {
+        console.log("TODO: Selected Schedules: " + selectedSchedules.join(", "));
+    }
+    selectedSystems(selectedSystems: System[], selectedSystemSets: SystemSet[]) {
+        console.log("TODO: Selected Systems: " + selectedSystems.map((s) => s.name).join(", ") + " " + selectedSystemSets.map((s) => s.name).join(", "));
+    }
 
     apps: Apps;
     _isSystemsSimplified: boolean = false;
@@ -33,10 +53,9 @@ export class Controller {
         this._isSystemsSimplified = false;
         this.allSchedules = [];
         this.allComponents = {};
+
         this.build(this.apps.main, "main");
         this.build(this.apps.render, "render");
-
-        console.log(this.allComponents);
     }
 
     getData(app: "main" | "render", schedule: string) : ScheduleGraph {

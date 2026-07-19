@@ -264,6 +264,13 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
         },
 
         {
+            selector: ':unselected',
+            style: {
+                'background-opacity': 0.333
+            }
+        },
+
+        {
             selector: ':selected',
             style: {
                 'border-width': "3px",
@@ -308,10 +315,13 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
         container,
         style,
         layout: {
+            animate: true,
+            gravity: 1.0,
             name: 'cose',
             avoidOverlap: true,
             nodeDimensionsIncludeLabels: true
         },
+        selectionType: "additive",
     });
 
     return {cy, elements};

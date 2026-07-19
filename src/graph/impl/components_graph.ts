@@ -185,5 +185,7 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
         selectionType: "additive",
     });
 
+    cy.nodes().filter(node => node.degree() === 0).remove();
+
     return {cy, elements};
 }
