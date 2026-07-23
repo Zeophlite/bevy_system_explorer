@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "cytoscape": "^3.34.0",
+    "cytoscape-cola": "^2.5.1",
     "cytoscape-cose-bilkent": "^4.1.0"
   }
 }

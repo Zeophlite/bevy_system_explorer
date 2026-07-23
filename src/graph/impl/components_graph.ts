@@ -176,11 +176,11 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
         container,
         style,
         layout: {
-            animate: true,
-            gravity: 1.0,
-            name: 'cose',
-            avoidOverlap: true,
-            nodeDimensionsIncludeLabels: true
+            // animate: true,
+            // gravity: 1.0,
+            name: 'cola',
+            // avoidOverlap: true,
+            // nodeDimensionsIncludeLabels: true
         },
         selectionType: "additive",
     });

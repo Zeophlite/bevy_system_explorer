@@ -4,7 +4,7 @@ import type { System, SystemSet } from './bevy_types/systems_graph_types.ts';
 import { collectAll } from './remote/remote.ts';
 import { readApps } from './data/index.ts';
 import { readMockApps } from './data_mock/index.ts';
-import { Controller } from './graph/controller.ts';
+import { Controller, type ComponentsDetails, type SchedulesDetail, type SystemsDetail } from './graph/controller.ts';
 
 import { initComponentsGraph } from './graph/impl/components_graph.ts';
 import { initSchedulesGraph } from './graph/impl/schedules_graph.ts';
@@ -35,7 +35,7 @@ async function init() {
 
     let appData = await appDataFn();
 
-    let controller = new Controller(appData, renderSystemsDetail);
+    let controller = new Controller(appData, renderComponentsDetail, renderSchedulesDetail, renderSystemsDetail);
 
     document.querySelector<HTMLButtonElement>('#simplify-systems')!.addEventListener('click', (ev: PointerEvent) => {
         controller.toggleSimplifySystems();
@@ -121,19 +121,40 @@ async function init() {
 }
 
 
-function renderSystemsDetail(systems: System[], system_sets: SystemSet[]): void {
-    // get `foo`, change innerHTML to render content
+function renderComponentsDetail(detail: ComponentsDetails): void {
     let output = `<ul>`;
 
-    for (let system of systems) {
+    for (let component of detail.components) {
+        output += `<li><b>${component}</b><li>`;
+    }
+
+    output += '</ul>';
+    document.querySelector<HTMLDivElement>('#selected-components')!.innerHTML = output;
+}
+
+function renderSchedulesDetail(detail: SchedulesDetail): void {
+    let output = `<ul>`;
+
+    for (let schedule of detail.schedules) {
+        output += `<li>${schedule}<li>`;
+    }
+
+    output += '</ul>';
+    document.querySelector<HTMLDivElement>('#selected-schedules')!.innerHTML = output;
+}
+
+function renderSystemsDetail(detail: SystemsDetail): void {
+    let output = `<ul>`;
+
+    for (let system of detail.systems) {
         output += `<li>${system.name}<li>`;
     }
-    for (let system_set of system_sets) {
+    for (let system_set of detail.system_sets) {
         output += `<li>${system_set.name}</li>`;
     }
 
     output += '</ul>';
-    document.querySelector<HTMLDivElement>('#foo')!.innerHTML = output;
+    document.querySelector<HTMLDivElement>('#selected-systems')!.innerHTML = output;
 }
 
 

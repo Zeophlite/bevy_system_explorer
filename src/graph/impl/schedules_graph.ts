@@ -87,6 +87,16 @@ function createSchedule(elements: Elements, name: string, pos: {x: number, y: nu
     if(node != null) {
         let nd = node.data;
         if(pos != null) {
+            nd.position = {x: pos.x, y: pos.y};
+            nd.x = pos.x;
+            nd.y = pos.y;
+            nd.fixed = true;
+
+            node.position = {x: pos.x, y: pos.y};
+            (node as any).fixed = true;
+            (node as any).x = pos.x;
+            (node as any).y = pos.y;
+
             // nd["x"] = pos.x;
             // nd["y"] = pos.y;
         }
@@ -113,12 +123,25 @@ function createSchedule(elements: Elements, name: string, pos: {x: number, y: nu
     }
 
     if (pos != null) {
+        sched.position = {x: pos.x, y: pos.y};
+        sched.x = pos.x;
+        sched.y = pos.y;
+        sched.fixed = true;
         // sched["x"] =  pos.x;
         // sched["y"] =  pos.y;
         // sched["fixed"] = {x: true, y: true};
     }
 
     elements_add_node(elements, sched);
+
+    if (pos != null) {
+        elements.nodes[sched.id].position = {x: pos.x, y: pos.y};
+        (elements.nodes[sched.id] as any).x = pos.x;
+        (elements.nodes[sched.id] as any).y = pos.y;
+        (elements.nodes[sched.id] as any).fixed = true;
+        (elements.nodes[sched.id] as any).x = pos.x;
+        (elements.nodes[sched.id] as any).y = pos.y;
+    }
 
     return id;
 }
@@ -275,7 +298,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let MainScheduleOrder = createResource(elements, "MainScheduleOrder");
     makeEdge(elements, run_main, MainScheduleOrder, "executes");
 
-    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: -200, y: -500}, { x: 200, y: 0}, [
+    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 500, y: 0}, [
         "StateTransition (startup)", // There's 1x StateTransition schedule, and it runs in startup and in main order
         "PreStartup",
         "Startup",
@@ -286,7 +309,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (startup)"], "adds")
 
     // main_startup_order runs once, then main_order
-    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: -200, y: -300}, { x: 200, y: 0}, [
+    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 500, y: 0}, [
         "First",
         "PreUpdate",
         "StateTransition",
@@ -317,7 +340,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let FixedMainScheduleOrder = createResource(elements, "FixedMainScheduleOrder");
     makeEdge(elements, run_fixed_main, FixedMainScheduleOrder, "executes");
 
-    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: -200, y: -100}, { x: 200, y: 0}, [
+    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: 0, y: 600}, { x: 200, y: 0}, [
         "FixedFirst",
         "FixedPreUpdate",
         "FixedUpdate",
@@ -334,7 +357,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let RenderScheduleOrder = createResource(elements, "RenderScheduleOrder");
     makeEdge(elements, run_render_schedule, RenderScheduleOrder, "executes");
 
-    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: -200, y: 400}, { x: 200, y: 0}, [
+    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: 0, y: 900}, { x: 200, y: 0}, [
         "First (render)", // There's 2x schedules with the First label
         "Render",
         "RenderLast",
@@ -554,21 +577,113 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     ];
 
     let cy = cytoscape({
-        elements: [...Object.values(elements.nodes), ...Object.values(elements.edges)],
+        elements: [],
         container,
         style,
-        layout: {
-            animate: true,
-            gravity: 1.0,
-            name: 'cose',
-            avoidOverlap: true,
-            nodeDimensionsIncludeLabels: true
-        },
         selectionType: "additive",
     });
+
+    cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
 
     cy.$("node[_node_type = \"plugin\"]").remove();
     cy.$("node[_node_type = \"app\"]").remove();
 
+    let cl: any = {
+        name: "cola",
+        animate: true, // whether to show the layout as it's running
+        refresh: 1, // number of ticks per frame; higher is faster but more jerky
+        maxSimulationTime: 4000, // max length in ms to run the layout
+        ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
+        fit: true, // on every layout reposition of nodes, fit the viewport
+        padding: 30, // padding around the simulation
+        boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+        nodeDimensionsIncludeLabels: false, // whether labels should be included in determining the space used by a node
+
+        // layout event callbacks
+        ready: function(){}, // on layoutready
+        stop: function(){}, // on layoutstop
+
+        // positioning options
+        randomize: false, // use random node positions at beginning of layout
+        avoidOverlap: true, // if true, prevents overlap of node bounding boxes
+        handleDisconnected: true, // if true, avoids disconnected components from overlapping
+        convergenceThreshold: 0.01, // when the alpha value (system energy) falls below this value, the layout stops
+        // nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
+        flow: undefined, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
+        alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
+        gapInequalities: undefined, // list of inequality constraints for the gap between the nodes, e.g. [{"axis":"y", "left":node1, "right":node2, "gap":25}]
+        centerGraph: true, // adjusts the node positions initially to center the graph (pass false if you want to start the layout from the current position)
+
+
+        // different methods of specifying edge length
+        // each can be a constant numerical value or a function like `function( edge ){ return 2; }`
+        edgeLength: undefined, // sets edge length directly in simulation
+        edgeSymDiffLength: undefined, // symmetric diff edge length in simulation
+        edgeJaccardLength: undefined, // jaccard edge length in simulation
+
+        // iterations of cola algorithm; uses default values on undefined
+        unconstrIter: undefined, // unconstrained initial layout iterations
+        userConstIter: undefined, // initial layout iterations with user-specified constraints
+        allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
+
+        // infinite layout options
+        infinite: false // overrides all other options for a forces-all-the-time mode
+    };
+
+    cy.layout(cl as any).run();
+
+    // cy.layout({
+        // animate: true,
+        // gravity: 1.0,
+        // name: 'cola',
+        // avoidOverlap: true,
+        // randomize: false,
+        // nodeDimensionsIncludeLabels: true,
+        // numIter: 2,
+    // }).run();
+
     return {cy, elements};
 }
+
+/*
+interface ColaLayout {
+  animate: true, // whether to show the layout as it's running
+  refresh: 1, // number of ticks per frame; higher is faster but more jerky
+  maxSimulationTime: 4000, // max length in ms to run the layout
+  ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
+  fit: true, // on every layout reposition of nodes, fit the viewport
+  padding: 30, // padding around the simulation
+  boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+  nodeDimensionsIncludeLabels: false, // whether labels should be included in determining the space used by a node
+
+  // layout event callbacks
+  ready: function(){}, // on layoutready
+  stop: function(){}, // on layoutstop
+
+  // positioning options
+  randomize: false, // use random node positions at beginning of layout
+  avoidOverlap: true, // if true, prevents overlap of node bounding boxes
+  handleDisconnected: true, // if true, avoids disconnected components from overlapping
+  convergenceThreshold: 0.01, // when the alpha value (system energy) falls below this value, the layout stops
+  nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
+  flow: undefined, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
+  alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
+  gapInequalities: undefined, // list of inequality constraints for the gap between the nodes, e.g. [{"axis":"y", "left":node1, "right":node2, "gap":25}]
+  centerGraph: true, // adjusts the node positions initially to center the graph (pass false if you want to start the layout from the current position)
+
+
+  // different methods of specifying edge length
+  // each can be a constant numerical value or a function like `function( edge ){ return 2; }`
+  edgeLength: undefined, // sets edge length directly in simulation
+  edgeSymDiffLength: undefined, // symmetric diff edge length in simulation
+  edgeJaccardLength: undefined, // jaccard edge length in simulation
+
+  // iterations of cola algorithm; uses default values on undefined
+  unconstrIter: undefined, // unconstrained initial layout iterations
+  userConstIter: undefined, // initial layout iterations with user-specified constraints
+  allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
+
+  // infinite layout options
+  infinite: false // overrides all other options for a forces-all-the-time mode
+}
+*/

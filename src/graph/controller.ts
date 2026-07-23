@@ -1,7 +1,24 @@
 import type { AppData, Apps } from "../bevy_types/app_data";
 import type { ScheduleGraph, System, SystemSet } from "../bevy_types/systems_graph_types";
 
-export type RenderSystemsDetail = (systems: System[], system_sets: SystemSet[]) => void;
+export interface ComponentsDetails {
+    components: string[],
+}
+
+export type RenderComponentsDetail = (detail: ComponentsDetails) => void;
+
+export interface SchedulesDetail {
+    schedules: string[],
+}
+
+export type RenderSchedulesDetail = (detail: SchedulesDetail) => void;
+
+export interface SystemsDetail {
+    systems: System[],
+    system_sets: SystemSet[],
+}
+
+export type RenderSystemsDetail = (detail: SystemsDetail) => void;
 
 export interface ComponentDetail {
     encountered: { // Where this component has been encountered
@@ -13,31 +30,15 @@ export interface ComponentDetail {
 }
 
 export class Controller {
-    selectedComponents(selectedComponents: string[]) {
-        console.log("TODO: Selected Components: " + selectedComponents.join(", "));
-
-        let focusSchedules = new Set<string>();
-
-        for(let component of selectedComponents) {
-            console.log("Component " + component + " encountered in");
-            for(let enc of this.allComponents[component].encountered) {
-                console.log("-- " + enc.appName + " " + enc.schedule);
-
-                focusSchedules.add(enc.schedule);
-            }
-        }
-    }
-    selectedSchedules(selectedSchedules: string[]) {
-        console.log("TODO: Selected Schedules: " + selectedSchedules.join(", "));
-    }
-    selectedSystems(selectedSystems: System[], selectedSystemSets: SystemSet[]) {
-        console.log("TODO: Selected Systems: " + selectedSystems.map((s) => s.name).join(", ") + " " + selectedSystemSets.map((s) => s.name).join(", "));
-    }
 
     apps: Apps;
     _isSystemsSimplified: boolean = false;
     allSchedules: string[] = [];
     allComponents: {[componentName: string] : ComponentDetail } = {};
+
+    renderComponentsDetail: RenderComponentsDetail;
+    renderSchedulesDetail: RenderSchedulesDetail;
+    renderSystemsDetail: RenderSystemsDetail;
 
 //     for(let [index, system_set] of RG.result.schedule_data.system_sets.entries()) {
 //     for(let [index, system] of RG.result.schedule_data.systems.entries()) {
@@ -46,6 +47,8 @@ export class Controller {
 
     constructor(
         apps: Apps,
+        renderComponentsDetail: RenderComponentsDetail,
+        renderSchedulesDetail: RenderSchedulesDetail,
         renderSystemsDetail: RenderSystemsDetail,
     ) {
         this.apps = apps;
@@ -53,6 +56,10 @@ export class Controller {
         this._isSystemsSimplified = false;
         this.allSchedules = [];
         this.allComponents = {};
+
+        this.renderSystemsDetail = renderSystemsDetail;
+        this.renderComponentsDetail = renderComponentsDetail;
+        this.renderSchedulesDetail = renderSchedulesDetail;
 
         this.build(this.apps.main, "main");
         this.build(this.apps.render, "render");
@@ -104,6 +111,35 @@ export class Controller {
 
     isSystemsSimplified(): boolean {
       return this._isSystemsSimplified;
+    }
+
+    selectedComponents(selectedComponents: string[]) {
+        console.log("TODO: Selected Components: " + selectedComponents.join(", "));
+
+        let focusSchedules = new Set<string>();
+
+        for(let component of selectedComponents) {
+            console.log("Component " + component + " encountered in");
+            for(let enc of this.allComponents[component].encountered) {
+                console.log("-- " + enc.appName + " " + enc.schedule);
+
+                focusSchedules.add(enc.schedule);
+            }
+        }
+
+        this.renderComponentsDetail({ components: selectedComponents });
+    }
+
+    selectedSchedules(selectedSchedules: string[]) {
+        console.log("TODO: Selected Schedules: " + selectedSchedules.join(", "));
+
+        this.renderSchedulesDetail({ schedules: selectedSchedules });
+    }
+
+    selectedSystems(selectedSystems: System[], selectedSystemSets: SystemSet[]) {
+        console.log("TODO: Selected Systems: " + selectedSystems.map((s) => s.name).join(", ") + " " + selectedSystemSets.map((s) => s.name).join(", "));
+
+        this.renderSystemsDetail({ systems: selectedSystems, system_sets: selectedSystemSets });
     }
 }
 

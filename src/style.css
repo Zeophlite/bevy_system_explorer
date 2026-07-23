@@ -1,5 +1,6 @@
 :root {
-  --text: #6b6375;
+  /* --text: #6b6375; */
+  --text: #38363b;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
@@ -125,7 +126,7 @@ h2 {
   top: 5vh;
   width: 100vh;
   height: 85vh;
-  background-color: #4d9d06;
+  background-color: #1f4003;
   margin-bottom: 30px;
 }
 
@@ -136,7 +137,7 @@ h2 {
   width: 100%;
   height: 5%;
   z-index: 999;
-  background-color: #4d9d06;
+  background-color: #2a5504;
 }
 
 .graph-content {
@@ -147,7 +148,7 @@ h2 {
   width: 100%;
   height: 80%;
   z-index: 999;
-  background-color: #6fdf0d;
+  background-color: #31590e;
 }
 
 .graph-content canvas {
@@ -157,6 +158,7 @@ h2 {
 #sidebar {
   width: 300px;
   border-left: 1px solid;
+  text-align: left;
   overflow-y: auto;
   overflow-wrap: break-word;
   background-color: #5f5446;
