@@ -1,19 +1,35 @@
 
-import { type Core, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type StylesheetJson } from 'cytoscape';
-import { load_cytoscape } from '../load_cytoscape';
-
+import { type Core, type CoseLayoutOptions, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type NodeSingular, type StylesheetJson } from 'cytoscape';
+import type cytoscapeProxy from 'cytoscape';
 
 import type { ComponentDetail, Controller } from '../controller';
 
-const cytoscape = await load_cytoscape();
 
 
 interface NodeData extends NodeDataDefinition {
     id: string,
     label: string,
     title: string,
+    required: string[],
     _node_type: "resource" | "component",
 }
+
+const FooRequired = [
+    "bevy_transform::components::transform::Transform",
+    "bevy_render::sync_world::SyncToRenderWorld",
+    "bevy_ui::ui_node::Node",
+    "bevy_camera::visibility::Visibility",
+    "bevy_camera::visibility::VisibilityClass",
+];
+
+let Foo2Required : { [key: string] : { longName: string, shortName: string } } = {};
+for(let foo of FooRequired) {
+    Foo2Required[foo] = {
+        longName: foo,
+        shortName: parseComponentName(foo),
+    }
+}
+
 
 interface EdgeData extends EdgeDataDefinition {
     id: string,
@@ -57,15 +73,16 @@ function makeComponent(componentName: string, component: ComponentDetail) : Node
     //     console.log(componentName, component);
     // }
     let isResource = component.required.includes("bevy_ecs::resource::IsResource");
-    // if(isResource) {
-    //     console.log("" + componentName + " isResource=" + isResource)
-    // }
+    if(isResource) {
+        console.log("" + componentName + " isResource=" + isResource)
+    }
 
     return {
         id: makeComponentId(componentName),
         label: componentName,
         title: parseComponentName(componentName),
         _node_type: isResource ? "resource" : "component",
+        required: [],
     };
 }
 
@@ -82,7 +99,7 @@ function makeRequiredEdge(componentName: string, component: ComponentDetail, req
     };
 }
 
-export function initComponentsGraph(container: HTMLDivElement, controller: Controller) : {cy: Core, elements: Elements} {
+export function initComponentsGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
     let elements: Elements = { nodes: {}, edges: {} };
 
     for(let componentName of Object.keys(controller.allComponents)) {
@@ -95,9 +112,18 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
         let component = controller.allComponents[componentName]!;
 
         for(let req of component.required) {
-            if(req != "bevy_ecs::resource::IsResource") {
-                let required = controller.allComponents[req]!;
+            let required = controller.allComponents[req]!;
 
+            if(req == "bevy_ecs::resource::IsResource") {
+                // do nothing
+                console.log("resource");
+            } else if(FooRequired.indexOf(req) != -1) {
+                let r = Foo2Required[req];
+
+                let n = elements.nodes[makeComponentId(componentName)];
+
+                n.data.required.push(r.shortName);
+            } else {
                 elements_add_edge(elements, makeRequiredEdge(componentName, component, req, required));
             }
         }
@@ -107,21 +133,19 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
     let style : StylesheetJson = [
 
         {
-            selector: 'node[_node_type = "component"]',
+            selector: 'node',
             style: {
                 'background-color': '#1a5fad',
-                'label': 'data(title)', // id, label, title
-                'text-wrap': 'wrap',      // Enables text wrapping
-                'text-max-width': '80px'
-            }
-        },
-
-        {
-            selector: 'node[_node_type = "resource"]',
-            style: {
-                'background-color': '#1aad1f',
-                'label': 'data(title)', // id, label, title
-                'text-wrap': 'wrap',      // Enables text wrapping
+                'label': function(element : NodeSingular) {
+                    let d = element.data() as NodeData;
+                    if(d.required.length == 0) {
+                        return d.title;
+                    }
+                    return d.title + "\n" + "( " + d.required.join(", ") + " )";
+                },
+                // 'data(title)', // id, label, title
+                'color': '#b5b5b5',
+                'text-wrap': 'wrap',
                 'text-max-width': '80px'
             }
         },
@@ -171,21 +195,35 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
         }
     ];
 
+    cytoscape('layout', 'customPhysics', CustomPhysicsLayout);
     let cy = cytoscape({
         elements: [...Object.values(elements.nodes), ...Object.values(elements.edges)],
         container,
         style,
         layout: {
-            // animate: true,
-            // gravity: 1.0,
-            name: 'cola',
-            // avoidOverlap: true,
-            // nodeDimensionsIncludeLabels: true
-        },
+            animate: true,
+            gravity: 1.0,
+            // name: 'cola',
+            name: 'cose',
+            avoidOverlap: true,
+            nodeDimensionsIncludeLabels: true
+        } as any, //  as CoseLayoutOptions,
         selectionType: "additive",
     });
 
     cy.nodes().filter(node => node.degree() === 0).remove();
 
+    // cy.layout(
+    //     {
+    //         name: 'customPhysics',
+    //         hSpacing: 180,
+    //         vSpacing: 140,
+    //         iterations: 250,
+    //         repulsion: 400
+    //     } as CustomPhysicsOptions
+    // ).run();
+
     return {cy, elements};
 }
+
+import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';

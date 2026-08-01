@@ -104,8 +104,6 @@ export class Controller {
 
     // Returns true if the state is simplified
     toggleSimplifySystems() {
-      console.log('Method not implemented.');
-
       this._isSystemsSimplified = !this._isSystemsSimplified;
     }
 

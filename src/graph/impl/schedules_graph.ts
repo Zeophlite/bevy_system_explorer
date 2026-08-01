@@ -1,11 +1,9 @@
 
 import { type Core, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type StylesheetJson } from 'cytoscape';
-import { load_cytoscape } from '../load_cytoscape';
-
+import type cytoscapeProxy from 'cytoscape';
 
 import type { ComponentDetail, Controller } from '../controller';
 
-const cytoscape = await load_cytoscape();
 
 
 interface NodeData extends NodeDataDefinition {
@@ -287,7 +285,7 @@ function createScheduleChain(title: string, elements: Elements, resource: string
 
 
 
-export function initSchedulesGraph(container: HTMLDivElement, controller: Controller) : {cy: Core, elements: Elements} {
+export function initSchedulesGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
     let elements: Elements = { nodes: {}, edges: {} };
 
     let Main = createSchedule(elements, "Main");
@@ -633,13 +631,13 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     cy.layout(cl as any).run();
 
     // cy.layout({
-        // animate: true,
-        // gravity: 1.0,
-        // name: 'cola',
-        // avoidOverlap: true,
-        // randomize: false,
-        // nodeDimensionsIncludeLabels: true,
-        // numIter: 2,
+    //     animate: true,
+    //     gravity: 1.0,
+    //     name: 'cola',
+    //     avoidOverlap: true,
+    //     randomize: false,
+    //     nodeDimensionsIncludeLabels: true,
+    //     numIter: 2,
     // }).run();
 
     return {cy, elements};

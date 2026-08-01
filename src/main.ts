@@ -11,6 +11,9 @@ import { initSchedulesGraph } from './graph/impl/schedules_graph.ts';
 import { initSystemsGraph } from './graph/impl/systems_graph.ts';
 
 import type { Apps } from './bevy_types/app_data.ts';
+import { initCustomGraph } from './graph/CustomPhysicsLayoutDemo.ts';
+import { collapseInteriorNodesWithCompoundSupport } from './graph/collapse.ts';
+import { load_cytoscape } from './graph/load_cytoscape';
 
 
 function appLoader(mode: string): [string, () => Promise<Apps>] {
@@ -37,21 +40,39 @@ async function init() {
 
     let controller = new Controller(appData, renderComponentsDetail, renderSchedulesDetail, renderSystemsDetail);
 
-    document.querySelector<HTMLButtonElement>('#simplify-systems')!.addEventListener('click', (ev: PointerEvent) => {
-        controller.toggleSimplifySystems();
-        console.log('click', ev);
-
-        let button = ev.target! as HTMLButtonElement;
-        button.textContent = controller.isSystemsSimplified() ? "Unsimplify" : "Simplify";
-    });
-
     const componentsContainer = document.querySelector<HTMLDivElement>('#components-graph')!;
     const schedulesContainer = document.querySelector<HTMLDivElement>('#schedules-graph')!;
     const systemsContainer = document.querySelector<HTMLDivElement>('#systems-graph')!;
 
-    let comp = initComponentsGraph(componentsContainer, controller);
-    let sched = initSchedulesGraph(schedulesContainer, controller);
-    let sys = initSystemsGraph(systemsContainer, controller);
+    const cytoscapeModule = await load_cytoscape();
+    const cytoscape = cytoscapeModule;
+
+    // let custom = initCustomGraph(componentsContainer, controller, cytoscape);
+    let comp = initComponentsGraph(componentsContainer, controller, cytoscape);
+    let sched = initSchedulesGraph(schedulesContainer, controller, cytoscape);
+    let sys = initSystemsGraph(systemsContainer, controller, cytoscape);
+
+    (globalThis as any).bse_comp = comp;
+    (globalThis as any).bse_sched = sched;
+    (globalThis as any).bse_sys = sys;
+
+    document.querySelector<HTMLButtonElement>('#simplify-systems')!.addEventListener('click', (ev: PointerEvent) => {
+        controller.toggleSimplifySystems();
+        console.log('click', ev);
+
+        let ab = sys.cy.$(":selected");
+        console.log("ab");
+
+        let ids : string[] = [];
+        ab.forEach(function (ele) {
+            ids.push(ele.id());
+        });
+
+        collapseInteriorNodesWithCompoundSupport(sys.cy, ids);
+
+        let button = ev.target! as HTMLButtonElement;
+        button.textContent = controller.isSystemsSimplified() ? "Unsimplify" : "Simplify";
+    });
 
     comp.cy.on("select unselect boxselect", (ev) => {
         console.log("comp " + ev.type + " ", ev.target);
@@ -59,6 +80,9 @@ async function init() {
         let selectedComponents: string[] = [];
 
         ev.cy.$(":selected").forEach(function (ele) {
+            if(!ele.isNode()) {
+                return;
+            }
             console.log("" + ev.type + ": " + ele.id(), ele.data());
             let component = ele.data().label;
             selectedComponents.push(component);
@@ -73,6 +97,10 @@ async function init() {
         let selectedSchedules: string[] = [];
 
         ev.cy.$(":selected").forEach(function (ele) {
+            if(!ele.isNode()) {
+                return;
+            }
+
             console.log("" + ev.type + ": " + ele.id(), ele.data());
             let data = ele.data();
             let node_type = data._node_type;
@@ -96,6 +124,10 @@ async function init() {
         let selectedSystemSets: SystemSet[] = [];
 
         ev.cy.$(":selected").forEach(function (ele) {
+            if(!ele.isNode()) {
+                return;
+            }
+
             console.log("" + ev.type + ": " + ele.id(), ele.data());
 
             let data = ele.data();
@@ -125,7 +157,7 @@ function renderComponentsDetail(detail: ComponentsDetails): void {
     let output = `<ul>`;
 
     for (let component of detail.components) {
-        output += `<li><b>${component}</b><li>`;
+        output += `<li><b>${component}</b></li>`;
     }
 
     output += '</ul>';
@@ -136,7 +168,7 @@ function renderSchedulesDetail(detail: SchedulesDetail): void {
     let output = `<ul>`;
 
     for (let schedule of detail.schedules) {
-        output += `<li>${schedule}<li>`;
+        output += `<li>${schedule}</li>`;
     }
 
     output += '</ul>';
@@ -147,7 +179,7 @@ function renderSystemsDetail(detail: SystemsDetail): void {
     let output = `<ul>`;
 
     for (let system of detail.systems) {
-        output += `<li>${system.name}<li>`;
+        output += `<li>${system.name}</li>`;
     }
     for (let system_set of detail.system_sets) {
         output += `<li>${system_set.name}</li>`;

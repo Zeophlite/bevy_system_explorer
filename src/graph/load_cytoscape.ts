@@ -1,14 +1,19 @@
-// import coseBilkent from 'cytoscape-cose-bilkent';
-import cola from 'cytoscape-cola';
 
 export const load_cytoscape = async () => {
     const _cytoscape = () => import('cytoscape');
+    const cytoscape = (await _cytoscape()).default;
 
-    const cytoscapeLoad = await _cytoscape();
+    const _coseBilkent = () => import('cytoscape-cose-bilkent');
+    const coseBilkentLoad = await _coseBilkent();
+    const coseBilkent = coseBilkentLoad.default;
 
-    // cytoscapeLoad.default.use( coseBilkent );
-    cytoscapeLoad.default.use( cola );
+    const _cola = () => import('cytoscape-cola');
+    const colaLoad = await _cola();
+    const cola = colaLoad.default;
 
-    return cytoscapeLoad.default;
+    cytoscape.use( coseBilkent );
+    cytoscape.use( cola );
+
+    return cytoscape;
 };
 

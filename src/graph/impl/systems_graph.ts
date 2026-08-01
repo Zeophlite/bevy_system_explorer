@@ -1,12 +1,11 @@
 
 import { type Core, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type StylesheetJson } from 'cytoscape';
-import { load_cytoscape } from '../load_cytoscape';
+import type cytoscapeProxy from 'cytoscape';
 
 
 import type { ComponentDetail, Controller } from '../controller';
 import type { System, SystemOrSetWrap, SystemSet } from "../../bevy_types/systems_graph_types";
 
-const cytoscape = await load_cytoscape();
 
 
 interface NodeData extends NodeDataDefinition {
@@ -169,12 +168,12 @@ function buildChain(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLoo
 }
 
 
-export function initSystemsGraph(container: HTMLDivElement, controller: Controller) : {cy: Core, elements: Elements} {
+export function initSystemsGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
     let systemSetsLookup: SystemSetsTitleToIdLookup = new Map();
     let elements: Elements = { nodes: {}, edges: {} };
 
     // TODO: remove hard coding
-    let RG = controller.getData("main", "Update");
+    let RG = controller.getData("main", "PostUpdate");
 
     for(let [index, system_set] of RG.result.schedule_data.system_sets.entries()) {
         elements_add_node(elements, makeSystemSetNode(systemSetsLookup, index, system_set));
@@ -310,6 +309,8 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
         }
     ];
 
+    // Register the layout extension with Cytoscape
+    cytoscape('layout', 'customPhysics', CustomPhysicsLayout);
     let cy = cytoscape({
         elements: [...Object.values(elements.nodes), ...Object.values(elements.edges)],
         container,
@@ -317,12 +318,29 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
         layout: {
             // animate: true,
             // gravity: 1.0,
-            name: 'cola',
+            // name: 'cola',
+            name: 'cose',
+            // name: 'cose-bilkent',
             // avoidOverlap: true,
             // nodeDimensionsIncludeLabels: true
         },
         selectionType: "additive",
     });
 
+    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('title')) !== -1).remove();
+    // cy.nodes().filter(node => node.degree() > 3).remove();
+
+    // cy.layout(
+    //     {
+    //         name: 'customPhysics',
+    //         hSpacing: 180,
+    //         vSpacing: 140,
+    //         iterations: 250,
+    //         repulsion: 400
+    //     } as CustomPhysicsOptions
+    // ).run();
+
     return {cy, elements};
 }
+
+import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';
