@@ -10,6 +10,7 @@ interface NodeData extends NodeDataDefinition {
     id: string,
     label: string,
     title: string,
+    // app (schedule only)
     _node_type: "schedule" | "system" | "resource" | "plugin" | "chain" | "app",
 }
 
@@ -78,8 +79,8 @@ function createApp(elements: Elements, name: string, pos: {x: number, y: number}
     return id;
 }
 
-function createSchedule(elements: Elements, name: string, pos: {x: number, y: number} | null = null, parent: string | null = null) : string {
-    let id = `schedule-${name}`;
+function createSchedule(elements: Elements, app: string, schedule: string, pos: {x: number, y: number} | null = null, parent: string | null = null) : string {
+    let id = `schedule-${app}-${schedule}`;
 
     let node = elements.nodes[id];
     if(node != null) {
@@ -110,13 +111,14 @@ function createSchedule(elements: Elements, name: string, pos: {x: number, y: nu
 
     let sched: NodeData = {
         id: id,
-        label: name,
-        title: name,
+        label: app + "#" + schedule,
+        app,
+        title: schedule,
         _node_type: "schedule",
     };
 
     if(parent != null) {
-        console.log("set parent for " + name);
+        console.log("set parent for " + app + "#" + schedule);
         sched.parent = parent;
     }
 
@@ -251,7 +253,7 @@ function makeEdge(elements: Elements, from: string, to: string, label: string) :
 
 type ScheduleToNodeId = {[key:string] : string};
 
-function createScheduleChain(title: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, schedules: string[]): ScheduleToNodeId {
+function createScheduleChain(title: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, app: string, schedules: string[]): ScheduleToNodeId {
     let chain = createChain(elements, title);
 
     let prevSchedule = null;
@@ -262,7 +264,7 @@ function createScheduleChain(title: string, elements: Elements, resource: string
         let x = origin.x + 1.0 * idx * offset.x;
         let y = origin.y + 1.0 * idx * offset.y;
 
-        let id = createSchedule(elements, schedule, {x, y}, chain);
+        let id = createSchedule(elements, app, schedule, {x, y}, chain);
         scheduleData[schedule] = id;
 
         if(prevSchedule == null) {
@@ -285,10 +287,10 @@ function createScheduleChain(title: string, elements: Elements, resource: string
 
 
 
-export function initSchedulesGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
+export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements {
     let elements: Elements = { nodes: {}, edges: {} };
 
-    let Main = createSchedule(elements, "Main");
+    let Main = createSchedule(elements, "main", "Main");
     let run_main = createSystem(elements, "run_main");
 
     makeEdge(elements, Main, run_main, "runs");
@@ -296,7 +298,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let MainScheduleOrder = createResource(elements, "MainScheduleOrder");
     makeEdge(elements, run_main, MainScheduleOrder, "executes");
 
-    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 500, y: 0}, [
+    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 500, y: 0}, "main", [
         "StateTransition (startup)", // There's 1x StateTransition schedule, and it runs in startup and in main order
         "PreStartup",
         "Startup",
@@ -307,7 +309,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (startup)"], "adds")
 
     // main_startup_order runs once, then main_order
-    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 500, y: 0}, [
+    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 500, y: 0}, "main", [
         "First",
         "PreUpdate",
         "StateTransition",
@@ -329,7 +331,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let run_fixed_main_schedule = createSystem(elements, "run_fixed_main_schedule");
     makeEdge(elements, main_order["RunFixedMainLoop"], run_fixed_main_schedule, "runs");
 
-    let FixedMain = createSchedule(elements, "FixedMain");
+    let FixedMain = createSchedule(elements, "main", "FixedMain");
     makeEdge(elements, run_fixed_main_schedule, FixedMain, "runs");
 
     let run_fixed_main = createSystem(elements, "run_fixed_main");
@@ -338,7 +340,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let FixedMainScheduleOrder = createResource(elements, "FixedMainScheduleOrder");
     makeEdge(elements, run_fixed_main, FixedMainScheduleOrder, "executes");
 
-    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: 0, y: 600}, { x: 200, y: 0}, [
+    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: 0, y: 600}, { x: 200, y: 0}, "main", [
         "FixedFirst",
         "FixedPreUpdate",
         "FixedUpdate",
@@ -346,7 +348,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
         "FixedLast",
     ]);
 
-    let RenderRecovery = createSchedule(elements, "RenderRecovery", { x: -212 , y: 222});
+    let RenderRecovery = createSchedule(elements, "render", "RenderRecovery", { x: -212 , y: 222});
     let run_render_schedule = createSystem(elements, "run_render_schedule", { x: 117 , y: 224});
     makeEdge(elements, RenderRecovery, run_render_schedule, "runs");
 
@@ -355,7 +357,7 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     let RenderScheduleOrder = createResource(elements, "RenderScheduleOrder");
     makeEdge(elements, run_render_schedule, RenderScheduleOrder, "executes");
 
-    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: 0, y: 900}, { x: 200, y: 0}, [
+    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: 0, y: 900}, { x: 200, y: 0}, "render", [
         "First (render)", // There's 2x schedules with the First label
         "Render",
         "RenderLast",
@@ -365,11 +367,11 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     makeEdge(elements, RemotePlugin, render_order["RenderLast"], "adds")
 
     // TODO: all these are on RenderApp
-    let ExtractSchedule = createSchedule(elements, "ExtractSchedule");
-    let RenderStartup = createSchedule(elements, "RenderStartup");
-    let RenderGraph = createSchedule(elements, "RenderGraph", {x: -400, y: 800});
-    let Core2d = createSchedule(elements, "Core2d");
-    let Core3d = createSchedule(elements, "Core3d");
+    let ExtractSchedule = createSchedule(elements, "render", "ExtractSchedule");
+    let RenderStartup = createSchedule(elements, "render", "RenderStartup");
+    let RenderGraph = createSchedule(elements, "render", "RenderGraph", {x: -400, y: 800});
+    let Core2d = createSchedule(elements, "render", "Core2d");
+    let Core3d = createSchedule(elements, "render", "Core3d");
 
     let App = createApp(elements, "App", {x: -1000, y: -300});
     let MainSchedulePlugin = createPlugin(elements, "MainSchedulePlugin");
@@ -470,11 +472,20 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
 
     let allSchedules = controller.allSchedules;
     for(let schedule of allSchedules) {
-        createSchedule(elements, schedule);
+        createSchedule(elements, schedule.app, schedule.schedule);
     }
 
+    cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
 
+    cy.$("node[_node_type = \"plugin\"]").remove();
+    cy.$("node[_node_type = \"app\"]").remove();
 
+    schedulesLayout(cy);
+
+    return elements;
+}
+
+export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof cytoscapeProxy) : Core {
     let style : StylesheetJson = [
 
         // "schedule" | "system" | "resource" | "plugin"
@@ -581,10 +592,11 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
         selectionType: "additive",
     });
 
-    cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
+    return cy;
+}
 
-    cy.$("node[_node_type = \"plugin\"]").remove();
-    cy.$("node[_node_type = \"app\"]").remove();
+function schedulesLayout(cy: Core) : void {
+
 
     let cl: any = {
         name: "cola",
@@ -640,7 +652,6 @@ export function initSchedulesGraph(container: HTMLDivElement, controller: Contro
     //     numIter: 2,
     // }).run();
 
-    return {cy, elements};
 }
 
 /*

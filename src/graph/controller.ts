@@ -33,7 +33,7 @@ export class Controller {
 
     apps: Apps;
     _isSystemsSimplified: boolean = false;
-    allSchedules: string[] = [];
+    allSchedules: {app: string, schedule: string}[] = [];
     allComponents: {[componentName: string] : ComponentDetail } = {};
 
     renderComponentsDetail: RenderComponentsDetail;
@@ -71,7 +71,7 @@ export class Controller {
 
     build(app: AppData, appName: string) {
         let mainSchedules = app.scheduleList.result.schedule_labels;
-        this.allSchedules = this.allSchedules.concat(mainSchedules);
+        this.allSchedules = this.allSchedules.concat(mainSchedules.map((s) => { return {app: appName, schedule: s} }));
         
         for(let scheduleName of mainSchedules) {
             let schedule = app.scheduleGraphs[scheduleName].result.schedule_data;

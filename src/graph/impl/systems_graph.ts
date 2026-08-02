@@ -1,5 +1,5 @@
 
-import { type Core, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type StylesheetJson } from 'cytoscape';
+import { type Core, type EdgeDataDefinition, type EdgeSingular, type ElementDefinition, type NodeDataDefinition, type NodeSingular, type StylesheetJson } from 'cytoscape';
 import type cytoscapeProxy from 'cytoscape';
 
 
@@ -168,12 +168,11 @@ function buildChain(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLoo
 }
 
 
-export function initSystemsGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
+export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" | "render", schedule: string) : Elements {
     let systemSetsLookup: SystemSetsTitleToIdLookup = new Map();
     let elements: Elements = { nodes: {}, edges: {} };
 
-    // TODO: remove hard coding
-    let RG = controller.getData("main", "PostUpdate");
+    let RG = controller.getData(app, schedule);
 
     for(let [index, system_set] of RG.result.schedule_data.system_sets.entries()) {
         elements_add_node(elements, makeSystemSetNode(systemSetsLookup, index, system_set));
@@ -239,6 +238,79 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
         "PrepareBindGroups",
     ]);    
 
+    cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
+
+    // NOTE: main/PreUpdate/Assets<A>::asset_events in AssetTrackingSystems per A
+
+    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('title')) !== -1).remove();
+    // cy.nodes().filter(node => node.degree() > 3).remove();
+
+    // NOTE: main calls layout
+    // systemsLayout(cy);
+
+    return elements;
+}
+
+export function parentSoleSystems(cy: Core) : EdgeSingular[] {
+    // cy.nodes()
+    //     .filter(node =>
+    //         node.data('_node_type') == "system" &&
+    //         node.incomers().length == 2 &&
+    //         node.outgoers().length == 0
+    //     ).remove();
+
+    let parentableSystems = cy
+        .nodes()
+        .filter(node =>
+            node.data('_node_type') == 'system' &&
+            node.parent().length == 0 &&
+            node.incomers().length == 2
+        );
+
+    let edges = parentableSystems.map((system) => {
+        let edge = (system as NodeSingular).incomers().filter(i => i.isEdge()) as EdgeSingular;
+        let systemset = edge.source();
+
+        if(system.data('title') != systemset.data('title')) {
+            return null;
+        }
+
+        system.move({
+            parent: systemset.id()
+        });
+
+        return edge;
+    }).filter(e => e !== null);
+
+    return edges;
+    
+    // cy.nodes().forEach((node) => {
+    //     if(node.data('title') != 'draw_lights') { return; }
+    //     console.log("" + node.id() + " " + node.data('title') + ":", node.incomers().map(i => i.data()), node.outgoers().map(o => o.data()));
+    // });
+
+    // let ss = cy
+    //     .nodes()
+    //     .filter(node =>
+    //         node.data('_node_type') == 'system_set' &&
+    //         node.data('title') == "draw_lights"
+    //     ).id();
+
+    // let s = cy
+    //     .nodes()
+    //     .filter(node =>
+    //         node.data('_node_type') == 'system' &&
+    //         node.data('title') == "draw_lights"
+    //     );
+
+    // cy.edges().filter(edge => edge.source().id() == ss && edge.target().id() == s.id()).remove();
+
+    // s.move({
+    //     parent: ss
+    // });
+}
+
+export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cytoscapeProxy) : Core {
     let style : StylesheetJson = [
 
         // TODO: selectors
@@ -312,23 +384,25 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
     // Register the layout extension with Cytoscape
     cytoscape('layout', 'customPhysics', CustomPhysicsLayout);
     let cy = cytoscape({
-        elements: [...Object.values(elements.nodes), ...Object.values(elements.edges)],
+        elements: [],
         container,
         style,
-        layout: {
-            // animate: true,
-            // gravity: 1.0,
-            // name: 'cola',
-            name: 'cose',
-            // name: 'cose-bilkent',
-            // avoidOverlap: true,
-            // nodeDimensionsIncludeLabels: true
-        },
         selectionType: "additive",
     });
 
-    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('title')) !== -1).remove();
-    // cy.nodes().filter(node => node.degree() > 3).remove();
+    return cy;
+}
+
+export function systemsLayout(cy: Core) : void {
+    cy.layout({
+        // animate: true,
+        // gravity: 1.0,
+        // name: 'cola',
+        name: 'cose',
+        // name: 'cose-bilkent',
+        // avoidOverlap: true,
+        // nodeDimensionsIncludeLabels: true
+    }).run();
 
     // cy.layout(
     //     {
@@ -339,8 +413,6 @@ export function initSystemsGraph(container: HTMLDivElement, controller: Controll
     //         repulsion: 400
     //     } as CustomPhysicsOptions
     // ).run();
-
-    return {cy, elements};
 }
 
 import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';

@@ -99,7 +99,7 @@ function makeRequiredEdge(componentName: string, component: ComponentDetail, req
     };
 }
 
-export function initComponentsGraph(container: HTMLDivElement, controller: Controller, cytoscape: typeof cytoscapeProxy) : {cy: Core, elements: Elements} {
+export function loadComponentsGraph(controller: Controller, cy: Core) : Elements {
     let elements: Elements = { nodes: {}, edges: {} };
 
     for(let componentName of Object.keys(controller.allComponents)) {
@@ -128,7 +128,17 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
             }
         }
     }
-    
+
+    cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
+
+    cy.nodes().filter(node => node.degree() === 0).remove();
+
+    componentsLayout(cy);
+
+    return elements;
+}
+
+export function initComponentsGraph(container: HTMLDivElement, cytoscape: typeof cytoscapeProxy) : Core {
 
     let style : StylesheetJson = [
 
@@ -197,21 +207,25 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
 
     cytoscape('layout', 'customPhysics', CustomPhysicsLayout);
     let cy = cytoscape({
-        elements: [...Object.values(elements.nodes), ...Object.values(elements.edges)],
+        elements: [],
         container,
         style,
-        layout: {
-            animate: true,
-            gravity: 1.0,
-            // name: 'cola',
-            name: 'cose',
-            avoidOverlap: true,
-            nodeDimensionsIncludeLabels: true
-        } as any, //  as CoseLayoutOptions,
         selectionType: "additive",
     });
 
-    cy.nodes().filter(node => node.degree() === 0).remove();
+    return cy;
+}
+
+function componentsLayout(cy: Core) : void {
+    cy.layout({
+        animate: true,
+        gravity: 1.0,
+        // name: 'cola',
+        name: 'cose',
+        avoidOverlap: true,
+        nodeDimensionsIncludeLabels: true
+    } as any //  as CoseLayoutOptions,
+    ).run();
 
     // cy.layout(
     //     {
@@ -223,7 +237,6 @@ export function initComponentsGraph(container: HTMLDivElement, controller: Contr
     //     } as CustomPhysicsOptions
     // ).run();
 
-    return {cy, elements};
 }
 
 import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';

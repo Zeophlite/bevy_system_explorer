@@ -6,9 +6,9 @@ import { readApps } from './data/index.ts';
 import { readMockApps } from './data_mock/index.ts';
 import { Controller, type ComponentsDetails, type SchedulesDetail, type SystemsDetail } from './graph/controller.ts';
 
-import { initComponentsGraph } from './graph/impl/components_graph.ts';
-import { initSchedulesGraph } from './graph/impl/schedules_graph.ts';
-import { initSystemsGraph } from './graph/impl/systems_graph.ts';
+import { initComponentsGraph, loadComponentsGraph } from './graph/impl/components_graph.ts';
+import { initSchedulesGraph, loadSchedulesGraph } from './graph/impl/schedules_graph.ts';
+import { initSystemsGraph, loadSystemsGraph, parentSoleSystems, systemsLayout } from './graph/impl/systems_graph.ts';
 
 import type { Apps } from './bevy_types/app_data.ts';
 import { initCustomGraph } from './graph/CustomPhysicsLayoutDemo.ts';
@@ -48,19 +48,23 @@ async function init() {
     const cytoscape = cytoscapeModule;
 
     // let custom = initCustomGraph(componentsContainer, controller, cytoscape);
-    let comp = initComponentsGraph(componentsContainer, controller, cytoscape);
-    let sched = initSchedulesGraph(schedulesContainer, controller, cytoscape);
-    let sys = initSystemsGraph(systemsContainer, controller, cytoscape);
+    let comp = initComponentsGraph(componentsContainer, cytoscape);
+    let sched = initSchedulesGraph(schedulesContainer, cytoscape);
+    let sys = initSystemsGraph(systemsContainer, cytoscape);
 
     (globalThis as any).bse_comp = comp;
     (globalThis as any).bse_sched = sched;
     (globalThis as any).bse_sys = sys;
 
+    let compEle = loadComponentsGraph(controller, comp);
+    let schedEle = loadSchedulesGraph(controller, sched);
+    // let sysEle = loadSystemsGraph(controller, sys);
+    
     document.querySelector<HTMLButtonElement>('#simplify-systems')!.addEventListener('click', (ev: PointerEvent) => {
         controller.toggleSimplifySystems();
         console.log('click', ev);
 
-        let ab = sys.cy.$(":selected");
+        let ab = sys.$(":selected");
         console.log("ab");
 
         let ids : string[] = [];
@@ -68,13 +72,13 @@ async function init() {
             ids.push(ele.id());
         });
 
-        collapseInteriorNodesWithCompoundSupport(sys.cy, ids);
+        collapseInteriorNodesWithCompoundSupport(sys, ids);
 
         let button = ev.target! as HTMLButtonElement;
         button.textContent = controller.isSystemsSimplified() ? "Unsimplify" : "Simplify";
     });
 
-    comp.cy.on("select unselect boxselect", (ev) => {
+    comp.on("select unselect boxselect", (ev) => {
         console.log("comp " + ev.type + " ", ev.target);
 
         let selectedComponents: string[] = [];
@@ -91,10 +95,13 @@ async function init() {
         controller.selectedComponents(selectedComponents);
     });
 
-    sched.cy.on("select unselect boxselect", (ev) => {
+    sched.on("select unselect boxselect", (ev) => {
         console.log("sched " + ev.type + " ", ev.target);
 
+        // TODO: retain system positions (as initial) when removing a schedule
+
         let selectedSchedules: string[] = [];
+        sys.nodes().remove();
 
         ev.cy.$(":selected").forEach(function (ele) {
             if(!ele.isNode()) {
@@ -106,7 +113,10 @@ async function init() {
             let node_type = data._node_type;
             
             if(node_type == "schedule") {
-                let schedule = data.label;
+                let schedule = data.title;
+
+                console.log("lsg", data);
+                loadSystemsGraph(controller, sys, data.app, schedule);
 
                 selectedSchedules.push(schedule);
 
@@ -114,10 +124,21 @@ async function init() {
             }
         });
 
+        let parentedEdges = parentSoleSystems(sys);
+        systemsLayout(sys);
+        parentedEdges.forEach(e => e.remove());
+
         controller.selectedSchedules(selectedSchedules);
     });
 
-    sys.cy.on("select unselect boxselect", (ev) => {
+    // TODO: this is for testing, move to arg
+    loadSystemsGraph(controller, sys, "main", "PostUpdate");
+    let parentedEdges = parentSoleSystems(sys);
+    systemsLayout(sys);
+    parentedEdges.forEach(e => e.remove());
+
+
+    sys.on("select unselect boxselect", (ev) => {
         console.log("sys " + ev.type + " ", ev.target);
 
         let selectedSystems: System[] = [];
