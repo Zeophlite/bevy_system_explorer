@@ -51,27 +51,27 @@ function parseSystemName(componentName : string) {
 
 type SystemSetsTitleToIdLookup = Map<string, string[]>;
 
-function systemOrSetWrapToNodeId(input : SystemOrSetWrap) : string {
+function systemOrSetWrapToNodeId(input : SystemOrSetWrap, app: "main" | "render", schedule: string) : string {
     if("System" in input) {
-        return makeSystemId(input.System);
+        return makeSystemId(input.System, app, schedule);
     }
     if("SystemSet" in input) {
-        return makeSystemSetId(input.SystemSet);
+        return makeSystemSetId(input.SystemSet, app, schedule);
     }
     return "unknown";
 }
 
-function makeSystemId(index: number) : string {
-    return `system-${index}`;
+function makeSystemId(index: number, app: "main" | "render", schedule: string) : string {
+    return `system-${app}-${schedule}-${index}`;
 }
-function makeSystemSetId(index: number) : string {
-    return `systemset-${index}`;
+function makeSystemSetId(index: number, app: "main" | "render", schedule: string) : string {
+    return `systemset-${app}-${schedule}-${index}`;
 }
 
 
-function makeSystemNode(index: number, system: System) : NodeData {
+function makeSystemNode(index: number, system: System, app: "main" | "render", schedule: string) : NodeData {
     return {
-        id: makeSystemId(index),
+        id: makeSystemId(index, app, schedule),
         label: system.name,
         title: parseSystemName(system.name),
         shape: 'ellipse',
@@ -85,16 +85,16 @@ function makeSystemNode(index: number, system: System) : NodeData {
     };
 }
 
-function makeSystemSetNode(systemSetsLookup: SystemSetsTitleToIdLookup, index: number, system_set: SystemSet) : NodeData {
-    let id = makeSystemSetId(index);
+function makeSystemSetNode(systemSetsLookup: SystemSetsTitleToIdLookup, index: number, system_set: SystemSet, app: "main" | "render", schedule: string) : NodeData {
+    let id = makeSystemSetId(index, app, schedule);
     let title = system_set.name.split("::").at(-1) || "unknown";
 
     // console.log("Title ", title, id);
 
-    let lookup = systemSetsLookup.get(title);
+    let lookup = systemSetsLookup.get(app + "-" + schedule + "-" + title);
     if(lookup == undefined) {
         lookup = [];
-        systemSetsLookup.set(title, lookup)
+        systemSetsLookup.set(app + "-" + schedule + "-" + title, lookup)
     }
     lookup.push(id);
 
@@ -107,8 +107,8 @@ function makeSystemSetNode(systemSetsLookup: SystemSetsTitleToIdLookup, index: n
     };
 }
 
-function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, title: string, pos: {x: number, y: number}) {
-    let ids = systemSetsLookup.get(title);
+function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, title: string, pos: {x: number, y: number}, app: "main" | "render", schedule: string) {
+    let ids = systemSetsLookup.get(app + "-" + schedule + "-" + title);
     if(ids == undefined) {
         console.log("No title", title);
         return;
@@ -130,39 +130,39 @@ function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsTitleT
     }
 }
 
-function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap) : EdgeData {
+function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap, app: "main" | "render", schedule: string) : EdgeData {
 
-    let from = systemOrSetWrapToNodeId(a);
-    let to = systemOrSetWrapToNodeId(b);
+    let from = systemOrSetWrapToNodeId(a, app, schedule);
+    let to = systemOrSetWrapToNodeId(b, app, schedule);
 
     return {
-        id: "dependency-" + index,
+        id: "dependency-" + app + "-" + schedule + "-" + index,
         source: from,
         target: to,
         _edge_type: "dependency",
     };
 }
 
-function makeHierarchyEdge(index: number, a: number, b : SystemOrSetWrap) : EdgeData {
+function makeHierarchyEdge(index: number, a: number, b : SystemOrSetWrap, app: "main" | "render", schedule: string) : EdgeData {
 
-    let from = makeSystemSetId(a);
-    let to =  systemOrSetWrapToNodeId(b);
+    let from = makeSystemSetId(a, app, schedule);
+    let to =  systemOrSetWrapToNodeId(b, app, schedule);
 
     return {
-        id: "hierarchy-" + index,
+        id: "hierarchy-" + app + "-" + schedule + "-" + index,
         source: from,
         target: to,
         _edge_type: "hierarchy",
     };
 }
 
-function buildChain(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, origin: {x: number, y: number}, offset: {x: number, y: number}, system_sets: string[]) {
+function buildChain(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, app: "main" | "render", schedule: string, origin: {x: number, y: number}, offset: {x: number, y: number}, system_sets: string[]) {
     let idx = 0;
     for(let system_set of system_sets) {
         let x = origin.x + 1.0 * idx * offset.x;
         let y = origin.y + 1.0 * idx * offset.y;
 
-        fixSystemSetNode(elements, systemSetsLookup, system_set, {x, y});
+        fixSystemSetNode(elements, systemSetsLookup, system_set, {x, y}, app, schedule);
         idx += 1;
     }
 }
@@ -173,13 +173,16 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
     let elements: Elements = { nodes: {}, edges: {} };
 
     let RG = controller.getData(app, schedule);
+    if(RG === undefined) {
+        return elements;
+    }
 
     for(let [index, system_set] of RG.result.schedule_data.system_sets.entries()) {
-        elements_add_node(elements, makeSystemSetNode(systemSetsLookup, index, system_set));
+        elements_add_node(elements, makeSystemSetNode(systemSetsLookup, index, system_set, app, schedule));
     }
     for(let [index, system] of RG.result.schedule_data.systems.entries()) {
         try {
-            elements_add_node(elements, makeSystemNode(index, system));
+            elements_add_node(elements, makeSystemNode(index, system, app, schedule));
         } catch(ex) {
             console.log(ex);
         }
@@ -189,21 +192,21 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
         let a = dep[0];
         let b = dep[1];
 
-        elements_add_edge(elements, makeDependencyEdge(index, a, b));
+        elements_add_edge(elements, makeDependencyEdge(index, a, b, app, schedule));
     }
 
     for(let [index, hie] of RG.result.schedule_data.hierarchy.entries()) {
         let a = hie[0] as number;
         let b = hie[1] as SystemOrSetWrap;
 
-        elements_add_edge(elements, makeHierarchyEdge(index, a, b));
+        elements_add_edge(elements, makeHierarchyEdge(index, a, b, app, schedule));
     }
 
 
     // Add chains to give some structure to the graph
     // edges already exist, this is just about starting locations
 
-    buildChain(elements, systemSetsLookup, { x: -5000, y: -4000}, { x: 1000, y: 0}, [
+    buildChain(elements, systemSetsLookup, app, schedule, { x: -5000, y: -4000}, { x: 1000, y: 0}, [
         "ExtractCommands",
         "PrepareMeshes",
         "CreateViews",
@@ -217,19 +220,19 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
         "PostCleanup",
     ]);
 
-    buildChain(elements, systemSetsLookup, { x: 0, y: -2000}, { x: 1000, y: 0}, [
+    buildChain(elements, systemSetsLookup, app, schedule, { x: 0, y: -2000}, { x: 1000, y: 0}, [
         "QueueMeshes",
         "QueueSweep"
     ]);
 
-    buildChain(elements, systemSetsLookup, { x: -5000, y: 0}, { x: 1000, y: 0}, [
+    buildChain(elements, systemSetsLookup, app, schedule, { x: -5000, y: 0}, { x: 1000, y: 0}, [
         "ExtractCommands",
         "PrepareAssets",
         "PrepareMeshes",
         "Prepare"
     ]);
 
-    buildChain(elements, systemSetsLookup, { x: 1000, y: 1000}, { x: 400, y: 0}, [
+    buildChain(elements, systemSetsLookup, app, schedule, { x: 1000, y: 1000}, { x: 400, y: 0}, [
         "PrepareResources",
         "PrepareResourcesBatchPhases",
         "PrepareResourcesWritePhaseBuffers",
@@ -249,6 +252,35 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
     // systemsLayout(cy);
 
     return elements;
+}
+
+export function findSystemSetsChains(cy: Core): void {
+    console.log('findSystemSetsChains');
+
+    // 1. Get the filtered nodes
+    const matchedNodes = cy.nodes().filter(node => node.data('_node_type') == 'system_set');
+
+    // 2. Get the filtered edges that connect ONLY those nodes
+    const matchedEdges = matchedNodes.edgesWith(matchedNodes).filter('edge[_edge_type = "dependency"]');
+
+    // 3. Combine them into the final subgraph
+    const strictSubgraph = matchedNodes.union(matchedEdges);
+
+    let res = strictSubgraph.components().filter(r => r.length > 1);
+
+    let tt: string[] = [];
+
+    for(let r of res) {
+        console.log("# comp");
+        r.forEach((ne) => {
+            console.log("-- ", ne.data());
+            tt.push(ne.id());
+        });
+    }
+
+    cy.nodes().filter(node => tt.indexOf(node.id()) === -1).remove();
+
+    console.log('findSystemSetsChains end');
 }
 
 export function parentSoleSystems(cy: Core) : EdgeSingular[] {

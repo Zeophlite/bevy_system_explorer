@@ -8,7 +8,7 @@ import { Controller, type ComponentsDetails, type SchedulesDetail, type SystemsD
 
 import { initComponentsGraph, loadComponentsGraph } from './graph/impl/components_graph.ts';
 import { initSchedulesGraph, loadSchedulesGraph } from './graph/impl/schedules_graph.ts';
-import { initSystemsGraph, loadSystemsGraph, parentSoleSystems, systemsLayout } from './graph/impl/systems_graph.ts';
+import { findSystemSetsChains, initSystemsGraph, loadSystemsGraph, parentSoleSystems, systemsLayout } from './graph/impl/systems_graph.ts';
 
 import type { Apps } from './bevy_types/app_data.ts';
 import { initCustomGraph } from './graph/CustomPhysicsLayoutDemo.ts';
@@ -125,6 +125,7 @@ async function init() {
         });
 
         let parentedEdges = parentSoleSystems(sys);
+        findSystemSetsChains(sys);
         systemsLayout(sys);
         parentedEdges.forEach(e => e.remove());
 
@@ -132,8 +133,10 @@ async function init() {
     });
 
     // TODO: this is for testing, move to arg
-    loadSystemsGraph(controller, sys, "main", "PostUpdate");
+    // loadSystemsGraph(controller, sys, "main", "PostUpdate");
+    loadSystemsGraph(controller, sys, "render", "RenderGraph");
     let parentedEdges = parentSoleSystems(sys);
+    findSystemSetsChains(sys);
     systemsLayout(sys);
     parentedEdges.forEach(e => e.remove());
 
