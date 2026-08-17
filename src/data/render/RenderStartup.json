@@ -1,0 +1,6651 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_render::renderer::render_device::RenderDevice",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::ErasedRenderAssets<bevy_pbr::material::PreparedMaterial>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::PrepareNextFrameAssets<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::material_bind_groups::MaterialBindGroupAllocators",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::renderer::RenderAdapter",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_asset::server::AssetServer",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::ErasedRenderAssets<bevy_sprite_render::mesh2d::material::PreparedMaterial2d>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::PrepareNextFrameAssets<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::sprite_mesh::sprite_material::SpriteMaterial>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_resource::pipeline_cache::PipelineCache",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::mip_generation::DownsampleShaders",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_pbr::medium::GpuScatteringMedium>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::PrepareNextFrameAssets<bevy_pbr::medium::GpuScatteringMedium>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::fullscreen_vertex_shader::FullscreenShader",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::PrepareNextFrameAssets<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_gizmos_render::GpuLineGizmo>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::PrepareNextFrameAssets<bevy_gizmos_render::GpuLineGizmo>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::PrepareNextFrameAssets<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::renderer::RenderQueue",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::upscaling::ViewUpscalingPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
+          "required": []
+        },
+        {
+          "name": "bevy_pbr::render::mesh::RenderMeshInstances",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::render::mesh::MeshesToReextractNextFrame",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_render::storage::GpuShaderBuffer>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::PrepareNextFrameAssets<bevy_render::storage::GpuShaderBuffer>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_render::texture::gpu_image::GpuImage>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::PrepareNextFrameAssets<bevy_render::texture::gpu_image::GpuImage>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_render::mesh::RenderMesh>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::PrepareNextFrameAssets<bevy_render::mesh::RenderMesh>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::erased_render_asset::PrepareNextFrameAssets<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::mesh2d::color_material::ColorMaterial>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::atmosphere::environment::AtmosphereProbeLayouts",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::render::mesh_view_bindings::MeshPipelineViewLayouts",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::render::mesh::MeshPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::material::MaterialPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_pbr::prepass::PrepassPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos_render::LineGizmoUniformBindgroupLayout",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::BrpSender",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostAddress",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostPort",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostHeaders",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_sprite_render::mesh2d::mesh::Mesh2dPipeline",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "SystemSet": 116
+          },
+          {
+            "System": 197
+          }
+        ],
+        [
+          {
+            "System": 190
+          },
+          {
+            "System": 192
+          }
+        ],
+        [
+          {
+            "SystemSet": 116
+          },
+          {
+            "System": 198
+          }
+        ],
+        [
+          {
+            "System": 160
+          },
+          {
+            "System": 161
+          }
+        ],
+        [
+          {
+            "System": 98
+          },
+          {
+            "System": 160
+          }
+        ],
+        [
+          {
+            "SystemSet": 50
+          },
+          {
+            "System": 205
+          }
+        ],
+        [
+          {
+            "SystemSet": 142
+          },
+          {
+            "System": 203
+          }
+        ],
+        [
+          {
+            "System": 181
+          },
+          {
+            "System": 193
+          }
+        ],
+        [
+          {
+            "System": 162
+          },
+          {
+            "System": 163
+          }
+        ],
+        [
+          {
+            "SystemSet": 116
+          },
+          {
+            "System": 196
+          }
+        ],
+        [
+          {
+            "SystemSet": 50
+          },
+          {
+            "System": 206
+          }
+        ],
+        [
+          {
+            "System": 161
+          },
+          {
+            "System": 162
+          }
+        ],
+        [
+          {
+            "SystemSet": 148
+          },
+          {
+            "System": 204
+          }
+        ],
+        [
+          {
+            "System": 200
+          },
+          {
+            "System": 202
+          }
+        ],
+        [
+          {
+            "SystemSet": 116
+          },
+          {
+            "System": 203
+          }
+        ],
+        [
+          {
+            "SystemSet": 98
+          },
+          {
+            "System": 200
+          }
+        ],
+        [
+          {
+            "SystemSet": 116
+          },
+          {
+            "System": 195
+          }
+        ],
+        [
+          {
+            "SystemSet": 142
+          },
+          {
+            "System": 206
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          10,
+          {
+            "System": 172
+          }
+        ],
+        [
+          98,
+          {
+            "System": 198
+          }
+        ],
+        [
+          182,
+          {
+            "System": 59
+          }
+        ],
+        [
+          184,
+          {
+            "System": 64
+          }
+        ],
+        [
+          186,
+          {
+            "System": 102
+          }
+        ],
+        [
+          33,
+          {
+            "System": 125
+          }
+        ],
+        [
+          104,
+          {
+            "System": 45
+          }
+        ],
+        [
+          65,
+          {
+            "System": 65
+          }
+        ],
+        [
+          7,
+          {
+            "System": 178
+          }
+        ],
+        [
+          106,
+          {
+            "System": 188
+          }
+        ],
+        [
+          54,
+          {
+            "System": 85
+          }
+        ],
+        [
+          118,
+          {
+            "System": 43
+          }
+        ],
+        [
+          149,
+          {
+            "System": 204
+          }
+        ],
+        [
+          1,
+          {
+            "System": 189
+          }
+        ],
+        [
+          60,
+          {
+            "System": 74
+          }
+        ],
+        [
+          79,
+          {
+            "System": 40
+          }
+        ],
+        [
+          177,
+          {
+            "System": 167
+          }
+        ],
+        [
+          190,
+          {
+            "System": 107
+          }
+        ],
+        [
+          151,
+          {
+            "System": 100
+          }
+        ],
+        [
+          176,
+          {
+            "System": 177
+          }
+        ],
+        [
+          96,
+          {
+            "System": 9
+          }
+        ],
+        [
+          2,
+          {
+            "System": 187
+          }
+        ],
+        [
+          42,
+          {
+            "System": 108
+          }
+        ],
+        [
+          139,
+          {
+            "System": 8
+          }
+        ],
+        [
+          83,
+          {
+            "System": 32
+          }
+        ],
+        [
+          145,
+          {
+            "System": 206
+          }
+        ],
+        [
+          28,
+          {
+            "System": 134
+          }
+        ],
+        [
+          95,
+          {
+            "System": 11
+          }
+        ],
+        [
+          29,
+          {
+            "System": 132
+          }
+        ],
+        [
+          158,
+          {
+            "System": 163
+          }
+        ],
+        [
+          113,
+          {
+            "System": 171
+          }
+        ],
+        [
+          23,
+          {
+            "System": 144
+          }
+        ],
+        [
+          111,
+          {
+            "System": 105
+          }
+        ],
+        [
+          143,
+          {
+            "System": 57
+          }
+        ],
+        [
+          174,
+          {
+            "System": 193
+          }
+        ],
+        [
+          114,
+          {
+            "System": 6
+          }
+        ],
+        [
+          163,
+          {
+            "System": 186
+          }
+        ],
+        [
+          12,
+          {
+            "System": 168
+          }
+        ],
+        [
+          179,
+          {
+            "System": 156
+          }
+        ],
+        [
+          170,
+          {
+            "System": 94
+          }
+        ],
+        [
+          15,
+          {
+            "System": 159
+          }
+        ],
+        [
+          6,
+          {
+            "System": 180
+          }
+        ],
+        [
+          90,
+          {
+            "System": 20
+          }
+        ],
+        [
+          147,
+          {
+            "System": 203
+          }
+        ],
+        [
+          194,
+          {
+            "System": 90
+          }
+        ],
+        [
+          9,
+          {
+            "System": 174
+          }
+        ],
+        [
+          38,
+          {
+            "System": 116
+          }
+        ],
+        [
+          0,
+          {
+            "System": 207
+          }
+        ],
+        [
+          20,
+          {
+            "System": 149
+          }
+        ],
+        [
+          24,
+          {
+            "System": 142
+          }
+        ],
+        [
+          87,
+          {
+            "System": 26
+          }
+        ],
+        [
+          102,
+          {
+            "System": 0
+          }
+        ],
+        [
+          31,
+          {
+            "System": 129
+          }
+        ],
+        [
+          127,
+          {
+            "System": 137
+          }
+        ],
+        [
+          134,
+          {
+            "System": 75
+          }
+        ],
+        [
+          178,
+          {
+            "System": 61
+          }
+        ],
+        [
+          119,
+          {
+            "System": 19
+          }
+        ],
+        [
+          51,
+          {
+            "System": 91
+          }
+        ],
+        [
+          201,
+          {
+            "System": 109
+          }
+        ],
+        [
+          3,
+          {
+            "System": 185
+          }
+        ],
+        [
+          128,
+          {
+            "System": 54
+          }
+        ],
+        [
+          156,
+          {
+            "System": 161
+          }
+        ],
+        [
+          92,
+          {
+            "System": 16
+          }
+        ],
+        [
+          195,
+          {
+            "System": 190
+          }
+        ],
+        [
+          197,
+          {
+            "System": 10
+          }
+        ],
+        [
+          148,
+          {
+            "System": 119
+          }
+        ],
+        [
+          53,
+          {
+            "System": 87
+          }
+        ],
+        [
+          13,
+          {
+            "System": 166
+          }
+        ],
+        [
+          136,
+          {
+            "System": 195
+          }
+        ],
+        [
+          11,
+          {
+            "System": 170
+          }
+        ],
+        [
+          34,
+          {
+            "System": 123
+          }
+        ],
+        [
+          74,
+          {
+            "System": 50
+          }
+        ],
+        [
+          112,
+          {
+            "System": 84
+          }
+        ],
+        [
+          140,
+          {
+            "System": 21
+          }
+        ],
+        [
+          77,
+          {
+            "System": 44
+          }
+        ],
+        [
+          63,
+          {
+            "System": 69
+          }
+        ],
+        [
+          67,
+          {
+            "System": 62
+          }
+        ],
+        [
+          133,
+          {
+            "System": 184
+          }
+        ],
+        [
+          141,
+          {
+            "System": 115
+          }
+        ],
+        [
+          152,
+          {
+            "System": 126
+          }
+        ],
+        [
+          93,
+          {
+            "System": 14
+          }
+        ],
+        [
+          161,
+          {
+            "System": 49
+          }
+        ],
+        [
+          172,
+          {
+            "System": 169
+          }
+        ],
+        [
+          115,
+          {
+            "System": 165
+          }
+        ],
+        [
+          80,
+          {
+            "System": 38
+          }
+        ],
+        [
+          175,
+          {
+            "System": 5
+          }
+        ],
+        [
+          198,
+          {
+            "System": 68
+          }
+        ],
+        [
+          199,
+          {
+            "System": 117
+          }
+        ],
+        [
+          26,
+          {
+            "System": 138
+          }
+        ],
+        [
+          56,
+          {
+            "System": 82
+          }
+        ],
+        [
+          125,
+          {
+            "System": 31
+          }
+        ],
+        [
+          180,
+          {
+            "System": 35
+          }
+        ],
+        [
+          82,
+          {
+            "System": 34
+          }
+        ],
+        [
+          85,
+          {
+            "System": 28
+          }
+        ],
+        [
+          138,
+          {
+            "System": 71
+          }
+        ],
+        [
+          183,
+          {
+            "System": 88
+          }
+        ],
+        [
+          49,
+          {
+            "System": 95
+          }
+        ],
+        [
+          52,
+          {
+            "System": 89
+          }
+        ],
+        [
+          173,
+          {
+            "System": 181
+          }
+        ],
+        [
+          32,
+          {
+            "System": 127
+          }
+        ],
+        [
+          109,
+          {
+            "System": 13
+          }
+        ],
+        [
+          18,
+          {
+            "System": 153
+          }
+        ],
+        [
+          126,
+          {
+            "System": 196
+          }
+        ],
+        [
+          94,
+          {
+            "System": 12
+          }
+        ],
+        [
+          142,
+          {
+            "System": 92
+          }
+        ],
+        [
+          17,
+          {
+            "System": 155
+          }
+        ],
+        [
+          73,
+          {
+            "System": 52
+          }
+        ],
+        [
+          76,
+          {
+            "System": 46
+          }
+        ],
+        [
+          84,
+          {
+            "System": 30
+          }
+        ],
+        [
+          123,
+          {
+            "System": 197
+          }
+        ],
+        [
+          132,
+          {
+            "System": 135
+          }
+        ],
+        [
+          39,
+          {
+            "System": 114
+          }
+        ],
+        [
+          62,
+          {
+            "System": 70
+          }
+        ],
+        [
+          88,
+          {
+            "System": 24
+          }
+        ],
+        [
+          168,
+          {
+            "System": 7
+          }
+        ],
+        [
+          171,
+          {
+            "System": 147
+          }
+        ],
+        [
+          35,
+          {
+            "System": 122
+          }
+        ],
+        [
+          75,
+          {
+            "System": 48
+          }
+        ],
+        [
+          130,
+          {
+            "System": 81
+          }
+        ],
+        [
+          131,
+          {
+            "System": 1
+          }
+        ],
+        [
+          78,
+          {
+            "System": 42
+          }
+        ],
+        [
+          66,
+          {
+            "System": 63
+          }
+        ],
+        [
+          146,
+          {
+            "System": 83
+          }
+        ],
+        [
+          164,
+          {
+            "System": 51
+          }
+        ],
+        [
+          165,
+          {
+            "System": 111
+          }
+        ],
+        [
+          150,
+          {
+            "System": 145
+          }
+        ],
+        [
+          196,
+          {
+            "System": 192
+          }
+        ],
+        [
+          55,
+          {
+            "System": 205
+          }
+        ],
+        [
+          116,
+          {
+            "System": 193
+          }
+        ],
+        [
+          117,
+          {
+            "System": 86
+          }
+        ],
+        [
+          4,
+          {
+            "System": 183
+          }
+        ],
+        [
+          155,
+          {
+            "System": 160
+          }
+        ],
+        [
+          160,
+          {
+            "System": 3
+          }
+        ],
+        [
+          44,
+          {
+            "System": 104
+          }
+        ],
+        [
+          5,
+          {
+            "System": 182
+          }
+        ],
+        [
+          86,
+          {
+            "System": 27
+          }
+        ],
+        [
+          124,
+          {
+            "System": 96
+          }
+        ],
+        [
+          181,
+          {
+            "System": 124
+          }
+        ],
+        [
+          110,
+          {
+            "System": 113
+          }
+        ],
+        [
+          193,
+          {
+            "System": 133
+          }
+        ],
+        [
+          68,
+          {
+            "System": 60
+          }
+        ],
+        [
+          162,
+          {
+            "System": 179
+          }
+        ],
+        [
+          129,
+          {
+            "System": 15
+          }
+        ],
+        [
+          192,
+          {
+            "System": 154
+          }
+        ],
+        [
+          25,
+          {
+            "System": 140
+          }
+        ],
+        [
+          41,
+          {
+            "System": 110
+          }
+        ],
+        [
+          50,
+          {
+            "System": 93
+          }
+        ],
+        [
+          59,
+          {
+            "System": 76
+          }
+        ],
+        [
+          153,
+          {
+            "System": 29
+          }
+        ],
+        [
+          135,
+          {
+            "System": 47
+          }
+        ],
+        [
+          103,
+          {
+            "System": 66
+          }
+        ],
+        [
+          89,
+          {
+            "System": 22
+          }
+        ],
+        [
+          58,
+          {
+            "System": 78
+          }
+        ],
+        [
+          189,
+          {
+            "System": 128
+          }
+        ],
+        [
+          64,
+          {
+            "System": 67
+          }
+        ],
+        [
+          203,
+          {
+            "System": 143
+          }
+        ],
+        [
+          154,
+          {
+            "System": 98
+          }
+        ],
+        [
+          200,
+          {
+            "System": 41
+          }
+        ],
+        [
+          107,
+          {
+            "System": 139
+          }
+        ],
+        [
+          167,
+          {
+            "System": 141
+          }
+        ],
+        [
+          105,
+          {
+            "System": 121
+          }
+        ],
+        [
+          69,
+          {
+            "System": 58
+          }
+        ],
+        [
+          91,
+          {
+            "System": 18
+          }
+        ],
+        [
+          159,
+          {
+            "System": 25
+          }
+        ],
+        [
+          21,
+          {
+            "System": 148
+          }
+        ],
+        [
+          71,
+          {
+            "System": 55
+          }
+        ],
+        [
+          100,
+          {
+            "System": 4
+          }
+        ],
+        [
+          185,
+          {
+            "System": 130
+          }
+        ],
+        [
+          97,
+          {
+            "System": 200
+          }
+        ],
+        [
+          70,
+          {
+            "System": 56
+          }
+        ],
+        [
+          191,
+          {
+            "System": 150
+          }
+        ],
+        [
+          204,
+          {
+            "System": 73
+          }
+        ],
+        [
+          36,
+          {
+            "System": 120
+          }
+        ],
+        [
+          43,
+          {
+            "System": 106
+          }
+        ],
+        [
+          166,
+          {
+            "System": 158
+          }
+        ],
+        [
+          22,
+          {
+            "System": 146
+          }
+        ],
+        [
+          8,
+          {
+            "System": 176
+          }
+        ],
+        [
+          120,
+          {
+            "System": 17
+          }
+        ],
+        [
+          101,
+          {
+            "System": 2
+          }
+        ],
+        [
+          137,
+          {
+            "System": 77
+          }
+        ],
+        [
+          157,
+          {
+            "System": 162
+          }
+        ],
+        [
+          81,
+          {
+            "System": 36
+          }
+        ],
+        [
+          40,
+          {
+            "System": 112
+          }
+        ],
+        [
+          116,
+          {
+            "System": 181
+          }
+        ],
+        [
+          169,
+          {
+            "System": 152
+          }
+        ],
+        [
+          45,
+          {
+            "System": 103
+          }
+        ],
+        [
+          37,
+          {
+            "System": 118
+          }
+        ],
+        [
+          19,
+          {
+            "System": 151
+          }
+        ],
+        [
+          46,
+          {
+            "System": 101
+          }
+        ],
+        [
+          187,
+          {
+            "System": 33
+          }
+        ],
+        [
+          144,
+          {
+            "System": 173
+          }
+        ],
+        [
+          48,
+          {
+            "System": 97
+          }
+        ],
+        [
+          27,
+          {
+            "System": 136
+          }
+        ],
+        [
+          99,
+          {
+            "System": 202
+          }
+        ],
+        [
+          188,
+          {
+            "System": 175
+          }
+        ],
+        [
+          202,
+          {
+            "System": 39
+          }
+        ],
+        [
+          16,
+          {
+            "System": 157
+          }
+        ],
+        [
+          61,
+          {
+            "System": 72
+          }
+        ],
+        [
+          108,
+          {
+            "System": 23
+          }
+        ],
+        [
+          121,
+          {
+            "System": 37
+          }
+        ],
+        [
+          72,
+          {
+            "System": 53
+          }
+        ],
+        [
+          14,
+          {
+            "System": 164
+          }
+        ],
+        [
+          30,
+          {
+            "System": 131
+          }
+        ],
+        [
+          47,
+          {
+            "System": 99
+          }
+        ],
+        [
+          57,
+          {
+            "System": 80
+          }
+        ],
+        [
+          122,
+          {
+            "System": 79
+          }
+        ]
+      ],
+      "name": "RenderStartup",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_render::view::window::screenshot::ScreenshotToScreenPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::view::window::screenshot::init_screenshot_to_screen_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::view::window::ExtractedWindows>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::view::window::WindowSurfaces>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::view::visibility::range::RenderVisibilityRanges>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::mesh::RenderMesh>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::globals::GlobalsBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::texture::gpu_image::GpuImage>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::texture::texture_cache::TextureCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::IndirectParametersBuffers>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::SceneUnpackingBuffers>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::storage::GpuShaderBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::material_bind_groups::RenderMaterialBindings>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::material_bind_groups::init_fallback_bindless_resources"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::renderer::render_context::PendingCommandBuffers>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_core_pipeline::skybox::SkyboxUniforms>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::skybox::SkyboxPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::skybox::init_skybox_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::deferred::copy_lighting_id::init_copy_deferred_lighting_id_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::blit::BlitPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::blit::init_blit_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::tonemapping::TonemappingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::tonemapping::init_tonemapping_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::upscaling::clear_view_upscaling_pipelines"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::oit::init_oit_buffers"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_core_pipeline::mip_generation::experimental::depth::DownsampleDepthPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::mip_generation::experimental::depth::init_depth_pyramid_dummy_texture"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_core_pipeline::prepass::PreviousViewUniforms>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::bloom::downsampling_pipeline::BloomUniforms>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::bloom::downsampling_pipeline::BloomDownsamplingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::bloom::upsampling_pipeline::BloomUpsamplingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::bloom::downsampling_pipeline::init_bloom_downsampling_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::bloom::upsampling_pipeline::init_bloom_upscaling_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::motion_blur::MotionBlurUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::motion_blur::pipeline::MotionBlurPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::motion_blur::pipeline::init_motion_blur_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::dof::DepthOfFieldUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::dof::DepthOfFieldPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::dof::init_dof_global_bind_group_layout"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::effect_stack::PostProcessingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_post_process::effect_stack::PostProcessingUniformBuffers>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::effect_stack::init_post_processing_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_anti_alias::fxaa::FxaaPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::fxaa::init_fxaa_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_anti_alias::smaa::SmaaInfoUniformBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::smaa::init_smaa_pipelines"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::taa::init_taa_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_anti_alias::contrast_adaptive_sharpening::CasUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::contrast_adaptive_sharpening::init_cas_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_sprite_render::mesh2d::mesh::Mesh2dPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::mesh::init_mesh_2d_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::mesh::init_batched_instance_buffer"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::mesh::load_mesh2d_bindings"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_sprite_render::mesh2d::material::SpecializedMaterial2dPipelineCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_sprite_render::mesh2d::material::Material2dPipelineSpecializer>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::material::init_material_2d_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::mesh2d::color_material::ColorMaterial>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::sprite_mesh::sprite_material::SpriteMaterial>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_sprite_render::render::SpritePipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::render::init_sprite_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::pipeline::UiPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::ImageNodeBindGroups>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::UiMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_render::pipeline::init_ui_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSliceMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSliceImageBindGroups>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSlicePipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_render::ui_texture_slice_pipeline::init_ui_texture_slice_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::gradient::GradientMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::gradient::GradientPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_render::gradient::init_gradient_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_ui_render::box_shadow::BoxShadowMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::box_shadow::BoxShadowPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_render::box_shadow::init_box_shadow_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_3d::Opaque3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::Opaque3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::Opaque3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_3d::AlphaMask3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::AlphaMask3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::AlphaMask3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_pbr::render::light::Shadow>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_pbr::render::light::Shadow, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_pbr::render::light::Shadow>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::deferred::Opaque3dDeferred>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::deferred::Opaque3dDeferred, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::deferred::Opaque3dDeferred>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::deferred::AlphaMask3dDeferred>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::deferred::AlphaMask3dDeferred, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::deferred::AlphaMask3dDeferred>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewSortedRenderPhases<bevy_pbr::transmission::phase::Transmissive3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_pbr::transmission::phase::Transmissive3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_pbr::transmission::phase::Transmissive3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewSortedRenderPhases<bevy_core_pipeline::core_3d::Transparent3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::Transparent3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::Transparent3d>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::mesh::MeshCullingDataBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::prepass::init_prepass_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::material::init_material_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::prepass::init_prepass_view_bind_group"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_pbr::prepass::PrepassPipelineSpecializer>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::prepass::Opaque3dPrepass>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::prepass::Opaque3dPrepass, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::prepass::Opaque3dPrepass>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::prepass::AlphaMask3dPrepass>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::prepass::AlphaMask3dPrepass, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::prepass::AlphaMask3dPrepass>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::prepass::ViewKeyPrepassCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::prepass::SpecializedPrepassMaterialPipelineCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::prepass::PendingPrepassMeshMaterialQueues>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::material::SpecializedMaterialPipelineCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_pbr::material::MaterialPipelineSpecializer>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::light::LightKeyCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::light::SpecializedShadowMaterialPipelineCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::material::PendingMeshMaterialQueues>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::light::PendingShadowQueues>"
+        },
+        {
+          "conditions": [],
+          "name": "MeshPipelineSystems"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::material::add_material_bind_group_allocator<bevy_pbr::pbr_material::StandardMaterial>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::fog::FogMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::lightmap::init_render_lightmaps"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::light_probe::LightProbesBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::volumetric_fog::render::VolumetricFogPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::volumetric_fog::render::VolumetricFogUniformBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::volumetric_fog::render::init_volumetric_fog_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::ssr::ScreenSpaceReflectionsBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::ssr::ScreenSpaceReflectionsPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::ssr::init_screen_space_reflections_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::decal::clustered::DecalsBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::contact_shadows::ContactShadowsBuffer>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::material::add_material_bind_group_allocator<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_asset::collect_render_assets_to_reextract<bevy_pbr::medium::GpuScatteringMedium>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::medium::init_scattering_medium_sampler"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::atmosphere::resources::GpuAtmosphere>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::atmosphere::GpuAtmosphereSettings>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::deferred::PbrDeferredLightingDepthId>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::deferred::DeferredLightingLayout>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::deferred::init_deferred_lighting_layout"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::render::light::init_shadow_samplers"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::cluster::init_global_clusterable_object_meta"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::light::LightMeta>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_gizmos_render::LineGizmoUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::render_asset::collect_render_assets_to_reextract<bevy_gizmos_render::GpuLineGizmo>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos_render::init_line_gizmo_uniform_bind_group_layout"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_2d::LineGizmoPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_2d::LineJointGizmoPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos_render::pipeline_2d::init_line_gizmo_pipelines"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_3d::LineJointGizmoPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos_render::pipeline_3d::init_line_gizmo_pipelines"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_remote::setup_mailbox_channel"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_remote::http::start_http_server"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::view::ViewUniforms>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::view::ViewTargetAttachments>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::mesh::morph::RenderMorphTargetAllocator>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::mesh::allocator::MeshAllocator>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::texture::DefaultImageSampler>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImage>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageZero>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageCubemap>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageFormatMsaaCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::GpuPreprocessingSupport>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_core_pipeline::mip_generation::MipGenerationResources>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::prepass::background_motion_vectors::BackgroundMotionVectorsPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::prepass::background_motion_vectors::init_background_motion_vectors_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::mesh2d::color_material::ColorMaterial>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::sprite_mesh::sprite_material::SpriteMaterial>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::morph::MorphIndices>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::morph::MorphUniforms>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::mesh::ViewKeyCache>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::render::skin::skin_uniforms_from_world"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::BatchedInstanceBuffers<bevy_pbr::render::mesh::MeshUniform, bevy_pbr::render::mesh::MeshInputUniform>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::mesh::RenderMeshInstanceGpuQueues>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::render::mesh::mark_all_meshes_for_reextraction"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::render::mesh_view_bindings::init_mesh_pipeline_view_layouts"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::render::mesh::init_mesh_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::ssao::SsaoPipelines>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::ssao::SsaoPipelines>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::light_probe::generate::initialize_generated_environment_map_resources"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::BinUnpackingBindGroups>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::UniformAllocationBindGroups>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::PreprocessPipelines>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::PreprocessPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::ResetIndirectBatchSetsPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::BuildIndirectParametersPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::BinUnpackingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationLocalScanPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationGlobalScanPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationFanPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::RenderSkyBindGroupLayouts>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereSampler>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereLutPipelines>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereTransforms>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::atmosphere::resources::RenderSkyBindGroupLayouts>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::atmosphere::environment::init_atmosphere_probe_layout"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::atmosphere::environment::init_atmosphere_probe_pipeline"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::cluster::gpu::ClusteringRasterPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::cluster::gpu::ClusteringZSlicingPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::cluster::gpu::ClusteringAllocationPipeline>>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::RenderViewClusteringReadbackData>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::GpuClusteringMeshBuffers>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringRasterPipeline>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringZSlicingPipeline>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringAllocationPipeline>"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::prepass::Opaque3dPrepass, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::medium::init_scattering_medium_sampler"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::prepass::Opaque3dPrepass>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_core_pipeline::mip_generation::MipGenerationResources>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_pbr::prepass::PrepassPipelineSpecializer>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  3
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::material::PendingMeshMaterialQueues>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::mesh::ViewKeyCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::light::LightMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::mesh::MeshCullingDataBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::cluster::gpu::ClusteringRasterPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::Transparent3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::Transparent3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::prepass::PendingPrepassMeshMaterialQueues>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewSortedRenderPhases<bevy_core_pipeline::core_3d::Transparent3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::material::add_material_bind_group_allocator<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_pbr::transmission::phase::Transmissive3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::light_probe::LightProbesBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_pbr::transmission::phase::Transmissive3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::lightmap::init_render_lightmaps"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewSortedRenderPhases<bevy_pbr::transmission::phase::Transmissive3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_gizmos_render::LineGizmoUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::deferred::AlphaMask3dDeferred>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::prepass::SpecializedPrepassMaterialPipelineCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::deferred::AlphaMask3dDeferred, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::GpuPreprocessingSupport>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::deferred::AlphaMask3dDeferred>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::deferred::Opaque3dDeferred>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::deferred::Opaque3dDeferred, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::mesh::allocator::MeshAllocator>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::deferred::Opaque3dDeferred>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::ssr::ScreenSpaceReflectionsPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_pbr::render::light::Shadow>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationGlobalScanPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_pbr::render::light::Shadow, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::UniformAllocationBindGroups>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_pbr::render::light::Shadow>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::volumetric_fog::render::VolumetricFogPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::AlphaMask3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringRasterPipeline>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::AlphaMask3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::RenderViewClusteringReadbackData>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_3d::AlphaMask3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::fog::FogMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::core_3d::Opaque3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::prepass::AlphaMask3dPrepass>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::core_3d::Opaque3d, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::deferred::DeferredLightingLayout>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_3d::Opaque3d>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::prepass::background_motion_vectors::BackgroundMotionVectorsPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_render::box_shadow::init_box_shadow_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  8
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::sprite_mesh::sprite_material::SpriteMaterial>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::box_shadow::BoxShadowPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::box_shadow::BoxShadowMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::contact_shadows::ContactShadowsBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_render::gradient::init_gradient_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::gradient::GradientPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_2d::LineGizmoPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::gradient::GradientMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::PreprocessPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_render::ui_texture_slice_pipeline::init_ui_texture_slice_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    10
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::light_probe::generate::initialize_generated_environment_map_resources"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSlicePipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSliceImageBindGroups>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::BuildIndirectParametersPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::ui_texture_slice_pipeline::UiTextureSliceMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::prepass::Opaque3dPrepass>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_render::pipeline::init_ui_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::cluster::gpu::ClusteringZSlicingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::UiMeta>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_ui_render::ImageNodeBindGroups>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::cluster::init_global_clusterable_object_meta"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_ui_render::pipeline::UiPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringAllocationPipeline>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::render::init_sprite_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::deferred::PbrDeferredLightingDepthId>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_sprite_render::render::SpritePipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::render::light::init_shadow_samplers"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::volumetric_fog::render::VolumetricFogUniformBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::sprite_mesh::sprite_material::SpriteMaterial>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  11
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  11
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    11
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  12
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  12
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    12
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_asset::collect_render_assets_to_reextract<bevy_pbr::medium::GpuScatteringMedium>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::material::add_material2d_bind_group_allocator<bevy_sprite_render::mesh2d::color_material::ColorMaterial>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_3d::LineJointGizmoPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::light::LightKeyCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_sprite_render::mesh2d::material::Material2dPipelineSpecializer>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::material::add_material_bind_group_allocator<bevy_pbr::pbr_material::StandardMaterial>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_sprite_render::mesh2d::material::SpecializedMaterial2dPipelineCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::ResetIndirectBatchSetsPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::mesh::load_mesh2d_bindings"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_pbr::atmosphere::resources::RenderSkyBindGroupLayouts>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::mesh::init_batched_instance_buffer"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [],
+          "name": "bevy_gizmos_render::init_line_gizmo_uniform_bind_group_layout"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::mesh::init_mesh_2d_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::BatchedInstanceBuffers<bevy_pbr::render::mesh::MeshUniform, bevy_pbr::render::mesh::MeshInputUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_sprite_render::mesh2d::mesh::Mesh2dPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::ssr::ScreenSpaceReflectionsBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::contrast_adaptive_sharpening::init_cas_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::texture::DefaultImageSampler>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_anti_alias::contrast_adaptive_sharpening::CasUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::view::ViewTargetAttachments>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::taa::init_taa_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationLocalScanPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::smaa::init_smaa_pipelines"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_anti_alias::smaa::SmaaInfoUniformBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedMeshPipelines<bevy_pbr::material::MaterialPipelineSpecializer>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::fxaa::init_fxaa_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::RenderSkyBindGroupLayouts>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_anti_alias::fxaa::FxaaPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::GpuClusteringMeshBuffers>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::effect_stack::init_post_processing_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  14
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  14
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    14
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_post_process::effect_stack::PostProcessingUniformBuffers>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::material::SpecializedMaterialPipelineCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::effect_stack::PostProcessingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  15
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  15
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    15
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  16
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  16
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    16
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_asset::collect_render_assets_to_reextract<bevy_gizmos_render::GpuLineGizmo>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::dof::init_dof_global_bind_group_layout"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::cluster::gpu::ClusteringAllocationPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::dof::DepthOfFieldPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [],
+          "name": "bevy_remote::setup_mailbox_channel"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::dof::DepthOfFieldUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseBatchedInstanceBuffers<bevy_core_pipeline::prepass::AlphaMask3dPrepass, bevy_pbr::render::mesh::MeshUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::motion_blur::pipeline::init_motion_blur_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::motion_blur::pipeline::MotionBlurPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::PreprocessPipelines>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::motion_blur::MotionBlurUniform>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::mesh::morph::RenderMorphTargetAllocator>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::bloom::upsampling_pipeline::init_bloom_upscaling_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  17
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  17
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    17
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::bloom::downsampling_pipeline::init_bloom_downsampling_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::BinUnpackingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::bloom::upsampling_pipeline::BloomUpsamplingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_post_process::bloom::downsampling_pipeline::BloomDownsamplingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereTransforms>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_post_process::bloom::downsampling_pipeline::BloomUniforms>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::atmosphere::resources::GpuAtmosphere>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_core_pipeline::prepass::PreviousViewUniforms>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::decal::clustered::DecalsBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::mip_generation::experimental::depth::init_depth_pyramid_dummy_texture"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::prepass::ViewKeyPrepassCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_core_pipeline::mip_generation::experimental::depth::DownsampleDepthPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::morph::MorphUniforms>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  18
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    18
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::oit::init_oit_buffers"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::cluster::gpu::ClusteringZSlicingPipeline>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    19
+                  ],
+                  "without": [
+                    20
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::upscaling::clear_view_upscaling_pipelines"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::view::ViewUniforms>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::tonemapping::init_tonemapping_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::mesh::RenderMeshInstanceGpuQueues>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::tonemapping::TonemappingPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::blit::init_blit_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereSampler>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::blit::BlitPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::render::skin::skin_uniforms_from_world"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::deferred::copy_lighting_id::init_copy_deferred_lighting_id_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::atmosphere::resources::AtmosphereLutPipelines>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::skybox::init_skybox_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::gpu_preprocess::BinUnpackingBindGroups>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_core_pipeline::skybox::SkyboxPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::morph::MorphIndices>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_core_pipeline::skybox::SkyboxUniforms>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImage>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageZero>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageCubemap>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::texture::fallback_image::FallbackImageFormatMsaaCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::renderer::render_context::PendingCommandBuffers>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::light::PendingShadowQueues>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::material_bind_groups::init_fallback_bindless_resources"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::ssao::SsaoPipelines>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::material_bind_groups::RenderMaterialBindings>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  21
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  21
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    21
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  22
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  22
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    22
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::render::mesh::mark_all_meshes_for_reextraction"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  23
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  23
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    23
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  24
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  24
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    24
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::storage::GpuShaderBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::render::light::SpecializedShadowMaterialPipelineCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::SceneUnpackingBuffers>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_gizmos_render::pipeline_2d::LineJointGizmoPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::IndirectParametersBuffers>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedComputePipelines<bevy_pbr::render::gpu_preprocess::UniformAllocationFanPipeline>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::texture::texture_cache::TextureCache>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_pbr::ssao::SsaoPipelines>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  25
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  25
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    25
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  26
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  26
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    26
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::texture::gpu_image::GpuImage>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::prepass::background_motion_vectors::init_background_motion_vectors_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::globals::GlobalsBuffer>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::render::mesh_view_bindings::init_mesh_pipeline_view_layouts"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  27
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  27
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    27
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  28
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  28
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    28
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::render_asset::collect_render_assets_to_reextract<bevy_render::mesh::RenderMesh>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::view::visibility::range::RenderVisibilityRanges>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::uniform::ComponentUniforms<bevy_pbr::atmosphere::GpuAtmosphereSettings>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::view::window::WindowSurfaces>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  29
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  29
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    29
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::erased_render_asset::collect_erased_render_assets_to_reextract<bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::mesh2d::color_material::ColorMaterial>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::view::window::ExtractedWindows>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::batching::gpu_preprocessing::PhaseIndirectParametersBuffers<bevy_core_pipeline::prepass::AlphaMask3dPrepass>>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::view::window::screenshot::init_screenshot_to_screen_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [],
+          "name": "bevy_pbr::atmosphere::environment::init_atmosphere_probe_layout"
+        },
+        {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  30
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    30
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::atmosphere::environment::init_atmosphere_probe_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::render::mesh::init_mesh_pipeline"
+        },
+        {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    32
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::deferred::init_deferred_lighting_layout"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::ssr::init_screen_space_reflections_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::volumetric_fog::render::init_volumetric_fog_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    32
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::material::init_material_pipeline"
+        },
+        {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    32
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  33
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    33
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::prepass::init_prepass_pipeline"
+        },
+        {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  34
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    34
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::prepass::init_prepass_view_bind_group"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    32
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  35
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    35
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos_render::pipeline_3d::init_line_gizmo_pipelines"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  36
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    36
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  37
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    37
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  38
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    38
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  39
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    39
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_remote::http::start_http_server"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  40
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    40
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::mesh2d::material::init_material_2d_pipeline"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  40
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    40
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  35
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    35
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos_render::pipeline_2d::init_line_gizmo_pipelines"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_render::init_gpu_resource<bevy_render::render_resource::pipeline_specializer::SpecializedRenderPipelines<bevy_render::view::window::screenshot::ScreenshotToScreenPipeline>>"
+        }
+      ]
+    }
+  }
+}

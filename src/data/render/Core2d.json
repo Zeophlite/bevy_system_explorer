@@ -1,0 +1,2380 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_render::renderer::render_context::CurrentView",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::view::ViewTarget",
+          "required": []
+        },
+        {
+          "name": "bevy_render::view::Msaa",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::msaa_writeback::MsaaWritebackBlitPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
+          "required": []
+        },
+        {
+          "name": "bevy_core_pipeline::blit::BlitPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_resource::pipeline_cache::PipelineCache",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::renderer::render_device::RenderDevice",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::diagnostic::internal::DiagnosticsRecorder",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::view::ExtractedView",
+          "required": []
+        },
+        {
+          "name": "bevy_render::view::visibility::RenderVisibleEntities",
+          "required": []
+        },
+        {
+          "name": "bevy_render::camera::ExtractedCamera",
+          "required": [
+            11
+          ]
+        },
+        {
+          "name": "bevy_render::view::ViewDepthTexture",
+          "required": []
+        },
+        {
+          "name": "bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_2d::Opaque2d>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_phase::ViewBinnedRenderPhases<bevy_core_pipeline::core_2d::AlphaMask2d>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_phase::ViewSortedRenderPhases<bevy_core_pipeline::core_2d::Transparent2d>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_camera::components::Hdr",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::bloom::settings::Bloom",
+          "required": [
+            17
+          ]
+        },
+        {
+          "name": "bevy_post_process::bloom::BloomTexture",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::bloom::BloomBindGroups",
+          "required": []
+        },
+        {
+          "name": "bevy_render::uniform::DynamicUniformIndex<bevy_post_process::bloom::downsampling_pipeline::BloomUniforms>",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::bloom::upsampling_pipeline::UpsamplingPipelineIds",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::bloom::downsampling_pipeline::BloomDownsamplingPipelineIds",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::bloom::downsampling_pipeline::BloomDownsamplingPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::uniform::ComponentUniforms<bevy_post_process::bloom::downsampling_pipeline::BloomUniforms>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_post_process::effect_stack::chromatic_aberration::ChromaticAberration",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::effect_stack::vignette::Vignette",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::effect_stack::lens_distortion::LensDistortion",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::effect_stack::PostProcessingPipelineId",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::effect_stack::PostProcessingUniformBufferOffsets",
+          "required": []
+        },
+        {
+          "name": "bevy_post_process::effect_stack::PostProcessingPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_post_process::effect_stack::PostProcessingUniformBuffers",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::render_asset::RenderAssets<bevy_render::texture::gpu_image::GpuImage>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_post_process::effect_stack::chromatic_aberration::DefaultChromaticAberrationLut",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::view::ViewUniformOffset",
+          "required": []
+        },
+        {
+          "name": "bevy_core_pipeline::tonemapping::Tonemapping",
+          "required": []
+        },
+        {
+          "name": "bevy_core_pipeline::tonemapping::ViewTonemappingPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_core_pipeline::tonemapping::TonemappingPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::texture::fallback_image::FallbackImage",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::view::ViewUniforms",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::tonemapping::TonemappingLuts",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_anti_alias::smaa::SmaaTextures",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::smaa::ViewSmaaPipelines",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::smaa::SmaaInfoUniformOffset",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::smaa::SmaaBindGroups",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::smaa::SmaaPipelines",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_anti_alias::smaa::SmaaInfoUniformBuffer",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_anti_alias::fxaa::Fxaa",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::fxaa::CameraFxaaPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::fxaa::FxaaPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_anti_alias::contrast_adaptive_sharpening::ViewCasPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_render::uniform::DynamicUniformIndex<bevy_anti_alias::contrast_adaptive_sharpening::CasUniform>",
+          "required": []
+        },
+        {
+          "name": "bevy_anti_alias::contrast_adaptive_sharpening::CasPipeline",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::uniform::ComponentUniforms<bevy_anti_alias::contrast_adaptive_sharpening::CasUniform>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_ui_render::UiCameraView",
+          "required": []
+        },
+        {
+          "name": "bevy_ui_render::UiViewTarget",
+          "required": []
+        },
+        {
+          "name": "bevy_render::render_phase::ViewSortedRenderPhases<bevy_ui_render::render_pass::TransparentUi>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::upscaling::ViewUpscalingPipeline",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::clear_color::ClearColor",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "System": 4
+          },
+          {
+            "SystemSet": 6
+          }
+        ],
+        [
+          {
+            "SystemSet": 0
+          },
+          {
+            "SystemSet": 1
+          }
+        ],
+        [
+          {
+            "SystemSet": 6
+          },
+          {
+            "System": 7
+          }
+        ],
+        [
+          {
+            "SystemSet": 2
+          },
+          {
+            "SystemSet": 3
+          }
+        ],
+        [
+          {
+            "System": 3
+          },
+          {
+            "SystemSet": 6
+          }
+        ],
+        [
+          {
+            "System": 9
+          },
+          {
+            "SystemSet": 7
+          }
+        ],
+        [
+          {
+            "System": 1
+          },
+          {
+            "System": 2
+          }
+        ],
+        [
+          {
+            "SystemSet": 3
+          },
+          {
+            "System": 10
+          }
+        ],
+        [
+          {
+            "SystemSet": 3
+          },
+          {
+            "System": 9
+          }
+        ],
+        [
+          {
+            "System": 0
+          },
+          {
+            "SystemSet": 1
+          }
+        ],
+        [
+          {
+            "SystemSet": 9
+          },
+          {
+            "System": 4
+          }
+        ],
+        [
+          {
+            "SystemSet": 11
+          },
+          {
+            "System": 8
+          }
+        ],
+        [
+          {
+            "SystemSet": 6
+          },
+          {
+            "System": 6
+          }
+        ],
+        [
+          {
+            "SystemSet": 12
+          },
+          {
+            "System": 8
+          }
+        ],
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "SystemSet": 2
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          3,
+          {
+            "System": 3
+          }
+        ],
+        [
+          3,
+          {
+            "System": 5
+          }
+        ],
+        [
+          1,
+          {
+            "System": 1
+          }
+        ],
+        [
+          8,
+          {
+            "System": 0
+          }
+        ],
+        [
+          3,
+          {
+            "System": 7
+          }
+        ],
+        [
+          3,
+          {
+            "System": 8
+          }
+        ],
+        [
+          9,
+          {
+            "System": 3
+          }
+        ],
+        [
+          6,
+          {
+            "System": 5
+          }
+        ],
+        [
+          11,
+          {
+            "System": 7
+          }
+        ],
+        [
+          12,
+          {
+            "System": 6
+          }
+        ],
+        [
+          3,
+          {
+            "System": 6
+          }
+        ],
+        [
+          13,
+          {
+            "System": 8
+          }
+        ],
+        [
+          10,
+          {
+            "System": 4
+          }
+        ],
+        [
+          1,
+          {
+            "System": 2
+          }
+        ],
+        [
+          4,
+          {
+            "System": 1
+          }
+        ],
+        [
+          5,
+          {
+            "System": 2
+          }
+        ],
+        [
+          7,
+          {
+            "System": 10
+          }
+        ],
+        [
+          14,
+          {
+            "System": 9
+          }
+        ]
+      ],
+      "name": "Core2d",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "Prepass"
+        },
+        {
+          "conditions": [],
+          "name": "MainPass"
+        },
+        {
+          "conditions": [],
+          "name": "EarlyPostProcess"
+        },
+        {
+          "conditions": [],
+          "name": "PostProcess"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::core_2d::main_opaque_pass_2d_node::main_opaque_pass_2d"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::core_2d::main_transparent_pass_2d_node::main_transparent_pass_2d"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::upscaling::node::upscaling"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::msaa_writeback::msaa_writeback"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::bloom::bloom"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_post_process::effect_stack::post_processing"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::fxaa::node::fxaa"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::smaa::smaa"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_anti_alias::contrast_adaptive_sharpening::node::cas"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_render::render_pass::ui_pass"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2,
+                  3,
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    2,
+                    3,
+                    4
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::msaa_writeback::msaa_writeback"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10,
+                  12,
+                  2,
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    12,
+                    2,
+                    13
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  14
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    14
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  15
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    15
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::core_2d::main_opaque_pass_2d_node::main_opaque_pass_2d"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10,
+                  12,
+                  2,
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    12,
+                    2,
+                    13
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  16
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    16
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::core_2d::main_transparent_pass_2d_node::main_transparent_pass_2d"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  12,
+                  2,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    12,
+                    2,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  24
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    24
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  25
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    25
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::bloom::bloom"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2,
+                  26,
+                  27,
+                  28,
+                  29,
+                  30
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    2,
+                    26,
+                    29,
+                    30
+                  ],
+                  "without": [
+                    5
+                  ]
+                },
+                {
+                  "with": [
+                    2,
+                    27,
+                    29,
+                    30
+                  ],
+                  "without": [
+                    5
+                  ]
+                },
+                {
+                  "with": [
+                    2,
+                    28,
+                    29,
+                    30
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    32
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  33
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    33
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  34
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    34
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_post_process::effect_stack::post_processing"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  35,
+                  12,
+                  2,
+                  36,
+                  37
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    35,
+                    12,
+                    2,
+                    36,
+                    37
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  38
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    38
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  33
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    33
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  39
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    39
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  40
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    40
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  41
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    41
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::tonemapping::node::tonemapping"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2,
+                  42,
+                  43,
+                  44,
+                  45
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    2,
+                    42,
+                    43,
+                    44,
+                    45
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  46
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    46
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  47
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    47
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::smaa::smaa"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2,
+                  48,
+                  49
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    2,
+                    48,
+                    49
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  50
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    50
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::fxaa::node::fxaa"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2,
+                  51,
+                  52
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    2,
+                    51,
+                    52
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  53
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    53
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  54
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    54
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_anti_alias::contrast_adaptive_sharpening::node::cas"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  55
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    55
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10,
+                  56
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    56
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  12,
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    12,
+                    2
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  57
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    57
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_render::render_pass::ui_pass"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  58,
+                  12,
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    58,
+                    2
+                  ],
+                  "without": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  59
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    59
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::upscaling::node::upscaling"
+        }
+      ]
+    }
+  }
+}

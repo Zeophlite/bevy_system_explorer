@@ -1,0 +1,35 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [],
+      "conflicts": [],
+      "dependency": [],
+      "hierarchy": [
+        [
+          0,
+          {
+            "System": 0
+          }
+        ]
+      ],
+      "name": "FixedMain",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_app::main_schedule::FixedMain::run_fixed_main"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_app::main_schedule::FixedMain::run_fixed_main"
+        }
+      ]
+    }
+  }
+}

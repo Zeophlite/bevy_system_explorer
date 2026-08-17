@@ -1,0 +1,57 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "SystemSet": 0
+          },
+          {
+            "SystemSet": 1
+          }
+        ],
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "SystemSet": 2
+          }
+        ],
+        [
+          {
+            "SystemSet": 2
+          },
+          {
+            "SystemSet": 3
+          }
+        ]
+      ],
+      "hierarchy": [],
+      "name": "StateTransition",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "DependentTransitions"
+        },
+        {
+          "conditions": [],
+          "name": "ExitSchedules"
+        },
+        {
+          "conditions": [],
+          "name": "TransitionSchedules"
+        },
+        {
+          "conditions": [],
+          "name": "EnterSchedules"
+        }
+      ],
+      "systems": []
+    }
+  }
+}

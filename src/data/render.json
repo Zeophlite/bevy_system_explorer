@@ -1,0 +1,19 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "empty_schedule_labels": [],
+    "schedule_labels": [
+      "Core2d",
+      "ExtractSchedule",
+      "RenderStartup",
+      "Core3d",
+      "RenderGraph",
+      "Render"
+    ],
+    "unavailable_schedule_labels": [
+      "RemoteLast",
+      "RenderRecovery"
+    ]
+  }
+}

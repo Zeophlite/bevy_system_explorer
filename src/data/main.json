@@ -1,0 +1,31 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "empty_schedule_labels": [
+      "FixedPreUpdate",
+      "FixedUpdate"
+    ],
+    "schedule_labels": [
+      "First",
+      "PreStartup",
+      "SpawnScene",
+      "FixedMain",
+      "Update",
+      "RunFixedMainLoop",
+      "Last",
+      "StateTransition",
+      "FixedPostUpdate",
+      "FixedFirst",
+      "FixedLast",
+      "PostUpdate",
+      "PreUpdate",
+      "Startup",
+      "PostStartup"
+    ],
+    "unavailable_schedule_labels": [
+      "Main",
+      "RemoteLast"
+    ]
+  }
+}

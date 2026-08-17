@@ -1,0 +1,489 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_transform::components::global_transform::GlobalTransform",
+          "required": []
+        },
+        {
+          "name": "bevy_transform::components::transform::TransformTreeChanged",
+          "required": []
+        },
+        {
+          "name": "bevy_transform::components::transform::Transform",
+          "required": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "bevy_camera::visibility::InheritedVisibility",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::visibility::ViewVisibility",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::visibility::Visibility",
+          "required": [
+            3,
+            4
+          ]
+        },
+        {
+          "name": "bevy_world_serialization::components::WorldAssetRoot",
+          "required": [
+            2,
+            5
+          ]
+        },
+        {
+          "name": "bevy_world_serialization::world_asset_spawner::WorldInstance",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
+          "required": []
+        },
+        {
+          "name": "bevy_world_serialization::components::DynamicWorldRoot",
+          "required": [
+            2,
+            5
+          ]
+        },
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_world_serialization::world_asset_spawner::WorldInstanceSpawner",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_ecs::message::messages::Messages<bevy_asset::event::AssetEvent<bevy_scene::scene_patch::ScenePatch>>",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_ecs::message::messages::Messages<bevy_asset::event::AssetEvent<bevy_scene::scene_patch::SceneListPatch>>",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_asset::server::AssetServer",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_scene::scene_patch::ScenePatch>",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_scene::scene_patch::SceneListPatch>",
+          "required": [
+            10
+          ]
+        },
+        {
+          "name": "bevy_scene::spawn::WaitingScenes",
+          "required": [
+            10
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "System": 4
+          }
+        ],
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "System": 3
+          }
+        ],
+        [
+          {
+            "System": 0
+          },
+          {
+            "System": 2
+          }
+        ],
+        [
+          {
+            "System": 3
+          },
+          {
+            "System": 4
+          }
+        ],
+        [
+          {
+            "System": 1
+          },
+          {
+            "System": 2
+          }
+        ],
+        [
+          {
+            "System": 1
+          },
+          {
+            "System": 3
+          }
+        ],
+        [
+          {
+            "System": 1
+          },
+          {
+            "System": 4
+          }
+        ],
+        [
+          {
+            "System": 0
+          },
+          {
+            "System": 1
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          0,
+          {
+            "System": 0
+          }
+        ],
+        [
+          1,
+          {
+            "System": 2
+          }
+        ],
+        [
+          2,
+          {
+            "System": 2
+          }
+        ],
+        [
+          3,
+          {
+            "System": 3
+          }
+        ],
+        [
+          1,
+          {
+            "System": 0
+          }
+        ],
+        [
+          4,
+          {
+            "System": 4
+          }
+        ],
+        [
+          4,
+          {
+            "System": 3
+          }
+        ],
+        [
+          5,
+          {
+            "System": 4
+          }
+        ]
+      ],
+      "name": "SpawnScene",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_world_serialization::world_asset_spawner::world_instance_spawner"
+        },
+        {
+          "conditions": [],
+          "name": "WorldInstanceSpawn"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_world_serialization::world_asset_spawner::world_instance_spawner_system"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_scene::spawn::resolve_scene_patches"
+        },
+        {
+          "conditions": [],
+          "name": "SceneSpawn"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_scene::spawn::spawn_queued"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6,
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    6
+                  ],
+                  "without": [
+                    8,
+                    9
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9,
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    9
+                  ],
+                  "without": [
+                    8,
+                    6
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  11
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  11
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    11
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_world_serialization::world_asset_spawner::world_instance_spawner"
+        },
+        {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_world_serialization::world_asset_spawner::world_instance_spawner_system"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  12
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    12
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    13
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  14
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    14
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  15
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  15
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    15
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  16
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  16
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    16
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  17
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  17
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    10,
+                    17
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_scene::spawn::resolve_scene_patches"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_scene::spawn::spawn_queued"
+        }
+      ]
+    }
+  }
+}

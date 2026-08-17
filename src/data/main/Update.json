@@ -1,0 +1,929 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_ui_widgets::dialog::DialogStack",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_light::probe::AtmosphereEnvironmentMapLight",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
+          "required": []
+        },
+        {
+          "name": "bevy_render::sync_world::SyncToRenderWorld",
+          "required": []
+        },
+        {
+          "name": "bevy_pbr::atmosphere::environment::AtmosphereEnvironmentMap",
+          "required": [
+            4
+          ]
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_image::image::Image>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_sprite_render::tilemap_chunk::TilemapChunk",
+          "required": []
+        },
+        {
+          "name": "bevy_sprite_render::tilemap_chunk::TilemapChunkTileData",
+          "required": []
+        },
+        {
+          "name": "bevy_sprite_render::mesh2d::material::MeshMaterial2d<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>",
+          "required": []
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_transform::components::global_transform::GlobalTransform",
+          "required": []
+        },
+        {
+          "name": "bevy_transform::components::transform::TransformTreeChanged",
+          "required": []
+        },
+        {
+          "name": "bevy_transform::components::transform::Transform",
+          "required": [
+            11,
+            12
+          ]
+        },
+        {
+          "name": "server::Cube",
+          "required": []
+        },
+        {
+          "name": "bevy_time::time::Time",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_render::view::Msaa",
+          "required": [
+            4
+          ]
+        },
+        {
+          "name": "bevy_core_pipeline::oit::OrderIndependentTransparencySettings",
+          "required": [
+            4
+          ]
+        },
+        {
+          "name": "bevy_light::probe::GeneratedEnvironmentMapLight",
+          "required": [
+            4
+          ]
+        },
+        {
+          "name": "bevy_light::probe::EnvironmentMapLight",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::visibility::ViewVisibility",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::visibility::InheritedVisibility",
+          "required": []
+        },
+        {
+          "name": "bevy_camera::visibility::Visibility",
+          "required": [
+            21,
+            20
+          ]
+        },
+        {
+          "name": "bevy_camera::visibility::VisibilityClass",
+          "required": []
+        },
+        {
+          "name": "bevy_light::probe::LightProbe",
+          "required": [
+            13,
+            20,
+            22,
+            23
+          ]
+        },
+        {
+          "name": "bevy_light::probe::ParallaxCorrection",
+          "required": []
+        },
+        {
+          "name": "bevy_render::view::window::screenshot::CapturedScreenshots",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_ui_widgets::menu::MenuFocusState",
+          "required": []
+        },
+        {
+          "name": "bevy_a11y::AccessibilityNode",
+          "required": []
+        },
+        {
+          "name": "bevy_input_focus::tab_navigation::TabGroup",
+          "required": []
+        },
+        {
+          "name": "bevy_ui_widgets::menu::MenuPopup",
+          "required": [
+            28,
+            29,
+            27
+          ]
+        },
+        {
+          "name": "bevy_input_focus::InputFocus",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_ecs::hierarchy::Children",
+          "required": []
+        },
+        {
+          "name": "bevy_input_focus::tab_navigation::TabIndex",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::hierarchy::ChildOf",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::message::messages::Messages<bevy_app::app::AppExit>",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "System": 9
+          },
+          {
+            "System": 10
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          9,
+          {
+            "System": 7
+          }
+        ],
+        [
+          0,
+          {
+            "System": 11
+          }
+        ],
+        [
+          1,
+          {
+            "System": 8
+          }
+        ],
+        [
+          5,
+          {
+            "System": 1
+          }
+        ],
+        [
+          10,
+          {
+            "System": 3
+          }
+        ],
+        [
+          8,
+          {
+            "System": 0
+          }
+        ],
+        [
+          11,
+          {
+            "System": 5
+          }
+        ],
+        [
+          2,
+          {
+            "System": 6
+          }
+        ],
+        [
+          6,
+          {
+            "System": 9
+          }
+        ],
+        [
+          3,
+          {
+            "System": 4
+          }
+        ],
+        [
+          4,
+          {
+            "System": 2
+          }
+        ],
+        [
+          7,
+          {
+            "System": 10
+          }
+        ]
+      ],
+      "name": "Update",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_render::view::window::screenshot::trigger_screenshots"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_light::probe::automatically_add_parallax_correction_components"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_core_pipeline::oit::check_msaa"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::menu::menu_acquire_focus"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::menu::menu_on_lose_focus"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_ui_widgets::dialog::sync_dialog_z"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:server::remove"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:server::move_cube"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_pbr::light_probe::generate::generate_environment_map_light"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_widgets::dialog::sync_dialog_z"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    2
+                  ],
+                  "without": [
+                    3,
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  6
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7,
+                  8,
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    7,
+                    8,
+                    9
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  10
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    10
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  6
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  13
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  13
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    13,
+                    14
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  15
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    15
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "server::move_cube"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  16
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    16,
+                    17
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "bevy_core_pipeline::oit::check_msaa"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  6
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  18
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    18
+                  ],
+                  "without": [
+                    3,
+                    19
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "bevy_pbr::light_probe::generate::generate_environment_map_light"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    19,
+                    24
+                  ],
+                  "without": [
+                    3,
+                    25
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "bevy_light::probe::automatically_add_parallax_correction_components"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    14
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "server::remove"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  26
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  26
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    26
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_render::view::window::screenshot::trigger_screenshots"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  27
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  27
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    30,
+                    27
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  31
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  32,
+                  29
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    32,
+                    29
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  21,
+                  32,
+                  33
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": [
+                    3,
+                    29
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  34
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    34
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_widgets::menu::menu_acquire_focus"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  27
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  27
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    30,
+                    27
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  34
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    34
+                  ],
+                  "without": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  31
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    31
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ui_widgets::menu::menu_on_lose_focus"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  35
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  35
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    35
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"
+        }
+      ]
+    }
+  }
+}

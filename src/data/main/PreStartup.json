@@ -1,0 +1,142 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_gilrs::Gilrs",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gilrs::GilrsGamepads",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_ecs::message::messages::Messages<bevy_input::gamepad::GamepadConnectionEvent>",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [],
+      "hierarchy": [
+        [
+          0,
+          {
+            "System": 1
+          }
+        ],
+        [
+          1,
+          {
+            "System": 0
+          }
+        ]
+      ],
+      "name": "PreStartup",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gilrs::gilrs_system::gilrs_event_startup_system"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_remote::setup_mailbox_channel"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [],
+          "name": "bevy_remote::setup_mailbox_channel"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  1
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  3
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gilrs::gilrs_system::gilrs_event_startup_system"
+        }
+      ]
+    }
+  }
+}

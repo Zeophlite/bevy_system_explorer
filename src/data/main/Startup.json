@@ -1,0 +1,298 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_mesh::mesh::Mesh>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::BrpSender",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostAddress",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostPort",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_remote::http::HostHeaders",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [],
+      "hierarchy": [
+        [
+          0,
+          {
+            "System": 3
+          }
+        ],
+        [
+          1,
+          {
+            "System": 1
+          }
+        ],
+        [
+          2,
+          {
+            "System": 2
+          }
+        ],
+        [
+          3,
+          {
+            "System": 0
+          }
+        ]
+      ],
+      "name": "Startup",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos_render::transform_gizmo_render::spawn_gizmo_meshes"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_picking::input::spawn_mouse_pointer"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_remote::http::start_http_server"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:server::setup"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  1
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "server::setup"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [],
+          "name": "bevy_picking::input::spawn_mouse_pointer"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_remote::http::start_http_server"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": true,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  1
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos_render::transform_gizmo_render::spawn_gizmo_meshes"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,815 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "schedule_data": {
+      "components": [
+        {
+          "name": "bevy_ecs::resource::IsResource",
+          "required": []
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_gizmos::gizmos::Swap<bevy_time::fixed::Fixed>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::aabb::AabbGizmoConfigGroup, ()>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_gizmos::gizmos::Swap<bevy_time::fixed::Fixed>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::config::DefaultGizmoConfigGroup, ()>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_gizmos::gizmos::Swap<bevy_time::fixed::Fixed>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::frustum::FrustumGizmoConfigGroup, ()>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_light::gizmos::LightGizmoConfigGroup, bevy_gizmos::gizmos::Swap<bevy_time::fixed::Fixed>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_light::gizmos::LightGizmoConfigGroup, ()>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_gizmos::gizmos::Swap<bevy_time::fixed::Fixed>>",
+          "required": [
+            0
+          ]
+        },
+        {
+          "name": "bevy_gizmos::gizmos::GizmoStorage<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, ()>",
+          "required": [
+            0
+          ]
+        }
+      ],
+      "conflicts": [],
+      "dependency": [
+        [
+          {
+            "SystemSet": 0
+          },
+          {
+            "SystemSet": 1
+          }
+        ],
+        [
+          {
+            "SystemSet": 1
+          },
+          {
+            "SystemSet": 2
+          }
+        ]
+      ],
+      "hierarchy": [
+        [
+          0,
+          {
+            "System": 3
+          }
+        ],
+        [
+          0,
+          {
+            "System": 0
+          }
+        ],
+        [
+          2,
+          {
+            "System": 6
+          }
+        ],
+        [
+          13,
+          {
+            "System": 8
+          }
+        ],
+        [
+          1,
+          {
+            "System": 5
+          }
+        ],
+        [
+          0,
+          {
+            "System": 2
+          }
+        ],
+        [
+          2,
+          {
+            "System": 9
+          }
+        ],
+        [
+          3,
+          {
+            "System": 5
+          }
+        ],
+        [
+          11,
+          {
+            "System": 9
+          }
+        ],
+        [
+          2,
+          {
+            "System": 10
+          }
+        ],
+        [
+          7,
+          {
+            "System": 10
+          }
+        ],
+        [
+          2,
+          {
+            "System": 8
+          }
+        ],
+        [
+          8,
+          {
+            "System": 0
+          }
+        ],
+        [
+          9,
+          {
+            "System": 6
+          }
+        ],
+        [
+          0,
+          {
+            "System": 4
+          }
+        ],
+        [
+          5,
+          {
+            "System": 7
+          }
+        ],
+        [
+          0,
+          {
+            "System": 1
+          }
+        ],
+        [
+          6,
+          {
+            "System": 1
+          }
+        ],
+        [
+          10,
+          {
+            "System": 2
+          }
+        ],
+        [
+          2,
+          {
+            "System": 7
+          }
+        ],
+        [
+          12,
+          {
+            "System": 4
+          }
+        ],
+        [
+          4,
+          {
+            "System": 3
+          }
+        ]
+      ],
+      "name": "RunFixedMainLoop",
+      "system_sets": [
+        {
+          "conditions": [],
+          "name": "BeforeFixedMainLoop"
+        },
+        {
+          "conditions": [],
+          "name": "FixedMainLoop"
+        },
+        {
+          "conditions": [],
+          "name": "AfterFixedMainLoop"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_time::fixed::run_fixed_main_schedule"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::start_gizmo_context<bevy_light::gizmos::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::end_gizmo_context<bevy_light::gizmos::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::start_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::end_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::start_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::end_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::start_gizmo_context<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::end_gizmo_context<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::start_gizmo_context<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "conditions": [],
+          "name": "SystemTypeSet:bevy_gizmos::end_gizmo_context<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        }
+      ],
+      "systems": [
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  1
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::start_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  3
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::start_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  5
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  6
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::start_gizmo_context<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  8
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::start_gizmo_context<bevy_light::gizmos::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  9
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  10
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    10
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::start_gizmo_context<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [],
+          "name": "bevy_time::fixed::run_fixed_main_schedule"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  1
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  1
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    1
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  2
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  2
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    2
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::end_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  7
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  7
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    7
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  8
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  8
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    8
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::end_gizmo_context<bevy_light::gizmos::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  9
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  9
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    9
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  10
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  10
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    10
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::end_gizmo_context<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  5
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  5
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    5
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  6
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  6
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    6
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::end_gizmo_context<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        },
+        {
+          "apply_deferred": false,
+          "deferred": false,
+          "exclusive": false,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  3
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  3
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    3
+                  ],
+                  "without": []
+                }
+              ]
+            },
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [
+                  4
+                ],
+                "reads_inverted": false,
+                "writes": [
+                  4
+                ],
+                "writes_inverted": false
+              },
+              "filter_sets": [
+                {
+                  "with": [
+                    0,
+                    4
+                  ],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_gizmos::end_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"
+        }
+      ]
+    }
+  }
+}
