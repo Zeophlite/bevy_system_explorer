@@ -37,8 +37,9 @@ const main_list : ScheduleList = await _main_list();
 const _render_list = () => import('./render.json');
 const render_list : ScheduleList = await _render_list();
 
+export type AppLabel = "main" | "render";
 
-async function loadGraph(folder: "main" | "render", scheduleList : ScheduleList) : Promise<{ [schedule: string] : ScheduleGraph }> {
+async function loadGraph(folder: AppLabel, scheduleList : ScheduleList) : Promise<{ [schedule: string] : ScheduleGraph }> {
     let data : { [schedule: string] : ScheduleGraph } = {};
 
     for(let schedule of scheduleList.result.schedule_labels) {

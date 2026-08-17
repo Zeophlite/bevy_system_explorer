@@ -3,15 +3,15 @@ import { type Core, type EdgeDataDefinition, type EdgeSingular, type ElementDefi
 import type cytoscapeProxy from 'cytoscape';
 
 
-import type { ComponentDetail, Controller } from '../controller';
+import type { Controller } from '../controller';
 import type { System, SystemOrSetWrap, SystemSet } from "../../bevy_types/systems_graph_types";
 
 
 
 interface NodeData extends NodeDataDefinition {
     id: string,
-    label: string,
-    title: string,
+    shortName: string,
+    fullName: string,
     _node_type: "system" | "system_set",
     _data: System | SystemSet,
 }
@@ -45,13 +45,9 @@ function elements_add_edge(elements: Elements, edge : EdgeData): void {
     elements.edges[edge.id] = { data: edge };
 }
 
-function parseSystemName(componentName : string) {
-    return componentName.split("::").at(-1)!;
-}
+type SystemSetsShortNameToIdLookup = Map<string, string[]>;
 
-type SystemSetsTitleToIdLookup = Map<string, string[]>;
-
-function systemOrSetWrapToNodeId(input : SystemOrSetWrap, app: "main" | "render", schedule: string) : string {
+function systemOrSetWrapToNodeId(input : SystemOrSetWrap, app: AppLabel, schedule: string) : string {
     if("System" in input) {
         return makeSystemId(input.System, app, schedule);
     }
@@ -61,19 +57,19 @@ function systemOrSetWrapToNodeId(input : SystemOrSetWrap, app: "main" | "render"
     return "unknown";
 }
 
-function makeSystemId(index: number, app: "main" | "render", schedule: string) : string {
+function makeSystemId(index: number, app: AppLabel, schedule: string) : string {
     return `system-${app}-${schedule}-${index}`;
 }
-function makeSystemSetId(index: number, app: "main" | "render", schedule: string) : string {
+function makeSystemSetId(index: number, app: AppLabel, schedule: string) : string {
     return `systemset-${app}-${schedule}-${index}`;
 }
 
 
-function makeSystemNode(index: number, system: System, app: "main" | "render", schedule: string) : NodeData {
+function makeSystemNode(index: number, system: System, app: AppLabel, schedule: string) : NodeData {
     return {
         id: makeSystemId(index, app, schedule),
-        label: system.name,
-        title: parseSystemName(system.name),
+        fullName: system.name,
+        shortName: parseSystemName(system.name),
         shape: 'ellipse',
         color: {background: '#aabbcc', border: '#aa0000' },
         opacity: 1.0,
@@ -85,35 +81,33 @@ function makeSystemNode(index: number, system: System, app: "main" | "render", s
     };
 }
 
-function makeSystemSetNode(systemSetsLookup: SystemSetsTitleToIdLookup, index: number, system_set: SystemSet, app: "main" | "render", schedule: string) : NodeData {
+function makeSystemSetNode(systemSetsLookup: SystemSetsShortNameToIdLookup, index: number, system_set: SystemSet, app: AppLabel, schedule: string) : NodeData {
     let id = makeSystemSetId(index, app, schedule);
-    let title = system_set.name.split("::").at(-1) || "unknown";
+    let shortName = parseSystemSetName(system_set.name);
 
-    // console.log("Title ", title, id);
-
-    let lookup = systemSetsLookup.get(app + "-" + schedule + "-" + title);
+    let lookup = systemSetsLookup.get(app + "-" + schedule + "-" + shortName);
     if(lookup == undefined) {
         lookup = [];
-        systemSetsLookup.set(app + "-" + schedule + "-" + title, lookup)
+        systemSetsLookup.set(app + "-" + schedule + "-" + shortName, lookup)
     }
     lookup.push(id);
 
     return {
         id,
-        label: system_set.name,
-        title,
+        fullName: system_set.name,
+        shortName: shortName,
         _node_type: "system_set",
         _data: system_set,
     };
 }
 
-function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, title: string, pos: {x: number, y: number}, app: "main" | "render", schedule: string) {
-    let ids = systemSetsLookup.get(app + "-" + schedule + "-" + title);
+function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsShortNameToIdLookup, shortName: string, pos: {x: number, y: number}, app: AppLabel, schedule: string) {
+    let ids = systemSetsLookup.get(app + "-" + schedule + "-" + shortName);
     if(ids == undefined) {
-        console.log("No title", title);
+        console.log("No shortName", shortName);
         return;
     } else if(ids.length != 1) {
-        console.log("Multiple titles", title, ids);
+        console.log("Multiple shortNames", shortName, ids);
         return;
     }
 
@@ -126,11 +120,11 @@ function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsTitleT
             // nodeDataSet.update(node);
         }
     } else {
-        console.log("Yes title, but no node", title, ids);
+        console.log("Yes shortName, but no node", shortName, ids);
     }
 }
 
-function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap, app: "main" | "render", schedule: string) : EdgeData {
+function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap, app: AppLabel, schedule: string) : EdgeData {
 
     let from = systemOrSetWrapToNodeId(a, app, schedule);
     let to = systemOrSetWrapToNodeId(b, app, schedule);
@@ -143,7 +137,7 @@ function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWra
     };
 }
 
-function makeHierarchyEdge(index: number, a: number, b : SystemOrSetWrap, app: "main" | "render", schedule: string) : EdgeData {
+function makeHierarchyEdge(index: number, a: number, b : SystemOrSetWrap, app: AppLabel, schedule: string) : EdgeData {
 
     let from = makeSystemSetId(a, app, schedule);
     let to =  systemOrSetWrapToNodeId(b, app, schedule);
@@ -156,31 +150,33 @@ function makeHierarchyEdge(index: number, a: number, b : SystemOrSetWrap, app: "
     };
 }
 
-function buildChain(elements: Elements, systemSetsLookup: SystemSetsTitleToIdLookup, app: "main" | "render", schedule: string, origin: {x: number, y: number}, offset: {x: number, y: number}, system_sets: string[]) {
+function buildChain(elements: Elements, systemSetsLookup: SystemSetsShortNameToIdLookup, app: AppLabel, schedule: string, origin: {x: number, y: number}, offset: {x: number, y: number}, systemSetShortNames: string[]) {
     let idx = 0;
-    for(let system_set of system_sets) {
+    for(let systemSetShortName of systemSetShortNames) {
         let x = origin.x + 1.0 * idx * offset.x;
         let y = origin.y + 1.0 * idx * offset.y;
 
-        fixSystemSetNode(elements, systemSetsLookup, system_set, {x, y}, app, schedule);
+        fixSystemSetNode(elements, systemSetsLookup, systemSetShortName, {x, y}, app, schedule);
         idx += 1;
     }
 }
 
 
-export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" | "render", schedule: string) : Elements {
-    let systemSetsLookup: SystemSetsTitleToIdLookup = new Map();
+export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel, schedule: string) : Elements {
+    let systemSetsLookup: SystemSetsShortNameToIdLookup = new Map();
     let elements: Elements = { nodes: {}, edges: {} };
 
-    let RG = controller.getData(app, schedule);
-    if(RG === undefined) {
+    let scheduleData = controller.getData(app, schedule);
+    if(scheduleData === undefined) {
         return elements;
     }
 
-    for(let [index, system_set] of RG.result.schedule_data.system_sets.entries()) {
+    let scheduleGraph = scheduleData.result.schedule_data;
+
+    for(let [index, system_set] of scheduleGraph.system_sets.entries()) {
         elements_add_node(elements, makeSystemSetNode(systemSetsLookup, index, system_set, app, schedule));
     }
-    for(let [index, system] of RG.result.schedule_data.systems.entries()) {
+    for(let [index, system] of scheduleGraph.systems.entries()) {
         try {
             elements_add_node(elements, makeSystemNode(index, system, app, schedule));
         } catch(ex) {
@@ -188,14 +184,14 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
         }
     }
 
-    for(let [index, dep] of RG.result.schedule_data.dependency.entries()) {
+    for(let [index, dep] of scheduleGraph.dependency.entries()) {
         let a = dep[0];
         let b = dep[1];
 
         elements_add_edge(elements, makeDependencyEdge(index, a, b, app, schedule));
     }
 
-    for(let [index, hie] of RG.result.schedule_data.hierarchy.entries()) {
+    for(let [index, hie] of scheduleGraph.hierarchy.entries()) {
         let a = hie[0] as number;
         let b = hie[1] as SystemOrSetWrap;
 
@@ -245,7 +241,7 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: "main" |
 
     // NOTE: main/PreUpdate/Assets<A>::asset_events in AssetTrackingSystems per A
 
-    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('title')) !== -1).remove();
+    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('shortName')) !== -1).remove();
     // cy.nodes().filter(node => node.degree() > 3).remove();
 
     // NOTE: main calls layout
@@ -284,6 +280,18 @@ export function findSystemSetsChains(cy: Core): void {
 }
 
 export function parentSoleSystems(cy: Core) : EdgeSingular[] {
+    console.log("track_assets");
+    cy.nodes().filter(node => {
+            let t: string | undefined = node.data('shortName');
+            if(t === undefined) {
+                return false;
+            } else {
+                return t.includes("track_assets");
+            }
+        }).forEach((node) => {
+        console.log(node.id(), node.data());
+    });
+
     // cy.nodes()
     //     .filter(node =>
     //         node.data('_node_type') == "system" &&
@@ -294,21 +302,29 @@ export function parentSoleSystems(cy: Core) : EdgeSingular[] {
     let parentableSystems = cy
         .nodes()
         .filter(node =>
-            node.data('_node_type') == 'system' &&
             node.parent().length == 0 &&
-            node.incomers().length == 2
+            ((node.incomers().length == 2 && node.outgoers().length == 0) ||
+            (node.incomers().length == 0 && node.outgoers().length == 2))
         );
 
     let edges = parentableSystems.map((system) => {
-        let edge = (system as NodeSingular).incomers().filter(i => i.isEdge()) as EdgeSingular;
-        let systemset = edge.source();
+        let edge;
+        let other;
 
-        if(system.data('title') != systemset.data('title')) {
+        if((system as NodeSingular).incomers().length == 2) {
+            edge = (system as NodeSingular).incomers().filter(i => i.isEdge()) as EdgeSingular;
+            other = edge.source();
+        } else {
+            edge = (system as NodeSingular).outgoers().filter(i => i.isEdge()) as EdgeSingular;
+            other = edge.target();
+        }
+
+        if(system.data('shortName') != other.data('shortName')) {
             return null;
         }
 
         system.move({
-            parent: systemset.id()
+            parent: other.id()
         });
 
         return edge;
@@ -317,22 +333,22 @@ export function parentSoleSystems(cy: Core) : EdgeSingular[] {
     return edges;
     
     // cy.nodes().forEach((node) => {
-    //     if(node.data('title') != 'draw_lights') { return; }
-    //     console.log("" + node.id() + " " + node.data('title') + ":", node.incomers().map(i => i.data()), node.outgoers().map(o => o.data()));
+    //     if(node.data('shortName') != 'draw_lights') { return; }
+    //     console.log("" + node.id() + " " + node.data('shortName') + ":", node.incomers().map(i => i.data()), node.outgoers().map(o => o.data()));
     // });
 
     // let ss = cy
     //     .nodes()
     //     .filter(node =>
     //         node.data('_node_type') == 'system_set' &&
-    //         node.data('title') == "draw_lights"
+    //         node.data('shortName') == "draw_lights"
     //     ).id();
 
     // let s = cy
     //     .nodes()
     //     .filter(node =>
     //         node.data('_node_type') == 'system' &&
-    //         node.data('title') == "draw_lights"
+    //         node.data('shortName') == "draw_lights"
     //     );
 
     // cy.edges().filter(edge => edge.source().id() == ss && edge.target().id() == s.id()).remove();
@@ -350,7 +366,7 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             selector: 'node[_node_type = "system"]',
             style: {
                 'background-color': '#1a5fad',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(shortName)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -360,7 +376,7 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             selector: 'node[_node_type = "system_set"]',
             style: {
                 'background-color': '#1aad1f',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(shortName)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -379,6 +395,15 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
                 'border-width': "3px",
                 'border-style': "dashed",
                 'border-color': '#adb0ae',
+            }
+        },
+
+        {
+            selector: 'node[focused = "true"]',
+            style: {
+                'outline-width': "3px",
+                'outline-style': "dotted",
+                'outline-color': '#e23939',
             }
         },
 
@@ -447,4 +472,6 @@ export function systemsLayout(cy: Core) : void {
     // ).run();
 }
 
-import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';
+import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';import type { AppLabel } from '../../data/index.ts';
+import { parseSystemName, parseSystemSetName } from './name.ts';
+

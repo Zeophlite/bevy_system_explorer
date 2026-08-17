@@ -5,12 +5,11 @@ import type cytoscapeProxy from 'cytoscape';
 import type { ComponentDetail, Controller } from '../controller';
 
 
-
 interface NodeData extends NodeDataDefinition {
     id: string,
-    label: string,
-    title: string,
-    required: string[],
+    shortName: string,
+    fullName: string,
+    requiredShortName: string[],
     _node_type: "resource" | "component",
 }
 
@@ -59,11 +58,6 @@ function elements_add_edge(elements: Elements, edge : EdgeData): void {
     elements.edges[edge.id] = { data: edge };
 }
 
-// TODO: handle generics
-function parseComponentName(componentName : string) : string {
-    return componentName.split("::").at(-1)!;
-}
-
 function makeComponentId(name: string) : string {
     return `component-${name}`;
 }
@@ -72,17 +66,17 @@ function makeComponent(componentName: string, component: ComponentDetail) : Node
     // if(componentName == "bevy_anti_alias::contrast_adaptive_sharpening::CasPipeline") {
     //     console.log(componentName, component);
     // }
-    let isResource = component.required.includes("bevy_ecs::resource::IsResource");
+    let isResource = component.required.has("bevy_ecs::resource::IsResource");
     if(isResource) {
         console.log("" + componentName + " isResource=" + isResource)
     }
 
     return {
         id: makeComponentId(componentName),
-        label: componentName,
-        title: parseComponentName(componentName),
+        fullName: componentName,
+        shortName: parseComponentName(componentName),
         _node_type: isResource ? "resource" : "component",
-        required: [],
+        requiredShortName: [],
     };
 }
 
@@ -122,7 +116,7 @@ export function loadComponentsGraph(controller: Controller, cy: Core) : Elements
 
                 let n = elements.nodes[makeComponentId(componentName)];
 
-                n.data.required.push(r.shortName);
+                n.data.requiredShortName.push(r.shortName);
             } else {
                 elements_add_edge(elements, makeRequiredEdge(componentName, component, req, required));
             }
@@ -148,12 +142,11 @@ export function initComponentsGraph(container: HTMLDivElement, cytoscape: typeof
                 'background-color': '#1a5fad',
                 'label': function(element : NodeSingular) {
                     let d = element.data() as NodeData;
-                    if(d.required.length == 0) {
-                        return d.title;
+                    if(d.requiredShortName.length == 0) {
+                        return d.shortName;
                     }
-                    return d.title + "\n" + "( " + d.required.join(", ") + " )";
+                    return d.shortName + "\n" + "( " + d.requiredShortName.join(", ") + " )";
                 },
-                // 'data(title)', // id, label, title
                 'color': '#b5b5b5',
                 'text-wrap': 'wrap',
                 'text-max-width': '80px'
@@ -171,6 +164,15 @@ export function initComponentsGraph(container: HTMLDivElement, cytoscape: typeof
             selector: ':parent',
             style: {
                 'background-opacity': 0.333
+            }
+        },
+
+        {
+            selector: 'node[focused = "true"]',
+            style: {
+                'outline-width': "3px",
+                'outline-style': "dotted",
+                'outline-color': '#e23939',
             }
         },
 
@@ -239,4 +241,5 @@ function componentsLayout(cy: Core) : void {
 
 }
 
-import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';
+import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';import { parseComponentName } from './name.ts';
+

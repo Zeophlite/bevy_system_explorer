@@ -2,15 +2,14 @@
 import { type Core, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type StylesheetJson } from 'cytoscape';
 import type cytoscapeProxy from 'cytoscape';
 
-import type { ComponentDetail, Controller } from '../controller';
+import type { Controller } from '../controller';
 
 
 
 interface NodeData extends NodeDataDefinition {
     id: string,
-    label: string,
-    title: string,
-    // app (schedule only)
+    name: string,
+    app? : string, // schedule only
     _node_type: "schedule" | "system" | "resource" | "plugin" | "chain" | "app",
 }
 
@@ -63,8 +62,7 @@ function createApp(elements: Elements, name: string, pos: {x: number, y: number}
 
     let app: NodeData = {
         id: id,
-        label: name,
-        title: name,
+        name: name,
         _node_type: "app",
     }
     if (pos != null) {
@@ -102,7 +100,7 @@ function createSchedule(elements: Elements, app: string, schedule: string, pos: 
         // nd["physics"] = true;
         // nd["fixed"] = {x: true, y: true};
         if(parent != null && nd.parent != parent) {
-            console.log("update parent for " + name);
+            console.log("update parent for " + id);
             nd.parent = parent;
         }
 
@@ -111,9 +109,8 @@ function createSchedule(elements: Elements, app: string, schedule: string, pos: 
 
     let sched: NodeData = {
         id: id,
-        label: app + "#" + schedule,
+        name: schedule,
         app,
-        title: schedule,
         _node_type: "schedule",
     };
 
@@ -151,8 +148,7 @@ function createSystem(elements: Elements, name: string, pos: {x: number, y: numb
 
     let node: NodeData = {
         id: id,
-        label: name,
-        title: name,
+        name: name,
         _node_type: "system",
     };
 
@@ -172,8 +168,7 @@ function createResource(elements: Elements, name: string) : string {
 
     let res: NodeData = {
         id: id,
-        label: name,
-        title: name,
+        name: name,
         _node_type: "resource",
     }
     elements_add_node(elements, res);
@@ -186,8 +181,7 @@ function createPlugin(elements: Elements, name: string, pos: {x: number, y: numb
 
     let node: NodeData = {
         id: id,
-        label: name,
-        title: name,
+        name: name,
         _node_type: "plugin",
     };
 
@@ -207,8 +201,7 @@ function createChain(elements: Elements, name: string) : string {
 
     let res: NodeData = {
         id: id,
-        label: "",
-        title: "",
+        name: name,
         _node_type: "chain",
     }
     elements_add_node(elements, res);
@@ -253,8 +246,8 @@ function makeEdge(elements: Elements, from: string, to: string, label: string) :
 
 type ScheduleToNodeId = {[key:string] : string};
 
-function createScheduleChain(title: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, app: string, schedules: string[]): ScheduleToNodeId {
-    let chain = createChain(elements, title);
+function createScheduleChain(name: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, app: string, schedules: string[]): ScheduleToNodeId {
+    let chain = createChain(elements, name);
 
     let prevSchedule = null;
 
@@ -470,8 +463,9 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     makeEdge(elements, PipelinedRenderingPlugin, RenderApp, "extract()"); // in main thread
 
 
-    let allSchedules = controller.allSchedules;
-    for(let schedule of allSchedules) {
+    for(let scheduleId of Object.keys(controller.allSchedules)) {
+        let schedule = controller.allSchedules[scheduleId]!;
+
         createSchedule(elements, schedule.app, schedule.schedule);
     }
 
@@ -493,7 +487,7 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
             selector: 'node[_node_type = "schedule"]',
             style: {
                 'background-color': '#1a5fad',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(name)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -502,7 +496,7 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
             selector: 'node[_node_type = "resource"]',
             style: {
                 'background-color': '#1aad1f',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(name)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -511,7 +505,7 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
             selector: 'node[_node_type = "system"]',
             style: {
                 'background-color': '#a8ad1a',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(name)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -520,7 +514,7 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
             selector: 'node[_node_type = "plugin"]',
             style: {
                 'background-color': '#611aad',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(name)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -529,16 +523,14 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
             selector: 'node[_node_type = "chain"]',
             style: {
                 'background-color': '#f81ae9',
-                'label': 'data(title)', // id, label, title
-                'text-wrap': 'wrap',      // Enables text wrapping
-                'text-max-width': '80px'
+                'label': '',
             }
         },
         {
             selector: 'node[_node_type = "app"]',
             style: {
                 'background-color': '#f8de1a',
-                'label': 'data(title)', // id, label, title
+                'label': 'data(name)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -557,6 +549,15 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
                 'border-width': "3px",
                 'border-style': "dashed",
                 'border-color': '#adb0ae',
+            }
+        },
+
+        {
+            selector: 'node[focused = "true"]',
+            style: {
+                'outline-width': "3px",
+                'outline-style': "dotted",
+                'outline-color': '#e23939',
             }
         },
 

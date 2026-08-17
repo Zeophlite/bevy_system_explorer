@@ -50,10 +50,10 @@ interface SystemSetWrap {
 }
 export type SystemOrSetWrap = SystemWrap | SystemSetWrap;
 
-type Dependency = [SystemOrSetWrap, SystemOrSetWrap];
+export type Dependency = [SystemOrSetWrap, SystemOrSetWrap];
 
 
-type Hierarchy = [number, SystemOrSetWrap];
+export type Hierarchy = [number, SystemOrSetWrap];
 
 interface ConditionData {
     name: string,
@@ -74,8 +74,8 @@ export interface System {
 
 interface AccessData {
     archetypal: number[],
-    read_and_writes: number[],
-    read_and_writes_inverted: boolean,
+    reads: number[],
+    reads_inverted: boolean,
     writes: number[],
     writes_inverted: boolean,
 }
@@ -83,7 +83,6 @@ interface AccessData {
 interface FilteredAccess {
     access: AccessData,
     filter_sets: AccessFilters[],
-    required: number[],
 }
 
 interface AccessFilters {
