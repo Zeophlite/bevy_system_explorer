@@ -454,8 +454,8 @@ export function systemsLayout(cy: Core) : void {
     cy.layout({
         // animate: true,
         // gravity: 1.0,
-        // name: 'cola',
-        name: 'cose',
+        name: 'cola',
+        // name: 'cose',
         // name: 'cose-bilkent',
         // avoidOverlap: true,
         // nodeDimensionsIncludeLabels: true

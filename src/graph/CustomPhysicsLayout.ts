@@ -7,8 +7,8 @@ interface BaseOptions {
 
 export interface CustomPhysicsOptions {
     name: 'customPhysics';
-    hSpacing?: number;      // Horizontal distance for 'hierarchy' edges
-    vSpacing?: number;      // Vertical distance for 'dependency' edges
+    hSpacing?: number;      // Horizontal distance for 'dependency' edges
+    vSpacing?: number;      // Vertical distance for 'hierarchy' edges
     stiffness?: number;     // Hooke's spring constant
     repulsion?: number;     // Coulomb's repulsion constant
     damping?: number;       // Velocity friction (0 to 1)
@@ -24,6 +24,10 @@ interface NodePhysicsState {
     isFixed: boolean; // True for structural nodes, False for soft spring nodes
 }
 
+// This is an experimental custom layout
+// Intention is to horizontally place dependencies left to right
+// and hierarchies top to bottom
+// TODO: start with system set chains positioning to give good first placement
 export class CustomPhysicsLayout {
     private options: Required<CustomPhysicsOptions>;
     private cy:  Core;
@@ -91,14 +95,14 @@ export class CustomPhysicsLayout {
             state.y = currY;
             state.isFixed = true; // Pin this down so it guides the soft springs
 
-            // Cascade Left-to-Right via 'hierarchy' type edges pointing out of this node
+            // Cascade Left-to-Right via 'dependency' type edges pointing out of this node
             hEdges.filter(e => (e as any).source().id() === id).forEach(edge => {
-                processStructure(edge.target(), currX + options.hSpacing, currY);
+                processStructure(edge.target(), currX, currY + options.vSpacing);
             });
 
-            // Cascade Top-to-Bottom via 'dependency' type edges pointing out of this node
+            // Cascade Top-to-Bottom via 'hierarchy' type edges pointing out of this node
             dEdges.filter(e => (e as any).source().id() === id).forEach(edge => {
-                processStructure(edge.target(), currX, currY + options.vSpacing);
+                processStructure(edge.target(), currX + options.hSpacing, currY);
             });
         }
 

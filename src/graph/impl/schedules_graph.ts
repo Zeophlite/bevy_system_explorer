@@ -277,7 +277,21 @@ function createScheduleChain(name: string, elements: Elements, resource: string,
 
 
 
+function fixPos(elements: Elements, id: string, x: number, y: number): void {
+    let node = elements.nodes[id];
+    if(node != null) {
+        let nd = node.data;
+        nd.position = {x, y};
+        nd.x = x;
+        nd.y = y;
+        nd.fixed = true;
 
+        node.position = {x, y};
+        (node as any).fixed = true;
+        (node as any).x = x;
+        (node as any).y = y;
+    }
+}
 
 
 export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements {
@@ -291,7 +305,7 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     let MainScheduleOrder = createResource(elements, "MainScheduleOrder");
     makeEdge(elements, run_main, MainScheduleOrder, "executes");
 
-    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 500, y: 0}, "main", [
+    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 200, y: 0}, "main", [
         "StateTransition (startup)", // There's 1x StateTransition schedule, and it runs in startup and in main order
         "PreStartup",
         "Startup",
@@ -302,7 +316,7 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (startup)"], "adds")
 
     // main_startup_order runs once, then main_order
-    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 500, y: 0}, "main", [
+    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 200, y: 0}, "main", [
         "First",
         "PreUpdate",
         "StateTransition",
@@ -468,6 +482,33 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
 
         createSchedule(elements, schedule.app, schedule.schedule);
     }
+
+    // TODO: these are trial and error positioning, would be nice to algorithmically determine it
+    fixPos(elements, "resource-FixedMainScheduleOrder",0,520);
+    fixPos(elements, "resource-MainScheduleOrder",-100,20);
+    fixPos(elements, "resource-RenderScheduleOrder",-90,810);
+
+    fixPos(elements, "schedule-render-Core2d",490,1000);
+    fixPos(elements, "schedule-render-Core3d",500,1080);
+    fixPos(elements, "schedule-render-ExtractSchedule",-480,650);
+    fixPos(elements, "schedule-main-FixedMain",10,380);
+    fixPos(elements, "schedule-main-Main",-110,-150);
+    fixPos(elements, "schedule-render-RenderGraph",220,1060);
+    fixPos(elements, "schedule-render-RenderRecovery",-100,680);
+    fixPos(elements, "schedule-render-RenderStartup",-320,870);
+
+    fixPos(elements, "system-camera_driver",350,1060);
+    fixPos(elements, "system-entity_sync_system",-220,650);
+    fixPos(elements, "system-error_handler",-340,750);
+    fixPos(elements, "system-extract",-370,510);
+    fixPos(elements, "system-extract_cameras",-480,750);
+    fixPos(elements, "system-pre_extract",-350,650);
+    fixPos(elements, "system-render_system",210,980);
+    fixPos(elements, "system-run_fixed_main",10,450);
+    fixPos(elements, "system-run_fixed_main_schedule",570,390);
+    fixPos(elements, "system-run_main",-110,-70);
+    fixPos(elements, "system-run_render_schedule",-90,750);
+
 
     cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
 
@@ -641,7 +682,7 @@ function schedulesLayout(cy: Core) : void {
         infinite: false // overrides all other options for a forces-all-the-time mode
     };
 
-    cy.layout(cl as any).run();
+    // cy.layout(cl as any).run();
 
     // cy.layout({
     //     animate: true,

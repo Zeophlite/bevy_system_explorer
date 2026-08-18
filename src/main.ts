@@ -107,14 +107,16 @@ async function init() {
         controller.setSelectedComponents(selectedComponents);
         let {focusedSchedules, focusedSystems} = controller.focusedForSelected();
 
+        console.log("selectedComponents", selectedComponents, focusedSchedules, focusedSystems);
+
         sched.nodes().forEach((sched_node) => {
-            let comp = sched_node.data("label");
+            let comp = sched_node.data("name");
             let sel = focusedSchedules.includes(comp);
             sched_node.data("focused", "" + sel);
         });
         sys.nodes().forEach((sys_node) => {
             if(sys_node.data("_node_type") == "system") {
-                let comp = sys_node.data("label");
+                let comp = sys_node.data("fullName");
                 let sel = focusedSystems.includes(comp);
                 sys_node.data("focused", "" + sel);
             } else {
@@ -160,13 +162,13 @@ async function init() {
         let {focusedComponents, focusedSystems} = controller.focusedForSelected();
 
         comp.nodes().forEach((comp_node) => {
-            let comp = comp_node.data("label");
+            let comp = comp_node.data("fullName");
             let sel = focusedComponents.includes(comp);
             comp_node.data("focused", "" + sel);
         });
         sys.nodes().forEach((sys_node) => {
             if(sys_node.data("_node_type") == "system") {
-                let comp = sys_node.data("label");
+                let comp = sys_node.data("fullName");
                 let sel = focusedSystems.includes(comp);
                 sys_node.data("focused", "" + sel);
             } else {
@@ -212,12 +214,12 @@ async function init() {
         let {focusedComponents, focusedSchedules} = controller.focusedForSelected();
 
         comp.nodes().forEach((comp_node) => {
-            let comp = comp_node.data("label");
+            let comp = comp_node.data("fullName");
             let sel = focusedComponents.includes(comp);
             comp_node.data("focused", "" + sel);
         });
         sched.nodes().forEach((sched_node) => {
-            let comp = sched_node.data("label");
+            let comp = sched_node.data("name");
             let sel = focusedSchedules.includes(comp);
             sched_node.data("focused", "" + sel);
         });

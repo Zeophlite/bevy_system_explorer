@@ -18,8 +18,8 @@ export function initCustomGraph(container: HTMLDivElement, controller: Controlle
             { data: { id: 'S1' } }, { data: { id: 'S2' } },
 
             // Edges setting structural dependencies
-            { data: { id: 'e1', source: 'A', target: 'B', type: 'h' } }, // Left-to-Right
-            { data: { id: 'e2', source: 'B', target: 'C', type: 'd' } }, // Top-to-Bottom    
+            { data: { id: 'e1', source: 'A', target: 'B', type: 'hierarchy' } }, // Top-to-Bottom
+            { data: { id: 'e2', source: 'B', target: 'C', type: 'dependency' } }, // Left-to-Right
 
             // Regular Spring Edges (Any type fallback string or undefined)
             { data: { id: 'e3', source: 'B', target: 'S1', type: 'spring' } },
