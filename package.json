@@ -9,7 +9,7 @@
     "dev:read": "vite --mode read",
     "dev:mock": "vite --mode mock",
     "build": "tsc && vite build",
-    "deploy": "tsc && vite build --base /bevy_system_explorer/",
+    "deploy": "tsc && vite build --mode read --base /bevy_system_explorer/",
     "preview": "vite preview"
   },
   "devDependencies": {
