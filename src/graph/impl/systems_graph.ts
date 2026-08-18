@@ -104,10 +104,10 @@ function makeSystemSetNode(systemSetsLookup: SystemSetsShortNameToIdLookup, inde
 function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsShortNameToIdLookup, shortName: string, pos: {x: number, y: number}, app: AppLabel, schedule: string) {
     let ids = systemSetsLookup.get(app + "-" + schedule + "-" + shortName);
     if(ids == undefined) {
-        console.log("No shortName", shortName);
+        // console.log("No shortName", shortName);
         return;
     } else if(ids.length != 1) {
-        console.log("Multiple shortNames", shortName, ids);
+        // console.log("Multiple shortNames", shortName, ids);
         return;
     }
 
@@ -120,7 +120,7 @@ function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsShortN
             // nodeDataSet.update(node);
         }
     } else {
-        console.log("Yes shortName, but no node", shortName, ids);
+        // console.log("Yes shortName, but no node", shortName, ids);
     }
 }
 
@@ -180,7 +180,7 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
         try {
             elements_add_node(elements, makeSystemNode(index, system, app, schedule));
         } catch(ex) {
-            console.log(ex);
+            // console.log(ex);
         }
     }
 
@@ -251,7 +251,7 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
 }
 
 export function findSystemSetsChains(cy: Core): void {
-    console.log('findSystemSetsChains');
+    // console.log('findSystemSetsChains');
 
     // 1. Get the filtered nodes
     const matchedNodes = cy.nodes().filter(node => node.data('_node_type') == 'system_set');
@@ -267,20 +267,20 @@ export function findSystemSetsChains(cy: Core): void {
     let tt: string[] = [];
 
     for(let r of res) {
-        console.log("# comp");
+        // console.log("# comp");
         r.forEach((ne) => {
-            console.log("-- ", ne.data());
+            // console.log("-- ", ne.data());
             tt.push(ne.id());
         });
     }
 
     cy.nodes().filter(node => tt.indexOf(node.id()) === -1).remove();
 
-    console.log('findSystemSetsChains end');
+    // console.log('findSystemSetsChains end');
 }
 
 export function parentSoleSystems(cy: Core) : EdgeSingular[] {
-    console.log("track_assets");
+    // console.log("track_assets");
     cy.nodes().filter(node => {
             let t: string | undefined = node.data('shortName');
             if(t === undefined) {
@@ -289,7 +289,7 @@ export function parentSoleSystems(cy: Core) : EdgeSingular[] {
                 return t.includes("track_assets");
             }
         }).forEach((node) => {
-        console.log(node.id(), node.data());
+        // console.log(node.id(), node.data());
     });
 
     // cy.nodes()
@@ -334,7 +334,7 @@ export function parentSoleSystems(cy: Core) : EdgeSingular[] {
     
     // cy.nodes().forEach((node) => {
     //     if(node.data('shortName') != 'draw_lights') { return; }
-    //     console.log("" + node.id() + " " + node.data('shortName') + ":", node.incomers().map(i => i.data()), node.outgoers().map(o => o.data()));
+    //     // console.log("" + node.id() + " " + node.data('shortName') + ":", node.incomers().map(i => i.data()), node.outgoers().map(o => o.data()));
     // });
 
     // let ss = cy

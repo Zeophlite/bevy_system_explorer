@@ -33,7 +33,7 @@ export class CustomPhysicsLayout {
     public stop: () => CustomPhysicsLayout;
 
     constructor(options: CustomPhysicsOptions & BaseOptions) {
-        console.log("Startup");
+        // console.log("Startup");
         const defaults: Omit<Required<CustomPhysicsOptions>, 'name'> = {
             hSpacing: 150,
             vSpacing: 120,
@@ -78,7 +78,7 @@ export class CustomPhysicsLayout {
         const dEdges = edges.filter(e => e.data('_edge_type') === 'dependency');
 
         let options = this.options;
-        console.log("Setup")
+        // console.log("Setup")
 
         // Simple topological/grid propagation algorithm to calculate broad features
         function processStructure(node:  NodeSingular, currX: number, currY: number) {

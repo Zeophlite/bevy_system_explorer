@@ -100,7 +100,7 @@ function createSchedule(elements: Elements, app: string, schedule: string, pos: 
         // nd["physics"] = true;
         // nd["fixed"] = {x: true, y: true};
         if(parent != null && nd.parent != parent) {
-            console.log("update parent for " + id);
+            // console.log("update parent for " + id);
             nd.parent = parent;
         }
 
@@ -115,7 +115,7 @@ function createSchedule(elements: Elements, app: string, schedule: string, pos: 
     };
 
     if(parent != null) {
-        console.log("set parent for " + app + "#" + schedule);
+        // console.log("set parent for " + app + "#" + schedule);
         sched.parent = parent;
     }
 
@@ -222,7 +222,7 @@ function makeEdge(elements: Elements, from: string, to: string, label: string) :
     let edgeType = "" + fromType + " " + label + " " + toType;
     if(!allEdgesTypes.includes(edgeType)) {
         allEdgesTypes.push(edgeType);
-        console.log("ET: " + edgeType);
+        // console.log("ET: " + edgeType);
 
         if(edgeType == "schedule adds plugin") {
             // console.log("from " + from + " to " + to);

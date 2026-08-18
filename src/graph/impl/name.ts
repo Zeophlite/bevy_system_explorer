@@ -46,12 +46,12 @@ function levelTokens(tokens: Token[]): { type: string, tokens: LeveledToken[] } 
             if(token != expectedOther) {
                 throw new SyntaxError("Unexpected closing parenthesis '" + token + "', expected '" + expectedOther + "'.");
             }
-            //   console.log("token " + token, current.type);
+            //   // console.log("token " + token, current.type);
 
             handleCommas(current);
 
             current = stack.pop()!;
-            //   console.log("current ", current.type);
+            //   // console.log("current ", current.type);
         } else {
             current.tokens.push(token);
         }

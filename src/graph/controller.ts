@@ -100,9 +100,9 @@ export class Controller implements Details {
         this.build(this.apps.main, "main");
         this.build(this.apps.render, "render");
 
-        console.log("allComponents", this.allComponents);
-        console.log("allSchedules", this.allSchedules);
-        console.log("allSystems", this.allSystems);
+        // console.log("allComponents", this.allComponents);
+        // console.log("allSchedules", this.allSchedules);
+        // console.log("allSystems", this.allSystems);
     }
 
     getData(app: AppLabel, schedule: string) : ScheduleGraph {
@@ -125,7 +125,7 @@ export class Controller implements Details {
 
         for(let foo of mainSchedules) {
             if(foo in this.allSchedules) {
-                console.log("Already have schedule " + foo);
+                // console.log("Already have schedule " + foo);
             } else {
                 this.allSchedules[foo] = {
                     app: appName,
@@ -168,7 +168,7 @@ export class Controller implements Details {
                 let bah = system.name;
 
                 if(bah in this.allSystems) {
-                    console.log("Already have system " + bah);
+                    // console.log("Already have system " + bah);
                 } else {
                     this.allSystems[bah] = {
                         shortName: parseSystemName(bah),
@@ -216,7 +216,7 @@ export class Controller implements Details {
                 let bah = systemSet.name;
 
                 if(bah in this.allSystemSets) {
-                    console.log("Already have system set " + bah);
+                    // console.log("Already have system set " + bah);
                 } else {
                     this.allSystemSets[bah] = {
                         shortName: parseSystemName(bah),

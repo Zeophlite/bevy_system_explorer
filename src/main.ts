@@ -32,7 +32,7 @@ function appLoader(mode: string): [string, () => Promise<Apps>] {
 
 async function init() {
     let mode = import.meta.env.MODE;
-    console.log("mode", mode);
+    // console.log("mode", mode);
 
     let [displayMode, appDataFn] = appLoader(mode);
     document.querySelector<HTMLDivElement>('#title')!.innerHTML = `<h1>${displayMode}</h1>`;
@@ -73,10 +73,10 @@ async function init() {
 
     document.querySelector<HTMLButtonElement>('#simplify-systems')!.addEventListener('click', (ev: PointerEvent) => {
         controller.toggleSimplifySystems();
-        console.log('click', ev);
+        // console.log('click', ev);
 
         let ab = sys.$(":selected");
-        console.log("ab");
+        // console.log("ab");
 
         let ids : string[] = [];
         ab.forEach(function (ele) {
@@ -90,7 +90,7 @@ async function init() {
     });
 
     comp.on("select unselect boxselect", (ev) => {
-        console.log("comp " + ev.type + " ", ev.target);
+        // console.log("comp " + ev.type + " ", ev.target);
 
         let selectedComponents: string[] = [];
 
@@ -98,7 +98,7 @@ async function init() {
             if(!ele.isNode()) {
                 return;
             }
-            console.log("" + ev.type + ": " + ele.id(), ele.data());
+            // console.log("" + ev.type + ": " + ele.id(), ele.data());
             let component = ele.data().fullName;
             selectedComponents.push(component);
         });
@@ -125,7 +125,7 @@ async function init() {
     });
 
     sched.on("select unselect boxselect", (ev) => {
-        console.log("sched " + ev.type + " ", ev.target);
+        // console.log("sched " + ev.type + " ", ev.target);
 
         // TODO: retain system positions (as initial) when removing a schedule
 
@@ -137,19 +137,19 @@ async function init() {
                 return;
             }
 
-            console.log("" + ev.type + ": " + ele.id(), ele.data());
+            // console.log("" + ev.type + ": " + ele.id(), ele.data());
             let data = ele.data();
             let node_type = data._node_type;
             
             if(node_type == "schedule") {
                 let schedule = data.name;
 
-                console.log("lsg", data);
+                // console.log("lsg", data);
                 loadSystemsGraph(controller, sys, data.app, schedule);
 
                 selectedSchedules.push(schedule);
 
-                console.log("Selected schedule " + schedule);
+                // console.log("Selected schedule " + schedule);
             }
         });
 
@@ -177,7 +177,7 @@ async function init() {
     });
 
     sys.on("select unselect boxselect", (ev) => {
-        console.log("sys " + ev.type + " ", ev.target);
+        // console.log("sys " + ev.type + " ", ev.target);
 
         let selectedSystems: string[] = [];
         let selectedSystemSets: string[] = [];
@@ -187,7 +187,7 @@ async function init() {
                 return;
             }
 
-            console.log("" + ev.type + ": " + ele.id(), ele.data());
+            // console.log("" + ev.type + ": " + ele.id(), ele.data());
 
             let data = ele.data();
             let node_type = data._node_type; // "system" | "system_set"
@@ -197,12 +197,12 @@ async function init() {
 
             if(node_type == "system") {
                 let ddata = data._data as System;
-                console.log("Selected system " + shortName + " " + fullName + " " + ddata.name);
+                // console.log("Selected system " + shortName + " " + fullName + " " + ddata.name);
                 selectedSystems.push(fullName);
             }
             if(node_type == "system_set") {
                 let ddata = data._data as SystemSet;
-                console.log("Selected systemset " + shortName + " " + fullName + " " + ddata.name);
+                // console.log("Selected systemset " + shortName + " " + fullName + " " + ddata.name);
                 selectedSystemSets.push(fullName);
             }
         });

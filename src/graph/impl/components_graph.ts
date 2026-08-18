@@ -64,11 +64,11 @@ function makeComponentId(name: string) : string {
 
 function makeComponent(componentName: string, component: ComponentDetail) : NodeData {
     // if(componentName == "bevy_anti_alias::contrast_adaptive_sharpening::CasPipeline") {
-    //     console.log(componentName, component);
+    //     // console.log(componentName, component);
     // }
     let isResource = component.required.has("bevy_ecs::resource::IsResource");
     if(isResource) {
-        console.log("" + componentName + " isResource=" + isResource)
+        // console.log("" + componentName + " isResource=" + isResource)
     }
 
     return {
@@ -110,7 +110,7 @@ export function loadComponentsGraph(controller: Controller, cy: Core) : Elements
 
             if(req == "bevy_ecs::resource::IsResource") {
                 // do nothing
-                console.log("resource");
+                // console.log("resource");
             } else if(FooRequired.indexOf(req) != -1) {
                 let r = Foo2Required[req];
 

@@ -7,12 +7,12 @@ const main_port = 15702, render_port = 15703;
 
 export async function collectAll() : Promise<Apps> {
     let mainList = await remoteScheduleList(host, main_port, 1);
-    console.log("main", mainList);
+    // console.log("main", mainList);
     let main = await collect(mainList, host, main_port, mainList.id as number);
 
 
     let renderList = await remoteScheduleList(host, render_port, main.last_id + 1);
-    console.log("render", renderList);
+    // console.log("render", renderList);
     let render = await collect(renderList, host, render_port, renderList.id as number);
 
     return { main, render };
@@ -26,7 +26,7 @@ export async function collect(scheduleList: ScheduleList, host: string, port: nu
     for(let a of scheduleList.result.schedule_labels) {
         id = id + 1;
         let graph = await remoteScheduleGraph(a, host, port, id);
-        console.log("graph " + a, graph);
+        // console.log("graph " + a, graph);
 
         scheduleGraphs[a] = graph;
     }
