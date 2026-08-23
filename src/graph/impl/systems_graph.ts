@@ -280,17 +280,108 @@ export function findSystemSetsChains(cy: Core): void {
 }
 
 export function parentSoleSystems(cy: Core) : EdgeSingular[] {
+    cy.elements().components().forEach((comp) => {
+        console.log("comps");
+        if(comp.nodes().length == 1) {
+            console.log("comps 1");
+            comp.nodes().remove();
+            return;
+        }
+
+        if(comp.nodes().length == 2) {
+            console.log("comps 2");
+            comp.nodes().parents().forEach((par) => {
+                console.log("Par: " + par.id(), par.data());
+            });
+            comp.nodes().remove();
+            return;
+        }
+    });
+
+    let compSize = 500.0;
+    let inset = 0.2;
+
+    let compId = 0;
+
+    let comps = cy.elements().components();
+    let width = Math.round( Math.sqrt(comps.length) + 0.5 );
+
+    for(let comp of comps) {
+        console.log(" comp " + comp.length, comp);
+        let col = Math.floor(compId / width);
+        let row = compId % width;
+
+        let gridX = row * compSize;
+        let gridY = col * compSize;
+
+        let boxSize = (1.0 - 2.0 * inset) * compSize;
+        let boxOffset = compSize * inset;
+
+        comp.nodes().forEach((node) => {
+            if(node.parent().length !== 0) { return; }
+
+            let x = gridX + Math.random() * boxSize + boxOffset;
+            let y = gridY + Math.random() * (1.0 - 2.0 * inset) * compSize + compSize * inset;
+
+            node.position({ x, y });
+
+            console.log("", x, y)
+        });
+
+        compId += 1;
+    }
+
+
     // console.log("track_assets");
     cy.nodes().filter(node => {
             let t: string | undefined = node.data('shortName');
             if(t === undefined) {
                 return false;
             } else {
-                return t.includes("track_assets");
+                return t.includes("update_window_hits") || t.includes("update_previous_view_data");
             }
         }).forEach((node) => {
-        // console.log(node.id(), node.data());
+            console.log(
+                "" + node.id() +
+                " " + node.data('_node_type') + 
+                " " + node.data('shortName') +
+                " " + node.incomers().length + 
+                " " + node.outgoers().length
+                ,
+                // node.data()
+            );
+
+            for(let inc of node.incomers()) {
+                console.log(
+                    "-- I:" + inc.id() +
+                    " " + inc.data('_node_type') + 
+                    " " + inc.data('_edge_type') + 
+                    " " + inc.data('shortName') +
+                    " " + inc.incomers().length + 
+                    " " + inc.outgoers().length
+                    ,
+                    // inc.data()
+                );
+            }
+            for(let out of node.outgoers()) {
+                console.log(
+                    "-- O: " + out.id() +
+                    " " + out.data('_node_type') + 
+                    " " + out.data('_edge_type') + 
+                    " " + out.data('shortName') +
+                    " " + out.incomers().length + 
+                    " " + out.outgoers().length
+                    ,
+                    // out.data()
+                );
+            }
     });
+
+    // systemset-main-PreUpdate-46 system_set 0 2
+    // system-main-PreUpdate-0 system 2 0
+
+    // systemset-main-PreUpdate-63 system_set 0 2
+    // system-main-PreUpdate-37 system 4 0
 
     // cy.nodes()
     //     .filter(node =>
@@ -366,7 +457,7 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             selector: 'node[_node_type = "system"]',
             style: {
                 'background-color': '#1a5fad',
-                'label': 'data(shortName)',
+                'label': '', // 'data(shortName)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -376,7 +467,7 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             selector: 'node[_node_type = "system_set"]',
             style: {
                 'background-color': '#1aad1f',
-                'label': 'data(shortName)',
+                'label': '', // 'data(shortName)',
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -454,12 +545,14 @@ export function systemsLayout(cy: Core) : void {
     cy.layout({
         // animate: true,
         // gravity: 1.0,
+        randomize: false,
         name: 'cola',
+        centerGraph: false,
         // name: 'cose',
         // name: 'cose-bilkent',
         // avoidOverlap: true,
         // nodeDimensionsIncludeLabels: true
-    }).run();
+    } as any).run();
 
     // cy.layout(
     //     {

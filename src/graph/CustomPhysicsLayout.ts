@@ -67,6 +67,11 @@ export class CustomPhysicsLayout {
         const nodes = this.eles.nodes();
         const edges = this.eles.edges();
 
+        let comps = this.eles.components();
+        for(let comp of comps) {
+            console.log("comp ", comp.length);
+        }
+
         // Initialize scratch storage for all nodes
         nodes.forEach(node => {
             node.scratch('_physics', { x: 0, y: 0, vx: 0, vy: 0, isFixed: false } as NodePhysicsState);

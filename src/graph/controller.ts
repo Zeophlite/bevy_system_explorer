@@ -278,7 +278,9 @@ export class Controller implements Details {
         for(let selectedSchedule of this.selectedSchedules) {
             // TODO: focus components from selected schedules is **heaps** of information, need a config
             // fCompB = fCompB.union(this.allSchedules[selectedSchedule].components);
-            fSysB = fSysB.union(this.allSchedules[selectedSchedule].systems);
+
+            // TODO: selecting a schedule DISPLAYS all the systems in it, so no meaningful "focus"
+            // fSysB = fSysB.union(this.allSchedules[selectedSchedule].systems);
         }
 
         let fComp = intersectionIfBothNonEmpty(fCompA, fCompB);
