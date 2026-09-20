@@ -244,7 +244,7 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
         "PrepareResourcesCollectPhaseBuffers",
         "PrepareResourcesFlush",
         "PrepareBindGroups",
-    ]);    
+    ]);
 
     cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
 

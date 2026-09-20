@@ -67,7 +67,7 @@ async function init() {
     let schedEle = loadSchedulesGraph(controller, sched);
 
     // TODO: this is for testing, move to arg
-    let testSystem = true;
+    let testSystem = false;
     if(testSystem) {
         let testApp: AppLabel = "main", testSchedule = "PreUpdate";
         // let testApp: AppLabel = "main", testSchedule = "PostUpdate";
