@@ -152,10 +152,10 @@ async function init() {
             
             if(node_type == "schedule") {
                 let schedule = data.name;
-                let sys = schedule.split(":")[1];
+                let syst = schedule.split(":")[1];
 
                 // console.log("lsg", data);
-                loadSystemsGraph(controller, sys, data.app, sys);
+                loadSystemsGraph(controller, sys, data.app, syst);
 
                 console.log("sel " + schedule);
                 selectedSchedules.push(schedule);
