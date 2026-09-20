@@ -150,10 +150,18 @@ export function parseComponentName(componentName : string) : string {
 }
 
 export function parseSystemName(systemName : string): string {
+    // "PropagateSet { _p: PhantomData<fn() -> bevy_text::text::TextFont> }"
+    if(systemName.startsWith("PropagateSet {")) {
+        return systemName;
+    }
     return parseRustName(systemName);
 }
 
 export function parseSystemSetName(systemSetName : string): string {
+    // "PropagateSet { _p: PhantomData<fn() -> bevy_text::text::TextFont> }"
+    if(systemSetName.startsWith("PropagateSet {")) {
+        return systemSetName;
+    }
     return parseRustName(systemSetName);
 }
 

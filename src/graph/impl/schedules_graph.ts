@@ -77,8 +77,8 @@ function createApp(elements: Elements, name: string, pos: {x: number, y: number}
     return id;
 }
 
-function createSchedule(elements: Elements, app: string, schedule: string, pos: {x: number, y: number} | null = null, parent: string | null = null) : string {
-    let id = `schedule-${app}-${schedule}`;
+function createSchedule(elements: Elements, app: string, scheduleInfo: {schedule: string, status: string}, pos: {x: number, y: number} | null = null, parent: string | null = null) : string {
+    let id = `schedule-${app}-${scheduleInfo.schedule}`;
 
     let node = elements.nodes[id];
     if(node != null) {
@@ -109,9 +109,10 @@ function createSchedule(elements: Elements, app: string, schedule: string, pos: 
 
     let sched: NodeData = {
         id: id,
-        name: schedule,
+        name: scheduleInfo.schedule,
         app,
         _node_type: "schedule",
+        schedule_status: scheduleInfo.status,
     };
 
     if(parent != null) {
@@ -215,7 +216,7 @@ let allEdgesTypes: string[] = [];
 function makeEdge(elements: Elements, from: string, to: string, label: string) : void {
     let id = "edge-" + from + '-' + to;
     if(elements.edges[id] != null) {
-        return;
+        console.warn("Duplicate edge " + id);
     }
     let fromType = elements.nodes[from].data._node_type;
     let toType = elements.nodes[to].data._node_type;
@@ -246,18 +247,19 @@ function makeEdge(elements: Elements, from: string, to: string, label: string) :
 
 type ScheduleToNodeId = {[key:string] : string};
 
-function createScheduleChain(name: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, app: string, schedules: string[]): ScheduleToNodeId {
+function createScheduleChain(name: string, elements: Elements, resource: string, origin: {x: number, y: number}, offset: {x: number, y: number}, app: string, schedules: {schedule: string, status: string}[]): ScheduleToNodeId {
     let chain = createChain(elements, name);
 
     let prevSchedule = null;
 
     let scheduleData : {[key:string] : string} = {};
     let idx = 0;
-    for(let schedule of schedules) {
+    for(let scheduleInfo of schedules) {
+        let schedule = scheduleInfo.schedule;
         let x = origin.x + 1.0 * idx * offset.x;
         let y = origin.y + 1.0 * idx * offset.y;
 
-        let id = createSchedule(elements, app, schedule, {x, y}, chain);
+        let id = createSchedule(elements, app, scheduleInfo, {x, y}, chain);
         scheduleData[schedule] = id;
 
         if(prevSchedule == null) {
@@ -290,14 +292,31 @@ function fixPos(elements: Elements, id: string, x: number, y: number): void {
         (node as any).fixed = true;
         (node as any).x = x;
         (node as any).y = y;
+    } else {
+        console.warn("fixPos without id " + id);
     }
 }
 
+function scheduleInfo(controller: Controller, app: string, sched: string): {schedule: string, status: string} {
+    let schedule = app + ":" + sched;
+    let status = controller.allSchedules[schedule].scheduleStatus;
+    return {schedule, status};
+}
+
+function scheduleInfoChain(controller: Controller, app: string, schedules: string[]): {schedule: string, status: string}[] {
+    let chain = [];
+    for(let sched of schedules) {
+        let schedule = app + ":" + sched;
+        let status = controller.allSchedules[schedule].scheduleStatus;
+        chain.push( {schedule, status});
+    }
+    return chain;
+}
 
 export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements {
     let elements: Elements = { nodes: {}, edges: {} };
 
-    let Main = createSchedule(elements, "main", "Main");
+    let Main = createSchedule(elements, "main", scheduleInfo(controller, "main", "Main"));
     let run_main = createSystem(elements, "run_main");
 
     makeEdge(elements, Main, run_main, "runs");
@@ -305,18 +324,18 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     let MainScheduleOrder = createResource(elements, "MainScheduleOrder");
     makeEdge(elements, run_main, MainScheduleOrder, "executes");
 
-    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 200, y: 0}, "main", [
+    let main_startup_order = createScheduleChain("main_startup_order", elements, MainScheduleOrder, { x: 0, y: 0}, { x: 200, y: 0}, "main", scheduleInfoChain(controller, "main", [
         "StateTransition (startup)", // There's 1x StateTransition schedule, and it runs in startup and in main order
         "PreStartup",
         "Startup",
         "PostStartup"
-    ]);
+    ]));
 
     let StatesPlugin = createPlugin(elements, "StatesPlugin");
-    makeEdge(elements, StatesPlugin, main_startup_order["StateTransition (startup)"], "adds")
+    makeEdge(elements, StatesPlugin, main_startup_order["main:StateTransition (startup)"], "adds")
 
     // main_startup_order runs once, then main_order
-    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 200, y: 0}, "main", [
+    let main_order = createScheduleChain("main_order", elements, MainScheduleOrder, { x: 0, y: 300}, { x: 200, y: 0}, "main", scheduleInfoChain(controller, "main", [
         "First",
         "PreUpdate",
         "StateTransition",
@@ -327,18 +346,18 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
         "Last",
 
         "RemoteLast",
-    ]);
+    ]));
 
-    makeEdge(elements, StatesPlugin, main_order["StateTransition"], "adds")
+    makeEdge(elements, StatesPlugin, main_order["main:StateTransition"], "adds")
 
     let RemotePlugin = createPlugin(elements, "RemotePlugin");
-    makeEdge(elements, RemotePlugin, main_order["RemoteLast"], "adds")
+    makeEdge(elements, RemotePlugin, main_order["main:RemoteLast"], "adds")
 
 
     let run_fixed_main_schedule = createSystem(elements, "run_fixed_main_schedule");
-    makeEdge(elements, main_order["RunFixedMainLoop"], run_fixed_main_schedule, "runs");
+    makeEdge(elements, main_order["main:RunFixedMainLoop"], run_fixed_main_schedule, "runs");
 
-    let FixedMain = createSchedule(elements, "main", "FixedMain");
+    let FixedMain = createSchedule(elements, "main", scheduleInfo(controller, "main", "FixedMain"));
     makeEdge(elements, run_fixed_main_schedule, FixedMain, "runs");
 
     let run_fixed_main = createSystem(elements, "run_fixed_main");
@@ -347,15 +366,15 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     let FixedMainScheduleOrder = createResource(elements, "FixedMainScheduleOrder");
     makeEdge(elements, run_fixed_main, FixedMainScheduleOrder, "executes");
 
-    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: 0, y: 600}, { x: 200, y: 0}, "main", [
+    let fixed_order = createScheduleChain("fixed_order", elements, FixedMainScheduleOrder, { x: 0, y: 600}, { x: 200, y: 0}, "main", scheduleInfoChain(controller, "main", [
         "FixedFirst",
         "FixedPreUpdate",
         "FixedUpdate",
         "FixedPostUpdate",
         "FixedLast",
-    ]);
+    ]));
 
-    let RenderRecovery = createSchedule(elements, "render", "RenderRecovery", { x: -212 , y: 222});
+    let RenderRecovery = createSchedule(elements, "render", scheduleInfo(controller, "render", "RenderRecovery"), { x: -212 , y: 222});
     let run_render_schedule = createSystem(elements, "run_render_schedule", { x: 117 , y: 224});
     makeEdge(elements, RenderRecovery, run_render_schedule, "runs");
 
@@ -364,21 +383,21 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     let RenderScheduleOrder = createResource(elements, "RenderScheduleOrder");
     makeEdge(elements, run_render_schedule, RenderScheduleOrder, "executes");
 
-    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: 0, y: 900}, { x: 200, y: 0}, "render", [
-        "First (render)", // There's 2x schedules with the First label
+    let render_order = createScheduleChain("render_order", elements, RenderScheduleOrder, { x: 0, y: 900}, { x: 200, y: 0}, "render", scheduleInfoChain(controller, "render", [
+        "First",
         "Render",
-        "RenderLast",
-    ]);
-    let Render = render_order["Render"];
+        "RemoteLast",
+    ]));
+    let Render = render_order["render:Render"];
 
-    makeEdge(elements, RemotePlugin, render_order["RenderLast"], "adds")
+    makeEdge(elements, RemotePlugin, render_order["render:RemoteLast"], "adds")
 
     // TODO: all these are on RenderApp
-    let ExtractSchedule = createSchedule(elements, "render", "ExtractSchedule");
-    let RenderStartup = createSchedule(elements, "render", "RenderStartup");
-    let RenderGraph = createSchedule(elements, "render", "RenderGraph", {x: -400, y: 800});
-    let Core2d = createSchedule(elements, "render", "Core2d");
-    let Core3d = createSchedule(elements, "render", "Core3d");
+    let ExtractSchedule = createSchedule(elements, "render", scheduleInfo(controller, "render", "ExtractSchedule"));
+    let RenderStartup = createSchedule(elements, "render", scheduleInfo(controller, "render", "RenderStartup"));
+    let RenderGraph = createSchedule(elements, "render", scheduleInfo(controller, "render", "RenderGraph"), {x: -400, y: 800});
+    let Core2d = createSchedule(elements, "render", scheduleInfo(controller, "render", "Core2d"));
+    let Core3d = createSchedule(elements, "render", scheduleInfo(controller, "render", "Core3d"));
 
     let App = createApp(elements, "App", {x: -1000, y: -300});
     let MainSchedulePlugin = createPlugin(elements, "MainSchedulePlugin");
@@ -480,7 +499,7 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     for(let scheduleId of Object.keys(controller.allSchedules)) {
         let schedule = controller.allSchedules[scheduleId]!;
 
-        createSchedule(elements, schedule.app, schedule.schedule);
+        createSchedule(elements, schedule.app, { schedule: schedule.app + ":" + schedule.schedule, status: schedule.scheduleStatus });
     }
 
     // TODO: these are trial and error positioning, would be nice to algorithmically determine it
@@ -488,14 +507,14 @@ export function loadSchedulesGraph(controller: Controller, cy: Core) : Elements 
     fixPos(elements, "resource-MainScheduleOrder",-100,20);
     fixPos(elements, "resource-RenderScheduleOrder",-90,810);
 
-    fixPos(elements, "schedule-render-Core2d",490,1000);
-    fixPos(elements, "schedule-render-Core3d",500,1080);
-    fixPos(elements, "schedule-render-ExtractSchedule",-480,650);
-    fixPos(elements, "schedule-main-FixedMain",10,380);
-    fixPos(elements, "schedule-main-Main",-110,-150);
-    fixPos(elements, "schedule-render-RenderGraph",220,1060);
-    fixPos(elements, "schedule-render-RenderRecovery",-100,680);
-    fixPos(elements, "schedule-render-RenderStartup",-320,870);
+    fixPos(elements, "schedule-render-render:Core2d",490,1000);
+    fixPos(elements, "schedule-render-render:Core3d",500,1080);
+    fixPos(elements, "schedule-render-render:ExtractSchedule",-480,650);
+    fixPos(elements, "schedule-main-main:FixedMain",10,380);
+    fixPos(elements, "schedule-main-main:Main",-110,-150);
+    fixPos(elements, "schedule-render-render:RenderGraph",220,1060);
+    fixPos(elements, "schedule-render-render:RenderRecovery",-100,680);
+    fixPos(elements, "schedule-render-render:RenderStartup",-320,870);
 
     fixPos(elements, "system-camera_driver",350,1060);
     fixPos(elements, "system-entity_sync_system",-220,650);
@@ -621,7 +640,7 @@ export function initSchedulesGraph(container: HTMLDivElement, cytoscape: typeof 
                 'line-color': '#ad1a66',
                 'curve-style': 'bezier',
                 'target-arrow-shape': 'triangle',
-                'target-arrow-color': '#999',
+                'target-arrow-color': '#ad1a66',
                 'arrow-scale': 1.2
             }
         }

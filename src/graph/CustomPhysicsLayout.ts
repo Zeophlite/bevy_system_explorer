@@ -1,4 +1,4 @@
-import { type Core, type Collection, type SingularElementReturnValue, type SingularElementArgument, type CoseLayoutOptions, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type NodeSingular, type StylesheetJson, type NodeCollection, type EdgeCollection } from 'cytoscape';
+import { type BaseLayoutOptions, type Core, type Collection, type SingularElementReturnValue, type SingularElementArgument, type CoseLayoutOptions, type EdgeDataDefinition, type ElementDefinition, type NodeDataDefinition, type NodeSingular, type StylesheetJson, type NodeCollection, type EdgeCollection } from 'cytoscape';
 
 interface BaseOptions {
     cy:  Core;
@@ -7,6 +7,11 @@ interface BaseOptions {
 
 export interface CustomPhysicsOptions {
     name: 'customPhysics';
+    // dependencyWeakSpacing: 1000,
+    // dependencyStrictSpacing: 500,
+    // dependencyBuildPassSpacing: 300,
+    // dependencyChainSpacing: 800,
+    // hierarchySpacing: 200,
     hSpacing?: number;      // Horizontal distance for 'dependency' edges
     vSpacing?: number;      // Vertical distance for 'hierarchy' edges
     stiffness?: number;     // Hooke's spring constant
@@ -55,6 +60,7 @@ export class CustomPhysicsLayout {
         this.run = this.execute.bind(this);
         this.stop = () => { this.emit('layoutstop'); return this; };
     }
+
 
     private emit(type: string) {
         this.eles.emit(type);
@@ -204,3 +210,7 @@ export class CustomPhysicsLayout {
     }
 }
 
+export const CustomPhysicsFactory = function(this: any, options: CustomPhysicsOptions & BaseOptions) {
+    let layout = new CustomPhysicsLayout(options);
+    Object.assign(this, layout);
+};

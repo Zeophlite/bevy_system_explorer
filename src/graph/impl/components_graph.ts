@@ -201,7 +201,7 @@ export function initComponentsGraph(container: HTMLDivElement, cytoscape: typeof
                 'line-color': '#ad1a66',
                 'curve-style': 'bezier',
                 'target-arrow-shape': 'triangle',
-                'target-arrow-color': '#999',
+                'target-arrow-color': '#ad1a66',
                 'arrow-scale': 1.2
             }
         }

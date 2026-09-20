@@ -48,7 +48,13 @@ async function init() {
     const cytoscapeModule = await load_cytoscape();
     const cytoscape = cytoscapeModule;
 
-    // let custom = initCustomGraph(componentsContainer, controller, cytoscape);
+    let demoCustomGraph = false;
+
+    if(demoCustomGraph) {
+        let custom = initCustomGraph(componentsContainer, cytoscape);
+        return;
+    }
+
     let comp = initComponentsGraph(componentsContainer, cytoscape);
     let sched = initSchedulesGraph(schedulesContainer, cytoscape);
     let sys = initSystemsGraph(systemsContainer, cytoscape);
@@ -146,10 +152,12 @@ async function init() {
             
             if(node_type == "schedule") {
                 let schedule = data.name;
+                let sys = schedule.split(":")[1];
 
                 // console.log("lsg", data);
-                loadSystemsGraph(controller, sys, data.app, schedule);
+                loadSystemsGraph(controller, sys, data.app, sys);
 
+                console.log("sel " + schedule);
                 selectedSchedules.push(schedule);
 
                 // console.log("Selected schedule " + schedule);
@@ -238,58 +246,97 @@ function renderDetail(
     let selectedSchedHtml = `<ul>`;
     let selectedSysHtml = `<ul>`;
 
-    let focusedCompHtml = `<ul>`
-    let focusedSchedHtml = `<ul>`;
-    let focusedSysHtml = `<ul>`;
+    for (let selectedComponent of details.selectedComponents) {
+        selectedCompHtml += `<li><b>${clean(details.getComponentShortName(selectedComponent))}</b>`;
+        selectedCompHtml += `<ul>`
 
-    for (let component of details.selectedComponents) {
-        selectedCompHtml += `<li><b>${clean(details.getComponentShortName(component))}</b></li>`;
-    }
-    for (let component of details.focusedComponents) {
-        focusedCompHtml += `<li><b>${clean(details.getComponentShortName(component))}</b></li>`;
+        for(let sched of details.allComponents[selectedComponent].schedules) {
+            // TODO: split out app:schedule for sched
+            if(details.selectedSchedules.includes(sched)) {
+                selectedCompHtml += `<li><b>${sched}</b>`;
+            } else {
+                selectedCompHtml += `<li>${sched}`;
+            }
+            selectedCompHtml += `<ul>`
+
+            for(let sys of details.allComponents[selectedComponent].systems) {
+                if(details.allSchedules[sched].systems.has(sys)) {
+                    let shortSys = details.getSystemShortName(sys);
+                    if(details.selectedSystems.includes(sys)) {
+                        selectedCompHtml += `<li><b>${shortSys}</b></li>`;
+                    } else {
+                        selectedCompHtml += `<li>${shortSys}</li>`;
+                    }
+                }
+            }
+            selectedCompHtml += `</ul>`;
+            selectedCompHtml += `</li>`;
+        }
+
+        selectedCompHtml += `</ul>`;
+        selectedCompHtml += `</li>`;
     }
 
     for (let schedule of details.selectedSchedules) {
-        selectedSchedHtml += `<li>${clean(schedule)}</li>`;
-    }
-    for (let schedule of details.focusedSchedules) {
-        focusedSchedHtml += `<li>${clean(schedule)}</li>`;
+        // TODO: handle app:schedule
+        selectedSchedHtml += `<li>${clean(schedule)}`;
+
+        // focus components
+        selectedSchedHtml += `<ul>`
+
+        for(let comp of details.allSchedules[schedule].components) {
+            let shortComp = clean(details.getComponentShortName(comp));
+
+            if(details.selectedComponents.includes(comp)) {
+                selectedSchedHtml += `<li><b>${shortComp}</b>`;
+            } else {
+                selectedSchedHtml += `<li>${shortComp}`;
+            }
+            selectedSchedHtml += `</li>`
+        }
+
+        selectedSchedHtml += `</ul>`
+
+        selectedSchedHtml += '</li>';
     }
 
     for (let system of details.selectedSystems) {
-        selectedSysHtml += `<li>${clean(details.getSystemShortName(system))}</li>`;
+        selectedSysHtml += `<li>${clean(details.getSystemShortName(system))}`;
+
+        // focus components
+        selectedSysHtml += `<ul>`
+
+        for(let comp of details.allSystems[system].components) {
+            let shortComp = clean(details.getComponentShortName(comp));
+
+            if(details.selectedComponents.includes(comp)) {
+                selectedSysHtml += `<li><b>${shortComp}</b>`;
+            } else {
+                selectedSysHtml += `<li>${shortComp}`;
+            }
+            selectedSysHtml += `</li>`
+        }
+
+        selectedSysHtml += `</ul>`
+
+        selectedSysHtml += '</li>';
     }
     for (let system_set of details.selectedSystemSets) {
-        selectedSysHtml += `<li>${clean(details.getSystemSetShortName(system_set))}</li>`;
-    }
-
-    for (let system of details.focusedSystems) {
-        focusedSysHtml += `<li>${clean(details.getSystemShortName(system))}</li>`;
-    }
-    for (let system_set of details.focusedSystemSets) {
-        focusedSysHtml += `<li>${clean(details.getSystemSetShortName(system_set))}</li>`;
+        selectedSysHtml += `<li>Set: ${clean(details.getSystemSetShortName(system_set))}</li>`;
     }
 
     selectedCompHtml += '</ul>';
     selectedSchedHtml += '</ul>';
     selectedSysHtml += '</ul>';
 
-    focusedCompHtml += '</ul>';
-    focusedSchedHtml += '</ul>';
-    focusedSysHtml += '</ul>';
-
     document.querySelector<HTMLDivElement>('#selected-components')!.innerHTML = selectedCompHtml;
     document.querySelector<HTMLDivElement>('#selected-schedules')!.innerHTML = selectedSchedHtml;
     document.querySelector<HTMLDivElement>('#selected-systems')!.innerHTML = selectedSysHtml;
-
-    document.querySelector<HTMLDivElement>('#focused-components')!.innerHTML = focusedCompHtml;
-    document.querySelector<HTMLDivElement>('#focused-schedules')!.innerHTML = focusedSchedHtml;
-    document.querySelector<HTMLDivElement>('#focused-systems')!.innerHTML = focusedSysHtml;
 }
 
 function doSystemLayout(sys: Core) {
     let parentedEdges = parentSoleSystems(sys);
-    // findSystemSetsChains(sys);
+    findSystemSetsChains(sys);
     systemsLayout(sys);
     parentedEdges.forEach(e => e.remove());
 }

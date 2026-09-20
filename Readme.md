@@ -60,7 +60,8 @@ Some required components are not shown due to their high degree of usage:
 - `Visibility`
 - `VisibilityClass`
 
-Components without any requirements are hidden from the graph, and in the multi-select (TODO).
+Components without any requirements are hidden from the graph
+<!-- and in the multi-select (TODO). -->
 
 If components are selected, the schedule and system graphs focuses to those that involve the component.
 

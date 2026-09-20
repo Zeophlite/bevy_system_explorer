@@ -50,7 +50,13 @@ interface SystemSetWrap {
 }
 export type SystemOrSetWrap = SystemWrap | SystemSetWrap;
 
-export type Dependency = [SystemOrSetWrap, SystemOrSetWrap];
+export type DependencyKind = "Strict" | "Weak" | "BuildPass";
+
+interface DependencyData {
+    kind: DependencyKind
+}
+
+export type Dependency = [SystemOrSetWrap, SystemOrSetWrap, DependencyData];
 
 
 export type Hierarchy = [number, SystemOrSetWrap];

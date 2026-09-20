@@ -4,8 +4,10 @@ import type cytoscapeProxy from 'cytoscape';
 
 
 import type { Controller } from '../controller';
-import type { System, SystemOrSetWrap, SystemSet } from "../../bevy_types/systems_graph_types";
+import type { DependencyKind, System, SystemOrSetWrap, SystemSet } from "../../bevy_types/systems_graph_types";
 
+import { CustomPhysicsFactory, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';import type { AppLabel } from '../../data/index.ts';
+import { parseSystemName, parseSystemSetName } from './name.ts';
 
 
 interface NodeData extends NodeDataDefinition {
@@ -13,6 +15,7 @@ interface NodeData extends NodeDataDefinition {
     shortName: string,
     fullName: string,
     _node_type: "system" | "system_set",
+    chain: "true" | "false",
     _data: System | SystemSet,
 }
 
@@ -76,6 +79,7 @@ function makeSystemNode(index: number, system: System, app: AppLabel, schedule: 
         font: {size: 14, multi: true},
         borderWidth: 2,
         // margin: 10,
+        chain: "false",
         _node_type: "system",
         _data: system,
     };
@@ -96,6 +100,7 @@ function makeSystemSetNode(systemSetsLookup: SystemSetsShortNameToIdLookup, inde
         id,
         fullName: system_set.name,
         shortName: shortName,
+        chain: "false",
         _node_type: "system_set",
         _data: system_set,
     };
@@ -124,16 +129,19 @@ function fixSystemSetNode(elements: Elements, systemSetsLookup: SystemSetsShortN
     }
 }
 
-function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap, app: AppLabel, schedule: string) : EdgeData {
+function makeDependencyEdge(index: number, a: SystemOrSetWrap, b: SystemOrSetWrap, app: AppLabel, schedule: string, dependencyData: { kind: DependencyKind }) : EdgeData {
 
     let from = systemOrSetWrapToNodeId(a, app, schedule);
     let to = systemOrSetWrapToNodeId(b, app, schedule);
+
+    console.log("DK: " + dependencyData.kind);
 
     return {
         id: "dependency-" + app + "-" + schedule + "-" + index,
         source: from,
         target: to,
         _edge_type: "dependency",
+        dependency_kind: dependencyData.kind,
     };
 }
 
@@ -166,7 +174,7 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
     let systemSetsLookup: SystemSetsShortNameToIdLookup = new Map();
     let elements: Elements = { nodes: {}, edges: {} };
 
-    let scheduleData = controller.getData(app, schedule);
+    let scheduleData = controller.getScheduleGraph(app, schedule);
     if(scheduleData === undefined) {
         return elements;
     }
@@ -187,8 +195,9 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
     for(let [index, dep] of scheduleGraph.dependency.entries()) {
         let a = dep[0];
         let b = dep[1];
+        let c = dep[2];
 
-        elements_add_edge(elements, makeDependencyEdge(index, a, b, app, schedule));
+        elements_add_edge(elements, makeDependencyEdge(index, a, b, app, schedule, c));
     }
 
     for(let [index, hie] of scheduleGraph.hierarchy.entries()) {
@@ -240,8 +249,13 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
     cy.add([...Object.values(elements.nodes), ...Object.values(elements.edges)]);
 
     // NOTE: main/PreUpdate/Assets<A>::asset_events in AssetTrackingSystems per A
+    let FILTER_NODES: string[] = [
+        "apply_deferred",
+        "Propagate",
+        "AssetEventSystems",
+    ];
 
-    cy.nodes().filter(node => ["apply_deferred", "Propagate", "AssetEventSystems"].indexOf(node.data('shortName')) !== -1).remove();
+    cy.nodes().filter(node => FILTER_NODES.indexOf(node.data('shortName')) !== -1).remove();
     // cy.nodes().filter(node => node.degree() > 3).remove();
 
     // NOTE: main calls layout
@@ -251,16 +265,33 @@ export function loadSystemsGraph(controller: Controller, cy: Core, app: AppLabel
 }
 
 export function findSystemSetsChains(cy: Core): void {
-    // console.log('findSystemSetsChains');
+    console.log('findSystemSetsChains');
 
     // 1. Get the filtered nodes
     const matchedNodes = cy.nodes().filter(node => node.data('_node_type') == 'system_set');
+    matchedNodes.forEach((s) => {
+        // console.log("matchedNodes: " + s.id() + " " + s.data("shortName"));
+    });
 
     // 2. Get the filtered edges that connect ONLY those nodes
     const matchedEdges = matchedNodes.edgesWith(matchedNodes).filter('edge[_edge_type = "dependency"]');
+    matchedEdges.forEach((s) => {
+        console.log("matchedEdges: " + s.id() + " " + s.data("shortName"));
+    });
 
     // 3. Combine them into the final subgraph
-    const strictSubgraph = matchedNodes.union(matchedEdges);
+    const strictSubgraph = matchedEdges.union(matchedEdges.sources()).union(matchedEdges.targets());
+
+    // TODO: optimise
+    cy.elements().difference(strictSubgraph).forEach((s) => {
+        // console.log("no chain: " + s.id() + " " + s.data("shortName"));
+        s.data("chain", "false");
+    });
+    strictSubgraph.forEach((s) => {
+        console.log("chain: " + s.id() + " " + s.data("shortName"));
+        s.data("chain", "true");
+    });
+    // cy.elements().difference(strictSubgraph).remove();
 
     let res = strictSubgraph.components().filter(r => r.length > 1);
 
@@ -274,28 +305,45 @@ export function findSystemSetsChains(cy: Core): void {
         });
     }
 
-    cy.nodes().filter(node => tt.indexOf(node.id()) === -1).remove();
+    // cy.nodes().filter(node => tt.indexOf(node.id()) === -1).remove();
 
     // console.log('findSystemSetsChains end');
 }
 
 export function parentSoleSystems(cy: Core) : EdgeSingular[] {
-    cy.elements().components().forEach((comp) => {
-        console.log("comps");
-        if(comp.nodes().length == 1) {
-            console.log("comps 1");
-            comp.nodes().remove();
-            return;
-        }
+    // Remove single components:
+    // cy.elements().components().forEach((comp) => {
+    //     console.log("comps");
+    //     if(comp.nodes().length == 1) {
+    //         console.log("comps 1");
+    //         comp.nodes().remove();
+    //         return;
+    //     }
+    //
+    //     if(comp.nodes().length == 2) {
+    //         console.log("comps 2");
+    //         comp.nodes().parents().forEach((par) => {
+    //             console.log("Par: " + par.id(), par.data());
+    //         });
+    //         comp.nodes().remove();
+    //         return;
+    //     }
+    // });
 
-        if(comp.nodes().length == 2) {
-            console.log("comps 2");
-            comp.nodes().parents().forEach((par) => {
-                console.log("Par: " + par.id(), par.data());
-            });
-            comp.nodes().remove();
-            return;
-        }
+    // just the biggest for testing:
+    let first = true;
+    let cc = cy.elements().components().sort((compA, compB) => compB.nodes().length - compA.nodes().length).forEach((comp) => {
+        console.log("cc " + comp.length);
+        // if(comp.length == 133) {
+        //     comp.nodes().remove();
+        //     return;
+        // }
+
+        // if(first) {
+        //     first = false;
+        //     return;
+        // }
+        // comp.nodes().remove();
     });
 
     let compSize = 500.0;
@@ -449,8 +497,42 @@ export function parentSoleSystems(cy: Core) : EdgeSingular[] {
     // });
 }
 
-export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cytoscapeProxy) : Core {
+export function buildSystemsStyle() : StylesheetJson {
     let style : StylesheetJson = [
+        {
+            selector: 'node[chain = "true"]',
+            style: {
+                'width': 30,
+                'height': 30,
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for node chain " + element.id(), element);
+                //     return '';
+                // },
+            }
+        },
+        {
+            selector: 'node[chain != "true"]',
+            style: {
+                'width': 15,
+                'height': 15,
+            }
+        },
+        {
+            selector: 'edge[chain = "true"]',
+            style: {
+                'width': 10,
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for edge chain " + element.id(), element);
+                //     return '';
+                // },
+            }
+        },
+        {
+            selector: 'edge[chain != "true"]',
+            style: {
+                'width': 5,
+            }
+        },
 
         // TODO: selectors
         {
@@ -458,6 +540,10 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             style: {
                 'background-color': '#1a5fad',
                 'label': '', // 'data(shortName)',
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for node system " + element.id(), element);
+                //     return '';
+                // },
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -467,7 +553,11 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
             selector: 'node[_node_type = "system_set"]',
             style: {
                 'background-color': '#1aad1f',
-                'label': '', // 'data(shortName)',
+                // 'label': '', // 'data(shortName)',
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for node systemset " + element.id() + " " + element.data("chain"), element);
+                //     return '';
+                // },
                 'text-wrap': 'wrap',      // Enables text wrapping
                 'text-max-width': '80px'
             }
@@ -486,6 +576,10 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
                 'border-width': "3px",
                 'border-style': "dashed",
                 'border-color': '#adb0ae',
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for node selected " + element.id(), element);
+                //     return '';
+                // },
             }
         },
 
@@ -495,42 +589,78 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
                 'outline-width': "3px",
                 'outline-style': "dotted",
                 'outline-color': '#e23939',
+                // 'label': function(element : NodeSingular) {
+                //     console.log("Determine style label for node focused " + element.id(), element);
+                //     return '';
+                // },
             }
         },
 
         {
             selector: ':parent',
             style: {
-                'background-opacity': 0.333
+                'background-opacity': 0.333,
+                // 'label': function(element : NodeSingular) {
+                //     // console.log("Determine style label for :parent " + element.id(), element);
+                //     return '';
+                // },
             }
         },
 
         {
-            selector: 'edge[_edge_type = "dependency"]',
+            selector: 'edge[_edge_type = "dependency"][dependency_kind = "Strict"]',
             style: {
-                'width': 3,
                 'line-color': '#1a9cad',
                 'curve-style': 'bezier',
                 'target-arrow-shape': 'triangle',
-                'target-arrow-color': '#999',
+                'target-arrow-color': '#1a9cad',
+                'arrow-scale': 1.2
+            }
+        },
+        {
+            selector: 'edge[_edge_type = "dependency"][dependency_kind = "Weak"]',
+            style: {
+                'line-color': '#1a9cad',
+                'line-style': 'dashed',
+                'curve-style': 'bezier',
+                'target-arrow-shape': 'triangle',
+                'target-arrow-color': '#1a9cad',
+                'arrow-scale': 1.2
+            }
+        },
+        {
+            selector: 'edge[_edge_type = "dependency"][dependency_kind = "BuildPass"]',
+            style: {
+                'line-color': '#7c1aad',
+                'line-style': 'dashed',
+                'curve-style': 'bezier',
+                'target-arrow-shape': 'triangle',
+                'target-arrow-color': '#7c1aad',
                 'arrow-scale': 1.2
             }
         },
         {
             selector: 'edge[_edge_type = "hierarchy"]',
             style: {
-                'width': 3,
                 'line-color': '#ad1a66',
                 'curve-style': 'bezier',
                 'target-arrow-shape': 'triangle',
-                'target-arrow-color': '#999',
+                'target-arrow-color': '#ad1a66',
                 'arrow-scale': 1.2
             }
-        }
+        },
+
     ];
 
+    return style;
+}
+
+export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cytoscapeProxy) : Core {
+
+    let style = buildSystemsStyle();
+
     // Register the layout extension with Cytoscape
-    cytoscape('layout', 'customPhysics', CustomPhysicsLayout);
+    cytoscape('layout', 'customPhysics', CustomPhysicsFactory);
     let cy = cytoscape({
         elements: [],
         container,
@@ -542,29 +672,33 @@ export function initSystemsGraph(container: HTMLDivElement, cytoscape: typeof cy
 }
 
 export function systemsLayout(cy: Core) : void {
-    cy.layout({
-        // animate: true,
-        // gravity: 1.0,
-        randomize: false,
-        name: 'cola',
-        centerGraph: false,
-        // name: 'cose',
-        // name: 'cose-bilkent',
-        // avoidOverlap: true,
-        // nodeDimensionsIncludeLabels: true
-    } as any).run();
+    let useCustomLayout = false;
 
-    // cy.layout(
-    //     {
-    //         name: 'customPhysics',
-    //         hSpacing: 180,
-    //         vSpacing: 140,
-    //         iterations: 250,
-    //         repulsion: 400
-    //     } as CustomPhysicsOptions
-    // ).run();
+    if(useCustomLayout) {
+
+        cy.layout(
+            {
+                name: 'customPhysics',
+                hSpacing: 180,
+                vSpacing: 140,
+                iterations: 250,
+                repulsion: 400
+            } as CustomPhysicsOptions
+        ).run();
+
+    } else {
+
+        cy.layout({
+            // animate: true,
+            // gravity: 1.0,
+            randomize: false,
+            name: 'cola',
+            centerGraph: false,
+            // name: 'cose',
+            // name: 'cose-bilkent',
+            // avoidOverlap: true,
+            // nodeDimensionsIncludeLabels: true
+        } as any).run();
+
+    }
 }
-
-import { CustomPhysicsLayout, type CustomPhysicsOptions } from '../CustomPhysicsLayout.ts';import type { AppLabel } from '../../data/index.ts';
-import { parseSystemName, parseSystemSetName } from './name.ts';
-

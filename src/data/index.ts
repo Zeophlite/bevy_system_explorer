@@ -43,10 +43,13 @@ async function loadGraph(folder: AppLabel, scheduleList : ScheduleList) : Promis
     let data : { [schedule: string] : ScheduleGraph } = {};
 
     for(let schedule of scheduleList.result.schedule_labels) {
-        let _graph = () => import(`./${folder}/${schedule}.json`);
-        let graph : ScheduleGraph = await _graph();
-
-        data[schedule] = graph;
+        try {
+            let _graph = () => import(`./${folder}/${schedule}.json`);
+            let graph : ScheduleGraph = await _graph();
+            data[schedule] = graph;
+        } catch(ex) {
+            console.error("Unable to load " + folder + " / " + schedule, ex);
+        }
     }
 
 

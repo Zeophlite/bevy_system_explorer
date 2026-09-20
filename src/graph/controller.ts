@@ -20,6 +20,11 @@ export interface Details {
     focusedSystems: string[],
     focusedSystemSets: string[],
 
+    allComponents: {[componentName: string] : { schedules: Set<string>, systems: Set<string>, } },
+    allSchedules: {[schedule: string] : { components: Set<string>, systems: Set<string>, } },
+    allSystems: {[system: string] : { components: Set<string>, } },
+    allSystemSets: {[systemSet: string] : {} },
+
     getComponentShortName: (name: string) => string,
     getSystemShortName: (name: string) => string,
     getSystemSetShortName: (name: string) => string,
@@ -38,6 +43,7 @@ export interface ComponentDetail {
 export interface ScheduleDetail {
     app: string,
     schedule: string,
+    scheduleStatus: "normal" | "empty" | "unavailable",
 
     components: Set<string>,
     systems: Set<string>,
@@ -105,7 +111,7 @@ export class Controller implements Details {
         // console.log("allSystems", this.allSystems);
     }
 
-    getData(app: AppLabel, schedule: string) : ScheduleGraph {
+    getScheduleGraph(app: AppLabel, schedule: string) : ScheduleGraph {
         let SG = this.apps[app].scheduleGraphs[schedule];
         return SG;
     }
@@ -121,15 +127,37 @@ export class Controller implements Details {
     }
 
     build(app: AppData, appName: string) {
-        let mainSchedules = app.scheduleList.result.schedule_labels;
+        for(let foo of app.scheduleList.result.empty_schedule_labels) {
+            this.allSchedules[appName + ":" + foo] = {
+                app: appName,
+                schedule: foo,
+                scheduleStatus: "empty",
 
-        for(let foo of mainSchedules) {
-            if(foo in this.allSchedules) {
+                components: new Set(),
+                systems: new Set(),
+            };
+        }
+
+        for(let foo of app.scheduleList.result.unavailable_schedule_labels) {
+            this.allSchedules[appName + ":" + foo] = {
+                app: appName,
+                schedule: foo,
+                scheduleStatus: "unavailable",
+
+                components: new Set(),
+                systems: new Set(),
+            };
+        }
+
+        for(let foo of app.scheduleList.result.schedule_labels) {
+            let scheduleKey = appName + ":" + foo;
+            if(scheduleKey in this.allSchedules) {
                 // console.log("Already have schedule " + foo);
             } else {
-                this.allSchedules[foo] = {
+                this.allSchedules[scheduleKey] = {
                     app: appName,
                     schedule: foo,
+                    scheduleStatus: "normal",
 
                     components: new Set(),
                     systems: new Set(),
@@ -159,7 +187,7 @@ export class Controller implements Details {
                     }
                 }
 
-                this.allSchedules[foo].components.add(gah);
+                this.allSchedules[appName + ":" + foo].components.add(gah);
             }
           
             // TODO: determine if also repeat for schedule_data.system_sets ?
@@ -177,8 +205,8 @@ export class Controller implements Details {
                     };
                 }
 
-                this.allSchedules[foo].systems.add(bah);
-                this.allSystems[bah].schedules.add(foo);
+                this.allSchedules[appName + ":" + foo].systems.add(bah);
+                this.allSystems[bah].schedules.add(appName + ":" + foo);
 
                 for(let fa of system.filtered_accesses) {
                     let add = (component: number) => {
@@ -186,7 +214,7 @@ export class Controller implements Details {
 
                         this.allSystems[bah].components.add(gah);
                         this.allComponents[gah].systems.add(bah);
-                        this.allComponents[gah].schedules.add(foo);
+                        this.allComponents[gah].schedules.add(appName + ":" + foo);
                     };
 
                     for(let archetypal of fa.access.archetypal) {
@@ -224,6 +252,9 @@ export class Controller implements Details {
                 }
             }
         }
+
+        // TODO: need a better way to handle schedules ran in multiple places
+        this.allSchedules["main" + ":" + "StateTransition (startup)"] = this.allSchedules["main" + ":" + "StateTransition"]
     }
 
     // Returns true if the state is simplified
@@ -277,9 +308,9 @@ export class Controller implements Details {
         }
         for(let selectedSchedule of this.selectedSchedules) {
             // TODO: focus components from selected schedules is **heaps** of information, need a config
-            // fCompB = fCompB.union(this.allSchedules[selectedSchedule].components);
+            fCompB = fCompB.union(this.allSchedules[selectedSchedule].components);
 
-            // TODO: selecting a schedule DISPLAYS all the systems in it, so no meaningful "focus"
+            // NOTE: selecting a schedule DISPLAYS all the systems in it, so no meaningful "focus"
             // fSysB = fSysB.union(this.allSchedules[selectedSchedule].systems);
         }
 
