@@ -77,6 +77,9 @@
           },
           {
             "SystemSet": 1
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -85,6 +88,9 @@
           },
           {
             "SystemSet": 2
+          },
+          {
+            "kind": "Strict"
           }
         ]
       ],
@@ -546,7 +552,23 @@
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_time::fixed::run_fixed_main_schedule"
         },
         {

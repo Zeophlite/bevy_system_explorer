@@ -12,6 +12,9 @@
           },
           {
             "SystemSet": 1
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -20,6 +23,9 @@
           },
           {
             "SystemSet": 2
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -28,6 +34,9 @@
           },
           {
             "SystemSet": 3
+          },
+          {
+            "kind": "Strict"
           }
         ]
       ],

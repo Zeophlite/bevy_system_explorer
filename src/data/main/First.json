@@ -45,14 +45,6 @@
           ]
         },
         {
-          "name": "bevy_render::view::window::screenshot::Captured",
-          "required": []
-        },
-        {
-          "name": "bevy_ecs::entity_disabling::Disabled",
-          "required": []
-        },
-        {
           "name": "bevy_ecs::message::messages::Messages<bevy_window::event::WindowEvent>",
           "required": [
             0
@@ -60,6 +52,10 @@
         },
         {
           "name": "bevy_window::window::PrimaryWindow",
+          "required": []
+        },
+        {
+          "name": "bevy_ecs::entity_disabling::Disabled",
           "required": []
         },
         {
@@ -75,7 +71,7 @@
         {
           "name": "bevy_ui::ui_node::ComputedNode",
           "required": [
-            12
+            11
           ]
         },
         {
@@ -87,7 +83,7 @@
           "required": []
         },
         {
-          "name": "bevy_picking::pointer::PointerPress",
+          "name": "bevy_picking::pointer::PointerPressState",
           "required": []
         },
         {
@@ -97,9 +93,9 @@
         {
           "name": "bevy_picking::pointer::PointerId",
           "required": [
+            14,
             15,
-            16,
-            17
+            16
           ]
         },
         {
@@ -117,7 +113,7 @@
         {
           "name": "bevy_ui::ui_transform::UiTransform",
           "required": [
-            14
+            13
           ]
         },
         {
@@ -147,8 +143,8 @@
         {
           "name": "bevy_camera::visibility::Visibility",
           "required": [
-            27,
-            28
+            26,
+            27
           ]
         },
         {
@@ -156,10 +152,15 @@
           "required": []
         },
         {
+          "name": "bevy_text::text::EmSize",
+          "required": []
+        },
+        {
           "name": "bevy_ui::ui_node::Node",
           "required": [
-            13,
             12,
+            11,
+            18,
             19,
             20,
             21,
@@ -167,7 +168,7 @@
             23,
             24,
             25,
-            26,
+            28,
             29,
             30
           ]
@@ -176,7 +177,7 @@
           "name": "bevy_ui::widget::viewport::ViewportNode",
           "required": [
             31,
-            18
+            17
           ]
         },
         {
@@ -184,7 +185,7 @@
           "required": []
         },
         {
-          "name": "bevy_render::sync_world::SyncToRenderWorld",
+          "name": "bevy_extract::sync_world::SyncToSubWorld<bevy_render::RenderApp>",
           "required": []
         },
         {
@@ -229,7 +230,7 @@
             35,
             36,
             39,
-            29,
+            28,
             40,
             41,
             34
@@ -260,6 +261,9 @@
           },
           {
             "SystemSet": 8
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -268,6 +272,9 @@
           },
           {
             "SystemSet": 8
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -276,6 +283,9 @@
           },
           {
             "SystemSet": 5
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -284,6 +294,9 @@
           },
           {
             "SystemSet": 10
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -292,6 +305,9 @@
           },
           {
             "System": 4
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -300,6 +316,9 @@
           },
           {
             "SystemSet": 8
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -308,6 +327,9 @@
           },
           {
             "System": 7
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -316,6 +338,9 @@
           },
           {
             "System": 2
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -324,6 +349,9 @@
           },
           {
             "SystemSet": 10
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -332,6 +360,9 @@
           },
           {
             "System": 5
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -340,6 +371,9 @@
           },
           {
             "System": 5
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -348,6 +382,9 @@
           },
           {
             "System": 6
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -356,6 +393,9 @@
           },
           {
             "System": 5
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -364,6 +404,9 @@
           },
           {
             "System": 5
+          },
+          {
+            "kind": "BuildPass"
           }
         ]
       ],
@@ -631,34 +674,30 @@
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_ecs::message::update::message_update_system"
         },
         {
           "apply_deferred": false,
           "deferred": true,
           "exclusive": false,
-          "filtered_accesses": [
-            {
-              "access": {
-                "archetypal": [],
-                "reads": [],
-                "reads_inverted": false,
-                "writes": [],
-                "writes_inverted": false
-              },
-              "filter_sets": [
-                {
-                  "with": [
-                    7
-                  ],
-                  "without": [
-                    8
-                  ]
-                }
-              ]
-            }
-          ],
+          "filtered_accesses": [],
           "name": "bevy_render::view::window::screenshot::clear_screenshots"
         },
         {
@@ -670,7 +709,7 @@
               "access": {
                 "archetypal": [],
                 "reads": [
-                  9
+                  7
                 ],
                 "reads_inverted": false,
                 "writes": [],
@@ -680,7 +719,7 @@
                 {
                   "with": [
                     0,
-                    9
+                    7
                   ],
                   "without": []
                 }
@@ -697,10 +736,10 @@
               "filter_sets": [
                 {
                   "with": [
-                    10
+                    8
                   ],
                   "without": [
-                    8
+                    9
                   ]
                 }
               ]
@@ -709,11 +748,11 @@
               "access": {
                 "archetypal": [],
                 "reads": [
-                  11
+                  10
                 ],
                 "reads_inverted": false,
                 "writes": [
-                  11
+                  10
                 ],
                 "writes_inverted": false
               },
@@ -721,7 +760,7 @@
                 {
                   "with": [
                     0,
-                    11
+                    10
                   ],
                   "without": []
                 }
@@ -739,7 +778,7 @@
               "access": {
                 "archetypal": [],
                 "reads": [
-                  9
+                  7
                 ],
                 "reads_inverted": false,
                 "writes": [],
@@ -749,7 +788,7 @@
                 {
                   "with": [
                     0,
-                    9
+                    7
                   ],
                   "without": []
                 }
@@ -766,10 +805,10 @@
               "filter_sets": [
                 {
                   "with": [
-                    10
+                    8
                   ],
                   "without": [
-                    8
+                    9
                   ]
                 }
               ]
@@ -778,11 +817,11 @@
               "access": {
                 "archetypal": [],
                 "reads": [
-                  11
+                  10
                 ],
                 "reads_inverted": false,
                 "writes": [
-                  11
+                  10
                 ],
                 "writes_inverted": false
               },
@@ -790,7 +829,7 @@
                 {
                   "with": [
                     0,
-                    11
+                    10
                   ],
                   "without": []
                 }
@@ -803,7 +842,23 @@
           "apply_deferred": true,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_ecs::apply_deferred"
         },
         {
@@ -815,15 +870,15 @@
               "access": {
                 "archetypal": [],
                 "reads": [
+                  12,
                   13,
+                  17,
                   14,
-                  18,
-                  15,
                   32
                 ],
                 "reads_inverted": false,
                 "writes": [
-                  15,
+                  14,
                   32
                 ],
                 "writes_inverted": false
@@ -831,14 +886,14 @@
               "filter_sets": [
                 {
                   "with": [
+                    12,
                     13,
+                    17,
                     14,
-                    18,
-                    15,
                     32
                   ],
                   "without": [
-                    8
+                    9
                   ]
                 }
               ]
@@ -861,7 +916,7 @@
                     40
                   ],
                   "without": [
-                    8
+                    9
                   ]
                 }
               ]
@@ -910,7 +965,7 @@
               "access": {
                 "archetypal": [],
                 "reads": [
-                  11
+                  10
                 ],
                 "reads_inverted": false,
                 "writes": [],
@@ -920,7 +975,7 @@
                 {
                   "with": [
                     0,
-                    11
+                    10
                   ],
                   "without": []
                 }
@@ -948,7 +1003,7 @@
                     45
                   ],
                   "without": [
-                    8
+                    9
                   ]
                 }
               ]

@@ -27,19 +27,13 @@
           ]
         },
         {
-          "name": "bevy_render::diagnostic::internal::DiagnosticsRecorder",
-          "required": [
-            0
-          ]
-        },
-        {
           "name": "bevy_render::renderer::render_device::RenderDevice",
           "required": [
             0
           ]
         },
         {
-          "name": "bevy_render::renderer::RenderQueue",
+          "name": "bevy_render::diagnostic::internal::DiagnosticsRecorder",
           "required": [
             0
           ]
@@ -53,6 +47,9 @@
           },
           {
             "SystemSet": 1
+          },
+          {
+            "kind": "Weak"
           }
         ],
         [
@@ -61,6 +58,9 @@
           },
           {
             "SystemSet": 3
+          },
+          {
+            "kind": "Weak"
           }
         ],
         [
@@ -69,14 +69,20 @@
           },
           {
             "SystemSet": 2
+          },
+          {
+            "kind": "Weak"
           }
         ],
         [
           {
-            "System": 2
+            "System": 3
           },
           {
-            "System": 3
+            "System": 4
+          },
+          {
+            "kind": "Strict"
           }
         ]
       ],
@@ -84,13 +90,13 @@
         [
           4,
           {
-            "System": 1
+            "System": 2
           }
         ],
         [
           2,
           {
-            "System": 2
+            "System": 3
           }
         ],
         [
@@ -102,13 +108,13 @@
         [
           1,
           {
-            "System": 1
+            "System": 2
           }
         ],
         [
           5,
           {
-            "System": 2
+            "System": 3
           }
         ],
         [
@@ -120,13 +126,13 @@
         [
           2,
           {
-            "System": 3
+            "System": 4
           }
         ],
         [
           6,
           {
-            "System": 3
+            "System": 4
           }
         ]
       ],
@@ -168,7 +174,7 @@
       "systems": [
         {
           "apply_deferred": false,
-          "deferred": false,
+          "deferred": true,
           "exclusive": false,
           "filtered_accesses": [
             {
@@ -238,9 +244,7 @@
                   4
                 ],
                 "reads_inverted": false,
-                "writes": [
-                  4
-                ],
+                "writes": [],
                 "writes_inverted": false
               },
               "filter_sets": [
@@ -272,49 +276,100 @@
                   "without": []
                 }
               ]
-            },
-            {
-              "access": {
-                "archetypal": [],
-                "reads": [
-                  6
-                ],
-                "reads_inverted": false,
-                "writes": [],
-                "writes_inverted": false
-              },
-              "filter_sets": [
-                {
-                  "with": [
-                    0,
-                    6
-                  ],
-                  "without": []
-                }
-              ]
             }
           ],
           "name": "bevy_render::render_resource::sparse_buffer_vec::update_sparse_buffers"
         },
         {
+          "apply_deferred": true,
+          "deferred": false,
+          "exclusive": true,
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
+          "name": "bevy_ecs::apply_deferred"
+        },
+        {
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_core_pipeline::schedule::camera_driver"
         },
         {
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_core_pipeline::schedule::submit_pending_command_buffers"
         },
         {
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_core_pipeline::schedule::handle_uncovered_swap_chains"
         }
       ]

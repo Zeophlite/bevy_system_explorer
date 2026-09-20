@@ -7,21 +7,21 @@
       "FixedUpdate"
     ],
     "schedule_labels": [
-      "First",
       "PreStartup",
-      "SpawnScene",
-      "FixedMain",
-      "Update",
-      "RunFixedMainLoop",
       "Last",
-      "StateTransition",
-      "FixedPostUpdate",
-      "FixedFirst",
-      "FixedLast",
-      "PostUpdate",
+      "Update",
+      "SpawnScene",
       "PreUpdate",
+      "FixedPostUpdate",
+      "FixedLast",
+      "First",
+      "PostUpdate",
       "Startup",
-      "PostStartup"
+      "StateTransition",
+      "FixedFirst",
+      "FixedMain",
+      "PostStartup",
+      "RunFixedMainLoop"
     ],
     "unavailable_schedule_labels": [
       "Main",

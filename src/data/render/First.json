@@ -12,13 +12,23 @@
           {
             "System": 0
           }
+        ],
+        [
+          1,
+          {
+            "System": 0
+          }
         ]
       ],
-      "name": "FixedMain",
+      "name": "First",
       "system_sets": [
         {
           "conditions": [],
-          "name": "SystemTypeSet:bevy_app::main_schedule::FixedMain::run_fixed_main"
+          "name": "SystemTypeSet:bevy_ecs::message::update::message_update_system"
+        },
+        {
+          "conditions": [],
+          "name": "MessageUpdateSystems"
         }
       ],
       "systems": [
@@ -43,7 +53,7 @@
               ]
             }
           ],
-          "name": "bevy_app::main_schedule::FixedMain::run_fixed_main"
+          "name": "bevy_ecs::message::update::message_update_system"
         }
       ]
     }

@@ -67,7 +67,7 @@
           "required": []
         },
         {
-          "name": "bevy_render::sync_world::SyncToRenderWorld",
+          "name": "bevy_extract::sync_world::SyncToSubWorld<bevy_render::RenderApp>",
           "required": []
         },
         {
@@ -166,6 +166,9 @@
           },
           {
             "System": 3
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -174,6 +177,9 @@
           },
           {
             "System": 4
+          },
+          {
+            "kind": "Strict"
           }
         ]
       ],

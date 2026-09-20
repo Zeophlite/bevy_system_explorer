@@ -111,6 +111,9 @@
           },
           {
             "System": 4
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -119,6 +122,9 @@
           },
           {
             "System": 3
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -127,6 +133,9 @@
           },
           {
             "System": 2
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -135,6 +144,9 @@
           },
           {
             "System": 4
+          },
+          {
+            "kind": "Strict"
           }
         ],
         [
@@ -143,6 +155,9 @@
           },
           {
             "System": 2
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -151,6 +166,9 @@
           },
           {
             "System": 3
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -159,6 +177,9 @@
           },
           {
             "System": 4
+          },
+          {
+            "kind": "BuildPass"
           }
         ],
         [
@@ -167,6 +188,9 @@
           },
           {
             "System": 1
+          },
+          {
+            "kind": "BuildPass"
           }
         ]
       ],
@@ -332,14 +356,46 @@
           "apply_deferred": true,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_ecs::apply_deferred"
         },
         {
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_world_serialization::world_asset_spawner::world_instance_spawner_system"
         },
         {
@@ -480,7 +536,23 @@
           "apply_deferred": false,
           "deferred": false,
           "exclusive": true,
-          "filtered_accesses": [],
+          "filtered_accesses": [
+            {
+              "access": {
+                "archetypal": [],
+                "reads": [],
+                "reads_inverted": true,
+                "writes": [],
+                "writes_inverted": true
+              },
+              "filter_sets": [
+                {
+                  "with": [],
+                  "without": []
+                }
+              ]
+            }
+          ],
           "name": "bevy_scene::spawn::spawn_queued"
         }
       ]
